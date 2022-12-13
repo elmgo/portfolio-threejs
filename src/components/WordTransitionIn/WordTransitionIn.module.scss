@@ -1,0 +1,17 @@
+@keyframes fadeUp {
+    100% {
+        top: 0;
+    }
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+
+    .letter {
+        animation-fill-mode: forwards;
+        animation-name: fadeUp;
+        animation-duration: 0.3s;
+        position: absolute;
+    }
+}

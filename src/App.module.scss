@@ -1,0 +1,49 @@
+@import url('https://rsms.me/inter/inter.css');
+@import url('https://fonts.googleapis.com/css2?family=Antonio:wght@600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #3295a8 !important;
+}
+
+body {
+    position: fixed;
+    overscroll-behavior-y: none;
+    font-family: 'Inter var', sans-serif;
+    cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLW1vdXNlLXBvaW50ZXIiPjxwYXRoIGQ9Ik0zIDNsNy4wNyAxNi45NyAyLjUxLTcuMzkgNy4zOS0yLjUxTDMgM3oiPjwvcGF0aD48cGF0aCBkPSJNMTMgMTNsNiA2Ij48L3BhdGg+PC9zdmc+'),
+        auto;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.container {
+    opacity: 0;
+    animation: fadeIn 0.5s;
+    animation-fill-mode: forwards;
+}
