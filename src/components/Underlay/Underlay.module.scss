@@ -16,21 +16,19 @@
         color: #000;
         mix-blend-mode: overlay;
         line-height: 7vw;
+        animation: fadeIn 2s;
+        animation-fill-mode: forwards;
 
         .largeText {
             white-space: nowrap;
             letter-spacing: -0.78vw;
             font-size: 11vw;
-            animation: fadeIn 1s;
-            animation-fill-mode: forwards;
         }
 
         .smallText {
             white-space: nowrap;
             font-size: 5.05vw;
             letter-spacing: -0.39vw;
-            animation: fadeIn 2s;
-            animation-fill-mode: forwards;
         }
     }
 }

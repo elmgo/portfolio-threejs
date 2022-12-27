@@ -96,10 +96,6 @@ function Collisions() {
 export default () => {
     const [location] = useLocation();
 
-    useEffect(() => {
-        console.log();
-    }, [location]);
-
     return (
         <div className={css.container}>
             <Canvas

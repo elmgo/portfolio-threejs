@@ -74,9 +74,9 @@ export default () => {
                 </a>
                 <div className={css.buttons}>
                     {renderButton(`mailto:${details.email}`, '/images/mail.svg')}
-                    {renderButton(`mailto:${details.linkedin}`, '/images/linkedin.svg')}
-                    {renderButton(`mailto:${details.phone}`, '/images/phone.svg')}
-                    {renderButton(`mailto:${details.cv}`, '/images/cv.svg')}
+                    {renderButton(details.linkedin, '/images/linkedin.svg')}
+                    {renderButton(`tel:${details.phone}`, '/images/phone.svg')}
+                    {renderButton(details.cv, '/images/cv.svg')}
                 </div>
             </div>
 
