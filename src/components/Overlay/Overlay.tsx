@@ -83,7 +83,7 @@ export default () => {
 			<div className={css.viewCode}>
 				Built using React / Three.JS / Cannon.JS
 				<br />
-				<a target='_blank' href='https://github.com/elmgo/portfolio-threejs'>
+				<a target='_blank' href={config.githubRepoUrl}>
 					<img alt='view-code' src='/images/github.svg' />
 					view code
 				</a>
