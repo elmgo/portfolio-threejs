@@ -3,10 +3,10 @@ import { useLocation } from 'wouter';
 import { ERoute } from '../../global';
 import css from './Overlay.module.scss';
 
-const details = {
+const personalDetails = {
     email: 'jon@jonculiner.com',
-    linkedin: 'https://www.linkedin.com/in/jonathan-culiner/',
     phone: '+36-707-345-474',
+    linkedin: 'https://www.linkedin.com/in/jonathan-culiner/',
     cv: '/resume.pdf',
 };
 
@@ -33,10 +33,10 @@ export default () => {
         );
     }
 
-    function renderButton(link: string, icon: string) {
+    function renderButton(link: string, icon: string, imageAlt: string) {
         return (
             <a className={css.button} target='_blank' href={link}>
-                <img alt='email' src={icon} />
+                <img alt={imageAlt} src={icon} />
                 <div className={css.underlay} />
             </a>
         );
@@ -69,14 +69,14 @@ export default () => {
 
             <div className={css.social}>
                 <b>Get in touch, let's work together!</b>
-                <a className={css.emailLink} href='mailto:jon@jonculiner.com'>
-                    jon@jonculiner.com
+                <a className={css.emailLink} href={`mailto:${personalDetails.email}`}>
+                    {personalDetails.email}
                 </a>
                 <div className={css.buttons}>
-                    {renderButton(`mailto:${details.email}`, '/images/mail.svg')}
-                    {renderButton(details.linkedin, '/images/linkedin.svg')}
-                    {renderButton(`tel:${details.phone}`, '/images/phone.svg')}
-                    {renderButton(details.cv, '/images/cv.svg')}
+                    {renderButton(`mailto:${personalDetails.email}`, '/images/mail.svg', 'email')}
+                    {renderButton(`tel:${personalDetails.phone}`, '/images/phone.svg', 'phone')}
+                    {renderButton(personalDetails.linkedin, '/images/linkedin.svg', 'linkedin')}
+                    {renderButton(personalDetails.cv, '/images/cv.svg', 'cv')}
                 </div>
             </div>
 
@@ -88,8 +88,8 @@ export default () => {
             <div className={css.viewCode}>
                 Built using React / Three.JS / Cannon.JS
                 <br />
-                <a target='_blank' href='https://github.com/elmgo/portfolio2'>
-                    <img alt='github' src='/images/github.svg' />
+                <a target='_blank' href='https://github.com/elmgo/portfolio-threejs'>
+                    <img alt='view-code' src='/images/github.svg' />
                     view code
                 </a>
             </div>

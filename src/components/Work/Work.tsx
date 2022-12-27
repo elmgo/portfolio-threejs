@@ -9,8 +9,8 @@ import { projectImages } from '../../resources/projects';
 
 export default () => {
     const [, setLocation] = useLocation();
-    const [loaded, setLoaded] = useState(false);
-    const [closing, setClosing] = useState(false);
+    const [loaded, setLoaded] = useState<boolean>(false);
+    const [closing, setClosing] = useState<boolean>(false);
     const [currentProject, setCurrentProject] = useState<number>(0);
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
     const [nextProject, setNextProject] = useState<number>(0);
@@ -27,6 +27,15 @@ export default () => {
             scrollbarRef.current.addListener(onScroll);
         }
     }, [loaded]);
+
+    useEffect(() => () => scrollbarRef.current.removeListener(onScroll), []);
+
+    function onClose() {
+        setClosing(true);
+        setTimeout(() => {
+            setLocation('/');
+        }, 500);
+    }
 
     function onScroll(e: any) {
         for (let i: number = projectsRef.current.length - 1; i >= 0; i--) {
@@ -58,14 +67,6 @@ export default () => {
         scrollbarRef.current.scrollIntoView(anchorsRef.current[currentProject - 1].current, {
             offsetTop: 0,
         });
-    }
-
-    function onClose() {
-        setClosing(true);
-
-        setTimeout(() => {
-            setLocation('/');
-        }, 500);
     }
 
     return (

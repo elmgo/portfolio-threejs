@@ -29,11 +29,10 @@ const skills = {
 
 export default () => {
     const [, setLocation] = useLocation();
-    const [closing, setClosing] = useState(false);
+    const [closing, setClosing] = useState<boolean>(false);
 
     function onClose() {
         setClosing(true);
-
         setTimeout(() => {
             setLocation('/');
         }, 500);

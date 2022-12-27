@@ -5,10 +5,11 @@ export default [
     'click-hand.png',
     'error.svg',
     'github.svg',
-    'linkedin.svg',
     'loading.svg',
     'mail.svg',
-    'mouse-pointer.svg',
+    'linkedin.svg',
     'phone.svg',
+    'cv.svg',
+    'mouse-pointer.svg',
     'x.svg',
 ];

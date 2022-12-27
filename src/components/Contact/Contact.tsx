@@ -12,10 +12,10 @@ interface IContactForm {
 
 export default () => {
     const [, setLocation] = useLocation();
+    const [closing, setClosing] = useState<boolean>(false);
     const [error, setError] = useState<string>();
     const [submitting, setSubmitting] = useState<boolean>();
     const [sent, setSent] = useState<boolean>();
-    const [closing, setClosing] = useState(false);
 
     function onSubmit(e: React.FormEvent) {
         e.preventDefault();
@@ -38,7 +38,6 @@ export default () => {
 
     function onClose() {
         setClosing(true);
-
         setTimeout(() => {
             setLocation('/');
         }, 500);
