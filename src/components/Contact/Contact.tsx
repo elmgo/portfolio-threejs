@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import css from './Contact.module.scss';
+import config from '../../config/config';
 
 interface IContactForm {
 	name?: string;
@@ -28,7 +29,7 @@ export default () => {
 		setError('');
 		setSubmitting(true);
 		setTimeout(async () => {
-			await fetch('https://getform.io/f/cc69e947-355d-4105-ad4c-6219be96cf3c', {
+			await fetch(config.contactFormUrl, {
 				method: 'POST',
 				body: createFormData(form),
 			});
@@ -74,7 +75,7 @@ export default () => {
 	return (
 		<div className={`${css.container} ${closing ? css.closingModal : ''}`}>
 			<Helmet>
-				<link rel='canonical' href='https://www.jonculiner.com/contact/' />
+				<link rel='canonical' href={`${config.homeUrl}/contact/`} />
 			</Helmet>
 			<div className={`${css.modal} ${submitting ? css.submitting : ''}`}>
 				<div className={css.x} onClick={onClose}>

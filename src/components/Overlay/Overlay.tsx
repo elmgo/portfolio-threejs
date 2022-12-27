@@ -2,17 +2,12 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { ERoute } from '../../global';
 import css from './Overlay.module.scss';
-
-const personalDetails = {
-	email: 'jon@jonculiner.com',
-	phone: '+36-707-345-474',
-	linkedin: 'https://www.linkedin.com/in/jonathan-culiner/',
-	cv: '/resume.pdf',
-};
+import config from '../../config/config';
 
 export default () => {
 	const [, setLocation] = useLocation();
 	const [touched, setTouched] = useState<boolean>(false);
+	const { personalDetails } = config;
 
 	useEffect(() => {
 		document.addEventListener('touchend', documentTouched);

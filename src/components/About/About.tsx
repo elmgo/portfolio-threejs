@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import WordTransitionIn from '../WordTransitionIn/WordTransitionIn';
 import css from './About.module.scss';
+import config from '../../config/config';
 
 const skills = {
 	frontend: [
@@ -41,7 +42,7 @@ export default () => {
 	return (
 		<div className={`${css.container} ${closing ? css.closingModal : ''}`} onClick={onClose}>
 			<Helmet>
-				<link rel='canonical' href='https://www.jonculiner.com/about/' />
+				<link rel='canonical' href={`${config.homeUrl}/about/`} />
 			</Helmet>
 			<div className={css.modal} onClick={(e) => e.stopPropagation()}>
 				<div className={css.x} onClick={onClose}>

@@ -6,6 +6,7 @@ import data, { IImage, IProject } from '../../resources/projects';
 import Scrollbar from 'smooth-scrollbar';
 import Preloader from '../Preloader/Preloader';
 import { projectImages } from '../../resources/projects';
+import config from '../../config/config';
 
 export default () => {
 	const [, setLocation] = useLocation();
@@ -72,7 +73,7 @@ export default () => {
 	return (
 		<div className={`${css.container} ${closing ? css.closingModal : ''}`} onClick={onClose}>
 			<Helmet>
-				<link rel='canonical' href='https://www.jonculiner.com/work/' />
+				<link rel='canonical' href={`${config.homeUrl}/work/`} />
 			</Helmet>
 			<img alt='close' className={css.x} onClick={onClose} src='/images/x.svg' />
 			<div
