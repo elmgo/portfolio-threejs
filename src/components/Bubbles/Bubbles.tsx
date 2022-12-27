@@ -12,11 +12,10 @@ const bubbleMaterial: THREE.MeshLambertMaterial = new THREE.MeshLambertMaterial(
     emissive: '#fff',
 });
 
-const capMaterial: THREE.MeshStandardMaterial = new THREE.MeshStandardMaterial({
+const orbitMaterial: THREE.MeshStandardMaterial = new THREE.MeshStandardMaterial({
     roughness: 1,
     color: '#3295a8',
     emissive: '#3295a8',
-    envMapIntensity: 1,
 });
 
 const sphereGeometry: THREE.SphereGeometry = new THREE.SphereGeometry(1, 28, 28);
@@ -68,10 +67,10 @@ function Bubble({ vec = new THREE.Vector3(), ...props }) {
             <mesh
                 castShadow
                 receiveShadow
-                position={[0, 0, 1.3 * props.args]}
+                position={[0, 0, 1.2 * props.args]}
                 scale={0.2 * props.args}
                 geometry={sphereGeometry}
-                material={capMaterial}
+                material={orbitMaterial}
             />
         </group>
     );
@@ -109,29 +108,29 @@ export default () => {
                 gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
                 camera={{ position: [0, 0, 20], fov: 35, near: 10, far: 40 }}
                 onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}>
-                <ambientLight intensity={0.75} />
+                <ambientLight intensity={0.5} />
                 <spotLight
                     position={[20, 20, 25]}
                     penumbra={1}
                     angle={0.2}
-                    color='white'
                     castShadow
                     shadow-mapSize={[512, 512]}
                 />
                 <directionalLight position={[0, -5, -4]} intensity={8} color='#fff' />
-                <directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
-
+                {!isMobile() && (
+                    <>
+                        <directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
+                        <EffectComposer multisampling={0}>
+                            <SSAO samples={3} radius={10} luminanceInfluence={0.7} />
+                        </EffectComposer>
+                    </>
+                )}
                 <Physics gravity={[0, 0, 0]} iterations={10} broadphase='SAP'>
                     {(location === '/' || !isMobile()) && <Collisions />}
                     {bubbles.map((props, i) => (
                         <Bubble key={i} {...props} />
                     ))}
                 </Physics>
-                {!isMobile() && (
-                    <EffectComposer multisampling={0}>
-                        <SSAO samples={3} radius={10} luminanceInfluence={0.7} />
-                    </EffectComposer>
-                )}
             </Canvas>
         </div>
     );

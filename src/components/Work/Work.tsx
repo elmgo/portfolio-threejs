@@ -50,13 +50,13 @@ export default () => {
 
     function gotoNextProject() {
         scrollbarRef.current.scrollIntoView(anchorsRef.current[currentProject + 1].current, {
-            offsetTop: -100,
+            offsetTop: 0,
         });
     }
 
     function gotoPrevProject() {
         scrollbarRef.current.scrollIntoView(anchorsRef.current[currentProject - 1].current, {
-            offsetTop: -100,
+            offsetTop: 0,
         });
     }
 

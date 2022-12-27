@@ -33,6 +33,15 @@ export default () => {
         );
     }
 
+    function renderButton(link: string, icon: string) {
+        return (
+            <a className={css.button} target='_blank' href={link}>
+                <img alt='email' src={icon} />
+                <div className={css.underlay} />
+            </a>
+        );
+    }
+
     return (
         <div className={css.container}>
             <div className={css.header}>
@@ -64,18 +73,10 @@ export default () => {
                     jon@jonculiner.com
                 </a>
                 <div className={css.buttons}>
-                    <a className={css.button} target='_blank' href={`mailto:${details.email}`}>
-                        <img alt='email' src='/images/mail.svg' />
-                    </a>
-                    <a className={css.button} target='_blank' href={details.linkedin}>
-                        <img alt='linkedin' src='/images/linkedin.svg' />
-                    </a>
-                    <a className={css.button} href={`tel:${details.phone}`}>
-                        <img alt='phone' src='/images/phone.svg' />
-                    </a>
-                    <a className={css.button} target='_blank' href={`${details.cv}`}>
-                        <img alt='phone' src='/images/cv.svg' />
-                    </a>
+                    {renderButton(`mailto:${details.email}`, '/images/mail.svg')}
+                    {renderButton(`mailto:${details.linkedin}`, '/images/linkedin.svg')}
+                    {renderButton(`mailto:${details.phone}`, '/images/phone.svg')}
+                    {renderButton(`mailto:${details.cv}`, '/images/cv.svg')}
                 </div>
             </div>
 
