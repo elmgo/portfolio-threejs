@@ -1,6 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { Helmet } from 'react-helmet';
 import App from './App';
+import config from './config/config';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
@@ -8,7 +9,7 @@ root.render(
 		<Helmet>
 			<title>Jonathan Culiner - Web Developer & Interactive Designer</title>
 			<meta charset='UTF-8' />
-			<link rel='canonical' href='https://www.jonculiner.com/' />
+			<link rel='canonical' href={`${config.homeUrl}/`} />
 			<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 			<meta
 				name='description'
