@@ -4,6 +4,8 @@ import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Physics, usePlane, useCompoundBody, useSphere } from '@react-three/cannon';
 import { EffectComposer, SSAO } from '@react-three/postprocessing';
 import css from './Bubbles.module.scss';
+import { useLocation } from 'wouter';
+import isMobile from 'is-mobile';
 
 const bubbleMaterial: THREE.MeshLambertMaterial = new THREE.MeshLambertMaterial({
     color: '#fff',
@@ -93,6 +95,12 @@ function Collisions() {
 }
 
 export default () => {
+    const [location] = useLocation();
+
+    useEffect(() => {
+        console.log();
+    }, [location]);
+
     return (
         <div className={css.container}>
             <Canvas
@@ -114,7 +122,7 @@ export default () => {
                 <directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
 
                 <Physics gravity={[0, 0, 0]} iterations={10} broadphase='SAP'>
-                    <Collisions />
+                    {(location === '/' || !isMobile()) && <Collisions />}
                     {bubbles.map((props, i) => (
                         <Bubble key={i} {...props} />
                     ))}

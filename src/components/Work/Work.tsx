@@ -4,9 +4,12 @@ import { Helmet } from 'react-helmet';
 import css from './Work.module.scss';
 import data, { IImage, IProject } from '../../resources/projects';
 import Scrollbar from 'smooth-scrollbar';
+import Preloader from '../Preloader/Preloader';
+import { projectImages } from '../../resources/projects';
 
 export default () => {
     const [, setLocation] = useLocation();
+    const [loaded, setLoaded] = useState(false);
     const [closing, setClosing] = useState(false);
     const [currentProject, setCurrentProject] = useState<number>(0);
     const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
@@ -18,11 +21,12 @@ export default () => {
     const project: IProject = data[currentProject];
 
     useEffect(() => {
-        // add smooth scrollbar instead of using reacts native onScroll
-        scrollbarRef.current = Scrollbar.init(projectsContainerRef.current);
-        scrollbarRef.current.addListener(onScroll);
-        return () => scrollbarRef.current.removeListener(onScroll);
-    }, []);
+        if (loaded) {
+            // add smooth scrollbar instead of using reacts native onScroll
+            scrollbarRef.current = Scrollbar.init(projectsContainerRef.current);
+            scrollbarRef.current.addListener(onScroll);
+        }
+    }, [loaded]);
 
     function onScroll(e: any) {
         for (let i: number = projectsRef.current.length - 1; i >= 0; i--) {
@@ -69,69 +73,78 @@ export default () => {
             <Helmet>
                 <link rel='canonical' href='https://www.jonculiner.com/work/' />
             </Helmet>
-            <img alt='close' className={css.x} onClick={onClose} src='/x.svg' />
+            <img alt='close' className={css.x} onClick={onClose} src='/images/x.svg' />
             <div
                 className={`${css.modal} ${isTransitioning ? css.infoTransitioning : ''}`}
                 onClick={(e) => e.stopPropagation()}>
-                <div className={css.info}>
-                    <div className={css.logo}>
-                        <img alt='project-logo' src={project.logo} />
-                    </div>
-                    <div className={css.field}>
-                        <b>Role</b> {project.role}
-                    </div>
-                    <div className={css.field}>
-                        <b>Period</b>
-                        {project.start_year}
-                        {project.end_year ? ` - ${project.end_year}` : ''}
-                    </div>
-                    <div className={css.field}>
-                        <b>Tech</b>
-                        {project.skills.map((skill: string) => (
-                            <div className={css.skill}>{skill}</div>
-                        ))}
-                    </div>
-                    <div className={css.field}>
-                        <b>About</b>
-                        {project.description}
-                    </div>
+                {!loaded ? (
+                    <Preloader onLoaded={() => setLoaded(true)} assets={projectImages} />
+                ) : (
+                    <>
+                        <div className={css.info}>
+                            <div className={css.logo}>
+                                <img alt='project-logo' src={project.logo} />
+                            </div>
+                            <div className={css.field}>
+                                <b>Role</b> {project.role}
+                            </div>
+                            <div className={css.field}>
+                                <b>Period</b>
+                                {project.start_year}
+                                {project.end_year ? ` - ${project.end_year}` : ''}
+                            </div>
+                            <div className={css.field}>
+                                <b>Tech</b>
+                                {project.skills.map((skill: string) => (
+                                    <div className={css.skill}>{skill}</div>
+                                ))}
+                            </div>
+                            <div className={css.field}>
+                                <b>About</b>
+                                {project.description}
+                            </div>
 
-                    <div className={css.controls}>
-                        <div
-                            className={`${css.prevProject} ${
-                                currentProject > 0 ? '' : css.buttonHide
-                            }`}
-                            onClick={gotoPrevProject}>
-                            <img alt='arrow-left' src='/arrow-left.svg' />
-                            Prev project
-                        </div>
+                            <div className={css.controls}>
+                                <div
+                                    className={`${css.prevProject} ${
+                                        currentProject > 0 ? '' : css.buttonHide
+                                    }`}
+                                    onClick={gotoPrevProject}>
+                                    <img alt='arrow-left' src='/images/arrow-left.svg' />
+                                    Prev project
+                                </div>
 
-                        <div
-                            className={`${css.nextProject} ${
-                                currentProject < data.length - 1 ? '' : css.buttonHide
-                            }`}
-                            onClick={gotoNextProject}>
-                            Next project
-                            <img alt='arrow-right' src='/arrow-right.svg' />
+                                <div
+                                    className={`${css.nextProject} ${
+                                        currentProject < data.length - 1 ? '' : css.buttonHide
+                                    }`}
+                                    onClick={gotoNextProject}>
+                                    Next project
+                                    <img alt='arrow-right' src='/images/arrow-right.svg' />
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div ref={projectsContainerRef} className={css.panels}>
-                    {data.map((project: IProject, index: number) => (
-                        <div className={css.images} ref={anchorsRef.current[index]}>
-                            {project.images.map((image: IImage, imageIndex: number) => (
-                                <img
-                                    alt={`project-${index}-${imageIndex}`}
-                                    className={css.image}
-                                    src={`/projects/${image.src}`}
-                                />
+                        <div ref={projectsContainerRef} className={css.panels}>
+                            {data.map((project: IProject, index: number) => (
+                                <div className={css.images} ref={anchorsRef.current[index]}>
+                                    {project.images.map((image: IImage, imageIndex: number) => (
+                                        <img
+                                            alt={`project-${index}-${imageIndex}`}
+                                            className={css.image}
+                                            src={`/images/projects/${image.src}`}
+                                        />
+                                    ))}
+                                    {index < data.length - 1 && (
+                                        <div
+                                            ref={projectsRef.current[index]}
+                                            className={css.nextProject}
+                                        />
+                                    )}
+                                </div>
                             ))}
-                            {index < data.length - 1 && (
-                                <div ref={projectsRef.current[index]} className={css.nextProject} />
-                            )}
                         </div>
-                    ))}
-                </div>
+                    </>
+                )}
             </div>
         </div>
     );

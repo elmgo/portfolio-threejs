@@ -7,6 +7,7 @@ const details = {
     email: 'jon@jonculiner.com',
     linkedin: 'https://www.linkedin.com/in/jonathan-culiner/',
     phone: '+36-707-345-474',
+    cv: '/resume.pdf',
 };
 
 export default () => {
@@ -52,7 +53,7 @@ export default () => {
             </div>
 
             <div className={`${css.dragCursor} ${touched ? css.fadeIn : ''}`}>
-                <img alt='mouse-pointer' src='/mouse-pointer.svg' />
+                <img alt='mouse-pointer' src='/images/mouse-pointer.svg' />
                 <span className={css.showDesktop}>MOVE MOUSE</span>
                 <span className={css.showMobile}>TAP ELEMENTS</span>●
             </div>
@@ -64,19 +65,22 @@ export default () => {
                 </a>
                 <div className={css.buttons}>
                     <a className={css.button} target='_blank' href={`mailto:${details.email}`}>
-                        <img alt='email' src='/mail.svg' />
+                        <img alt='email' src='/images/mail.svg' />
                     </a>
                     <a className={css.button} target='_blank' href={details.linkedin}>
-                        <img alt='linkedin' src='/linkedin.svg' />
+                        <img alt='linkedin' src='/images/linkedin.svg' />
                     </a>
                     <a className={css.button} href={`tel:${details.phone}`}>
-                        <img alt='phone' src='/phone.svg' />
+                        <img alt='phone' src='/images/phone.svg' />
+                    </a>
+                    <a className={css.button} target='_blank' href={`${details.cv}`}>
+                        <img alt='phone' src='/images/cv.svg' />
                     </a>
                 </div>
             </div>
 
             <div className={`${css.handIcon} ${touched ? css.fadeOut : ''}`}>
-                <img alt='hand-icon' src='/click-hand.png' />
+                <img alt='hand-icon' src='/images/click-hand.png' />
                 Tap elements
             </div>
 
@@ -84,7 +88,7 @@ export default () => {
                 Built using React / Three.JS / Cannon.JS
                 <br />
                 <a target='_blank' href='https://github.com/elmgo/portfolio2'>
-                    <img alt='github' src='/github.svg' />
+                    <img alt='github' src='/images/github.svg' />
                     view code
                 </a>
             </div>

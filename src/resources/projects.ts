@@ -79,7 +79,7 @@ const projects: IProject[] = [
 
 // export an array of all images so they can be preloaded
 export const projectImages: string[] = projects
-    .map((project: IProject) => project.images.map((image: IImage) => `/projects/${image.src}`))
+    .map((project: IProject) => project.images.map((image: IImage) => `projects/${image.src}`))
     .reduce((a, b) => [...a, ...b], []);
 
 export default projects;

@@ -1,7 +1,4 @@
-import { projectImages } from './projects';
-
 export default [
-    ...projectImages,
     'portrait.jpg',
     'arrow-left.svg',
     'arrow-right.svg',

@@ -79,7 +79,7 @@ export default () => {
             </Helmet>
             <div className={`${css.modal} ${submitting ? css.submitting : ''}`}>
                 <div className={css.x} onClick={onClose}>
-                    <img alt='close' src='/x.svg' />
+                    <img alt='close' src='/images/x.svg' />
                 </div>
                 <div className={css.inner}>
                     {!submitting && (
@@ -112,7 +112,7 @@ export default () => {
                                 <div className={css.error}>
                                     {error && (
                                         <>
-                                            <img alt='error' src='/error.svg' />
+                                            <img alt='error' src='/images/error.svg' />
                                             {error}
                                         </>
                                     )}
@@ -124,7 +124,7 @@ export default () => {
                     {submitting && (
                         <div className={css.thankYou}>
                             {!sent ? (
-                                <img alt='loading' src='/loading.svg' />
+                                <img alt='loading' src='/images/loading.svg' />
                             ) : (
                                 <>
                                     Thank you for reaching out!

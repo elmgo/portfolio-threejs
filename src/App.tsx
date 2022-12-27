@@ -1,4 +1,5 @@
 import Overlay from './components/Overlay/Overlay';
+import Underlay from './components/Underlay/Underlay';
 import Bubbles from './components/Bubbles/Bubbles';
 import Work from './components/Work/Work';
 import About from './components/About/About';
@@ -8,15 +9,17 @@ import { useState } from 'react';
 import css from './App.module.scss';
 import { ERoute } from './global';
 import { useLocation } from 'wouter';
+import assets from './resources/assets';
 
 export default () => {
     const [location] = useLocation();
     const [loaded, setLoaded] = useState<boolean>(false);
 
     return !loaded ? (
-        <Preloader onLoaded={() => setLoaded(true)} />
+        <Preloader onLoaded={() => setLoaded(true)} assets={assets} />
     ) : (
         <div className={css.container}>
+            <Underlay />
             <Bubbles />
             <Overlay />
             {location === ERoute.Work && <Work />}

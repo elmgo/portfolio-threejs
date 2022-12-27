@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
-import assets from '../../resources/assets';
 import css from './Preloader.module.scss';
 
-export default ({ onLoaded }: { onLoaded: any }) => {
+export default ({ onLoaded, assets }: { onLoaded: any; assets: string[] }) => {
     const [imagesLoaded, setImagesLoaded] = useState<number>(0);
 
     useEffect(() => {
@@ -20,7 +19,7 @@ export default ({ onLoaded }: { onLoaded: any }) => {
     function preloadImage(src: string) {
         return new Promise<void>((resolve, reject) => {
             const newImage: HTMLImageElement = new Image();
-            newImage.src = src;
+            newImage.src = `/images/${src}`;
             newImage.onload = () => {
                 resolve();
             };
@@ -38,13 +37,16 @@ export default ({ onLoaded }: { onLoaded: any }) => {
     return (
         <div className={css.container}>
             <div className={css.spinner}>
-                <img alt='loading-spinner' className={css.spinnerBig} src='/spinner.svg' />
-                <img alt='loading-spinner' className={css.spinnerSmall} src='/spinner.svg' />
+                <img alt='loading-spinner' className={css.spinnerBig} src='/images/spinner.svg' />
+                <img alt='loading-spinner' className={css.spinnerSmall} src='/images/spinner.svg' />
             </div>
             <div className={css.progress}>
                 <div className={css.bar} style={{ width: `${getBarWidth()}%` }}></div>
             </div>
-            {imagesLoaded} / {assets.length}
+            loading assets
+            <div className={css.assetsLoaded}>
+                {imagesLoaded} / {assets.length}
+            </div>
         </div>
     );
 };

@@ -46,11 +46,11 @@ export default () => {
             </Helmet>
             <div className={css.modal} onClick={(e) => e.stopPropagation()}>
                 <div className={css.x} onClick={onClose}>
-                    <img src='/x.svg' />
+                    <img src='/images/x.svg' />
                 </div>
                 <div className={css.portraitContainer}>
                     <div
-                        style={{ backgroundImage: `url(/portrait.jpg)` }}
+                        style={{ backgroundImage: `url(/images/portrait.jpg)` }}
                         className={css.portrait}
                     />
                 </div>
