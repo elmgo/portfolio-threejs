@@ -118,7 +118,7 @@ export default () => {
                     castShadow
                     shadow-mapSize={[512, 512]}
                 />
-                <directionalLight position={[0, -5, -4]} intensity={8} />
+                <directionalLight position={[0, -5, -4]} intensity={8} color='#fff' />
                 <directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
 
                 <Physics gravity={[0, 0, 0]} iterations={10} broadphase='SAP'>
@@ -127,9 +127,11 @@ export default () => {
                         <Bubble key={i} {...props} />
                     ))}
                 </Physics>
-                <EffectComposer multisampling={0}>
-                    <SSAO samples={5} radius={10} luminanceInfluence={0.7} />
-                </EffectComposer>
+                {!isMobile() && (
+                    <EffectComposer multisampling={0}>
+                        <SSAO samples={3} radius={10} luminanceInfluence={0.7} />
+                    </EffectComposer>
+                )}
             </Canvas>
         </div>
     );
