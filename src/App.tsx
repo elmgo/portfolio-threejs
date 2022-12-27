@@ -12,19 +12,19 @@ import { useLocation } from 'wouter';
 import assets from './resources/assets';
 
 export default () => {
-    const [location] = useLocation();
-    const [loaded, setLoaded] = useState<boolean>(false);
+	const [location] = useLocation();
+	const [loaded, setLoaded] = useState<boolean>(false);
 
-    return !loaded ? (
-        <Preloader onLoaded={() => setLoaded(true)} assets={assets} />
-    ) : (
-        <div className={css.container}>
-            <Underlay />
-            <Bubbles />
-            <Overlay />
-            {location === ERoute.Work && <Work />}
-            {location === ERoute.About && <About />}
-            {location === ERoute.Contact && <Contact />}
-        </div>
-    );
+	return !loaded ? (
+		<Preloader onLoaded={() => setLoaded(true)} assets={assets} />
+	) : (
+		<div className={css.container}>
+			<Underlay />
+			<Bubbles />
+			<Overlay />
+			{location === ERoute.Work && <Work />}
+			{location === ERoute.About && <About />}
+			{location === ERoute.Contact && <Contact />}
+		</div>
+	);
 };

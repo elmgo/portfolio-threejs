@@ -1,266 +1,266 @@
 .container {
-    pointer-events: all;
-    animation: fadeInBG 1.5s;
-    animation-fill-mode: forwards;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 10;
-    transition: 0.5s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	pointer-events: all;
+	animation: fadeInBG 1.5s;
+	animation-fill-mode: forwards;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: 10;
+	transition: 0.5s;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
-    .modal {
-        box-shadow: 10px 0 50px rgba(0, 0, 0, 0.2);
-        pointer-events: all;
-        animation: fadeInModal 1.5s;
-        animation-fill-mode: forwards;
-        animation-timing-function: cubic-bezier(0.9, 0, 0.05, 1);
-        height: 415px;
-        background-color: #fff;
-        border-radius: 5px;
-        transition: 0.5s;
-        position: relative;
-        display: flex;
-        padding: 30px;
+	.modal {
+		box-shadow: 10px 0 50px rgba(0, 0, 0, 0.2);
+		pointer-events: all;
+		animation: fadeInModal 1.5s;
+		animation-fill-mode: forwards;
+		animation-timing-function: cubic-bezier(0.9, 0, 0.05, 1);
+		height: 415px;
+		background-color: #fff;
+		border-radius: 5px;
+		transition: 0.5s;
+		position: relative;
+		display: flex;
+		padding: 30px;
 
-        .x {
-            cursor: pointer;
-            position: absolute;
-            top: 0;
-            z-index: 1000;
-            right: -30px;
-            transition: 0.2s;
+		.x {
+			cursor: pointer;
+			position: absolute;
+			top: 0;
+			z-index: 1000;
+			right: -30px;
+			transition: 0.2s;
 
-            &:hover {
-                transform: rotate(90deg);
-            }
-        }
+			&:hover {
+				transform: rotate(90deg);
+			}
+		}
 
-        .portraitContainer {
-            width: 323px;
-            height: 0;
-            animation: fadeInPortrait 0.5s none 1s;
-            animation-fill-mode: forwards;
-            overflow: hidden;
+		.portraitContainer {
+			width: 323px;
+			height: 0;
+			animation: fadeInPortrait 0.5s none 1s;
+			animation-fill-mode: forwards;
+			overflow: hidden;
 
-            .portrait {
-                border-radius: 3px;
-                width: 100%;
-                height: 100%;
-                background-position: center;
-                background-size: 373px auto;
-            }
-        }
+			.portrait {
+				border-radius: 3px;
+				width: 100%;
+				height: 100%;
+				background-position: center;
+				background-size: 373px auto;
+			}
+		}
 
-        .content {
-            padding-left: 40px;
-            flex: 1;
+		.content {
+			padding-left: 40px;
+			flex: 1;
 
-            .about {
-                opacity: 0;
-                animation: fadeInText 0.5s none 1.35s;
-                animation-fill-mode: forwards;
-                margin-top: 20px;
-                font-size: 12px;
-                width: 100%;
-            }
+			.about {
+				opacity: 0;
+				animation: fadeInText 0.5s none 1.35s;
+				animation-fill-mode: forwards;
+				margin-top: 20px;
+				font-size: 12px;
+				width: 100%;
+			}
 
-            .tech {
-                opacity: 0;
-                animation: fadeInText 0.5s none 1.45s;
-                animation-fill-mode: forwards;
-                margin-top: 50px;
+			.tech {
+				opacity: 0;
+				animation: fadeInText 0.5s none 1.45s;
+				animation-fill-mode: forwards;
+				margin-top: 50px;
 
-                .row {
-                    display: flex;
-                    margin-bottom: 10px;
-                    font-size: 11px;
+				.row {
+					display: flex;
+					margin-bottom: 10px;
+					font-size: 11px;
 
-                    .type {
-                        width: 80px;
-                        text-transform: uppercase;
-                    }
+					.type {
+						width: 80px;
+						text-transform: uppercase;
+					}
 
-                    .skills {
-                        flex: 1;
+					.skills {
+						flex: 1;
 
-                        .skill {
-                            opacity: 0;
-                            animation-name: fadeInSkill;
-                            animation-duration: 0.4s;
-                            animation-fill-mode: forwards;
-                            border-radius: 2px;
-                            padding: 2px 4px;
-                            background-color: #e2f3f7;
-                            margin: 0 5px 3px 0;
-                            display: inline-block;
-                        }
-                    }
-                }
-            }
-        }
+						.skill {
+							opacity: 0;
+							animation-name: fadeInSkill;
+							animation-duration: 0.4s;
+							animation-fill-mode: forwards;
+							border-radius: 2px;
+							padding: 2px 4px;
+							background-color: #e2f3f7;
+							margin: 0 5px 3px 0;
+							display: inline-block;
+						}
+					}
+				}
+			}
+		}
 
-        @media (max-width: 1023px) {
-            animation-name: fadeInModalMobile;
-            height: 450px;
+		@media (max-width: 1023px) {
+			animation-name: fadeInModalMobile;
+			height: 450px;
 
-            .portraitContainer {
-                width: 250px;
+			.portraitContainer {
+				width: 250px;
 
-                .portrait {
-                    background-size: cover;
-                }
-            }
+				.portrait {
+					background-size: cover;
+				}
+			}
 
-            .content {
-                .tech {
-                    margin-top: 10px;
-                }
-            }
-        }
+			.content {
+				.tech {
+					margin-top: 10px;
+				}
+			}
+		}
 
-        @media (max-width: 767px) {
-            animation-name: fadeInModalMobile;
-            height: auto;
-            display: block;
-            height: 530px;
+		@media (max-width: 767px) {
+			animation-name: fadeInModalMobile;
+			height: auto;
+			display: block;
+			height: 530px;
 
-            .x {
-                right: 0;
-                top: -30px;
-            }
+			.x {
+				right: 0;
+				top: -30px;
+			}
 
-            .portraitContainer {
-                width: 100%;
-                animation: none !important;
-                height: 170px;
-                width: 100%;
+			.portraitContainer {
+				width: 100%;
+				animation: none !important;
+				height: 170px;
+				width: 100%;
 
-                .portrait {
-                    background-size: cover;
-                }
-            }
+				.portrait {
+					background-size: cover;
+				}
+			}
 
-            .content {
-                margin-top: 30px;
-                padding-left: 0;
+			.content {
+				margin-top: 30px;
+				padding-left: 0;
 
-                .about {
-                    margin-top: 0;
-                }
+				.about {
+					margin-top: 0;
+				}
 
-                .tech {
-                    display: none;
-                    margin-top: 10px;
-                }
-            }
-        }
-    }
+				.tech {
+					display: none;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
 
-    @media (max-width: 767px) {
-        animation-name: fadeInBGMobile;
-    }
+	@media (max-width: 767px) {
+		animation-name: fadeInBGMobile;
+	}
 }
 
 .closingModal {
-    opacity: 0 !important;
-    margin-top: 20px;
+	opacity: 0 !important;
+	margin-top: 20px;
 
-    @media (max-width: 767px) {
-        margin-top: 0;
-    }
+	@media (max-width: 767px) {
+		margin-top: 0;
+	}
 }
 
 @keyframes fadeInBG {
-    0% {
-        background-color: rgba(0, 0, 0, 0);
-    }
+	0% {
+		background-color: rgba(0, 0, 0, 0);
+	}
 
-    100% {
-        background-color: rgba(0, 0, 0, 0.1);
-    }
+	100% {
+		background-color: rgba(0, 0, 0, 0.1);
+	}
 }
 
 @keyframes fadeInBGMobile {
-    0% {
-        background-color: rgba(0, 0, 0, 0);
-    }
+	0% {
+		background-color: rgba(0, 0, 0, 0);
+	}
 
-    100% {
-        background-color: rgba(0, 0, 0, 0.8);
-    }
+	100% {
+		background-color: rgba(0, 0, 0, 0.8);
+	}
 }
 
 @keyframes fadeInModal {
-    0% {
-        opacity: 0;
-        width: 0;
-    }
+	0% {
+		opacity: 0;
+		width: 0;
+	}
 
-    100% {
-        opacity: 1;
-        width: 950px;
-    }
+	100% {
+		opacity: 1;
+		width: 950px;
+	}
 }
 
 @keyframes fadeInModalMobile {
-    0% {
-        opacity: 0;
-        width: 0;
-    }
+	0% {
+		opacity: 0;
+		width: 0;
+	}
 
-    100% {
-        opacity: 1;
-        width: 90%;
-    }
+	100% {
+		opacity: 1;
+		width: 90%;
+	}
 }
 
 @keyframes fadeOutModal {
-    0% {
-        opacity: 1 !important;
-    }
+	0% {
+		opacity: 1 !important;
+	}
 
-    100% {
-        opacity: 0 !important;
-    }
+	100% {
+		opacity: 0 !important;
+	}
 }
 
 @keyframes fadeInPortrait {
-    0% {
-        opacity: 0;
-        height: 0;
-    }
+	0% {
+		opacity: 0;
+		height: 0;
+	}
 
-    100% {
-        opacity: 1;
-        height: 100%;
-    }
+	100% {
+		opacity: 1;
+		height: 100%;
+	}
 }
 
 @keyframes fadeInText {
-    0% {
-        padding-top: 30px;
-        opacity: 0;
-    }
+	0% {
+		padding-top: 30px;
+		opacity: 0;
+	}
 
-    100% {
-        padding-top: 20px;
-        opacity: 1;
-    }
+	100% {
+		padding-top: 20px;
+		opacity: 1;
+	}
 }
 
 @keyframes fadeInSkill {
-    0% {
-        opacity: 0;
-        transform: translateY(40px);
-    }
+	0% {
+		opacity: 0;
+		transform: translateY(40px);
+	}
 
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }

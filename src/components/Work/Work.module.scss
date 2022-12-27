@@ -1,297 +1,297 @@
 .container {
-    cursor: default;
-    animation: fadeInBG 2s cubic-bezier(0.9, 0, 0.05, 1);
-    animation-fill-mode: forwards;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-    position: fixed;
-    z-index: 10;
-    transition: 0.5s;
+	cursor: default;
+	animation: fadeInBG 2s cubic-bezier(0.9, 0, 0.05, 1);
+	animation-fill-mode: forwards;
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	position: fixed;
+	z-index: 10;
+	transition: 0.5s;
 
-    .x {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        cursor: pointer;
-        transition: 0.3s;
+	.x {
+		position: fixed;
+		top: 20px;
+		right: 20px;
+		cursor: pointer;
+		transition: 0.3s;
 
-        &:hover {
-            transform: scale(1.2) rotate(90deg);
-        }
-    }
+		&:hover {
+			transform: scale(1.2) rotate(90deg);
+		}
+	}
 
-    .modal {
-        background-color: rgba(250, 250, 250, 1);
-        border-radius: 2px;
-        opacity: 0;
-        animation: fadeInModal 2s cubic-bezier(0.9, 0, 0.05, 1);
-        animation-fill-mode: forwards;
-        transition: 0.3s;
-        height: 85vh;
-        box-shadow: 0 20px 50px 50px rgba(0, 0, 0, 0.1);
-        display: flex;
+	.modal {
+		background-color: rgba(250, 250, 250, 1);
+		border-radius: 2px;
+		opacity: 0;
+		animation: fadeInModal 2s cubic-bezier(0.9, 0, 0.05, 1);
+		animation-fill-mode: forwards;
+		transition: 0.3s;
+		height: 85vh;
+		box-shadow: 0 20px 50px 50px rgba(0, 0, 0, 0.1);
+		display: flex;
 
-        .info {
-            overflow: hidden;
-            padding: 20px 0 20px 20px;
-            width: 200px;
-            font-size: 11px;
-            position: relative;
-            box-sizing: border-box;
+		.info {
+			overflow: hidden;
+			padding: 20px 0 20px 20px;
+			width: 200px;
+			font-size: 11px;
+			position: relative;
+			box-sizing: border-box;
 
-            .controls {
-                position: absolute;
-                bottom: 20px;
-                left: 20px;
-                font-weight: 700;
-                cursor: pointer;
-                white-space: nowrap;
-                width: 100%;
+			.controls {
+				position: absolute;
+				bottom: 20px;
+				left: 20px;
+				font-weight: 700;
+				cursor: pointer;
+				white-space: nowrap;
+				width: 100%;
 
-                .nextProject,
-                .prevProject {
-                    white-space: nowrap;
-                    vertical-align: middle;
-                    display: inline-block;
-                    transition: 0.5s;
-                    position: absolute;
-                    bottom: 0;
+				.nextProject,
+				.prevProject {
+					white-space: nowrap;
+					vertical-align: middle;
+					display: inline-block;
+					transition: 0.5s;
+					position: absolute;
+					bottom: 0;
 
-                    &:hover {
-                        text-decoration: underline;
-                    }
+					&:hover {
+						text-decoration: underline;
+					}
 
-                    img {
-                        vertical-align: middle;
-                        height: 10px;
-                    }
-                }
+					img {
+						vertical-align: middle;
+						height: 10px;
+					}
+				}
 
-                .nextProject {
-                    right: 20px;
+				.nextProject {
+					right: 20px;
 
-                    img {
-                        margin-left: 5px;
-                    }
-                }
+					img {
+						margin-left: 5px;
+					}
+				}
 
-                .prevProject {
-                    img {
-                        margin-right: 5px;
-                    }
-                }
+				.prevProject {
+					img {
+						margin-right: 5px;
+					}
+				}
 
-                .buttonHide {
-                    bottom: -10px;
-                    opacity: 0;
-                    pointer-events: none;
-                }
-            }
+				.buttonHide {
+					bottom: -10px;
+					opacity: 0;
+					pointer-events: none;
+				}
+			}
 
-            .field,
-            .logo {
-                opacity: 0;
-                animation: fadeInField 0.3s;
-                animation-fill-mode: forwards;
-            }
+			.field,
+			.logo {
+				opacity: 0;
+				animation: fadeInField 0.3s;
+				animation-fill-mode: forwards;
+			}
 
-            @for $i from 1 through 5 {
-                .field:nth-of-type(#{$i}) {
-                    animation-delay: #{$i * 0.05}s;
-                }
-            }
+			@for $i from 1 through 5 {
+				.field:nth-of-type(#{$i}) {
+					animation-delay: #{$i * 0.05}s;
+				}
+			}
 
-            .logo {
-                width: 180px;
-                text-align: left !important;
-                margin-bottom: 30px;
+			.logo {
+				width: 180px;
+				text-align: left !important;
+				margin-bottom: 30px;
 
-                img {
-                    width: 100%;
-                    height: 50px;
-                }
-            }
+				img {
+					width: 100%;
+					height: 50px;
+				}
+			}
 
-            .field {
-                margin-top: 20px;
-                margin-bottom: 10px;
+			.field {
+				margin-top: 20px;
+				margin-bottom: 10px;
 
-                b {
-                    color: rgba(0, 0, 0, 0.8);
-                    padding: 4px;
-                    margin-bottom: 15px;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                    font-size: 20px;
-                    font-weight: 400;
-                    letter-spacing: -1.5px;
-                    display: block;
-                    background-color: rgba(0, 0, 0, 0.03);
-                }
-            }
+				b {
+					color: rgba(0, 0, 0, 0.8);
+					padding: 4px;
+					margin-bottom: 15px;
+					letter-spacing: 1px;
+					text-transform: uppercase;
+					font-size: 20px;
+					font-weight: 400;
+					letter-spacing: -1.5px;
+					display: block;
+					background-color: rgba(0, 0, 0, 0.03);
+				}
+			}
 
-            .skill {
-                display: inline-block;
-                padding: 3px 5px;
-                border-radius: 3px;
-                background-color: #eee;
-                margin-right: 3px;
-                margin-bottom: 3px;
-            }
-        }
+			.skill {
+				display: inline-block;
+				padding: 3px 5px;
+				border-radius: 3px;
+				background-color: #eee;
+				margin-right: 3px;
+				margin-bottom: 3px;
+			}
+		}
 
-        .panels {
-            animation: fadeInProjects 1s;
-            animation-fill-mode: forwards;
-            scroll-behavior: smooth;
-            padding: 30px;
-            width: 100%;
-            flex: 1;
-            overflow: auto;
-            position: relative;
-            text-align: center;
+		.panels {
+			animation: fadeInProjects 1s;
+			animation-fill-mode: forwards;
+			scroll-behavior: smooth;
+			padding: 30px;
+			width: 100%;
+			flex: 1;
+			overflow: auto;
+			position: relative;
+			text-align: center;
 
-            .image {
-                width: 85%;
-                box-shadow: 0 0 60px rgba(0, 0, 0, 0.09), 0 0 10px rgba(0, 0, 0, 0.05);
-                margin: 50px 0;
-            }
+			.image {
+				width: 85%;
+				box-shadow: 0 0 60px rgba(0, 0, 0, 0.09), 0 0 10px rgba(0, 0, 0, 0.05);
+				margin: 50px 0;
+			}
 
-            .nextProject {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100px;
-                border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-                border-bottom-style: dashed;
-                margin: 0 auto 80px;
-                width: 300px;
-                max-width: 50%;
-            }
+			.nextProject {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100px;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+				border-bottom-style: dashed;
+				margin: 0 auto 80px;
+				width: 300px;
+				max-width: 50%;
+			}
 
-            .anchor {
-                height: 20px;
-            }
-        }
+			.anchor {
+				height: 20px;
+			}
+		}
 
-        @media (max-width: 1023px) {
-            .panels {
-                padding: 0;
-            }
-        }
+		@media (max-width: 1023px) {
+			.panels {
+				padding: 0;
+			}
+		}
 
-        @media (max-width: 767px) {
-            flex-direction: column;
+		@media (max-width: 767px) {
+			flex-direction: column;
 
-            .info {
-                height: 100px;
-                width: 100%;
-                padding: 10px !important;
-                box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+			.info {
+				height: 100px;
+				width: 100%;
+				padding: 10px !important;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 
-                .logo {
-                    margin-bottom: 0;
-                }
+				.logo {
+					margin-bottom: 0;
+				}
 
-                .controls {
-                    left: 10px;
-                }
+				.controls {
+					left: 10px;
+				}
 
-                .field {
-                    display: none;
-                }
-            }
-        }
-    }
+				.field {
+					display: none;
+				}
+			}
+		}
+	}
 
-    .infoTransitioning {
-        .info {
-            .logo,
-            .field {
-                animation: fadeOutField 0.3s;
-                animation-fill-mode: forwards;
-                opacity: 1;
-            }
-        }
-    }
+	.infoTransitioning {
+		.info {
+			.logo,
+			.field {
+				animation: fadeOutField 0.3s;
+				animation-fill-mode: forwards;
+				opacity: 1;
+			}
+		}
+	}
 }
 
 .closingModal {
-    opacity: 0 !important;
-    // margin-top: 10px;
+	opacity: 0 !important;
+	// margin-top: 10px;
 }
 
 @keyframes fadeInBG {
-    0% {
-        background-color: rgba(0, 0, 0, 0);
-    }
+	0% {
+		background-color: rgba(0, 0, 0, 0);
+	}
 
-    100% {
-        background-color: rgba(0, 0, 0, 0.6);
-    }
+	100% {
+		background-color: rgba(0, 0, 0, 0.6);
+	}
 }
 
 @keyframes fadeInModal {
-    0% {
-        opacity: 0;
-        width: 0;
-    }
+	0% {
+		opacity: 0;
+		width: 0;
+	}
 
-    100% {
-        opacity: 1;
-        width: 90vw;
-    }
+	100% {
+		opacity: 1;
+		width: 90vw;
+	}
 }
 
 @keyframes fadeInPanel {
-    0% {
-        height: 0;
-    }
+	0% {
+		height: 0;
+	}
 
-    100% {
-        height: 100%;
-    }
+	100% {
+		height: 100%;
+	}
 }
 
 @keyframes fadeInProjects {
-    0% {
-        opacity: 0;
-    }
+	0% {
+		opacity: 0;
+	}
 
-    100% {
-        opacity: 1;
-    }
+	100% {
+		opacity: 1;
+	}
 }
 
 @keyframes fadeOutField {
-    0% {
-        padding-right: 0;
-        margin-left: 0;
-        opacity: 1 !important;
-    }
+	0% {
+		padding-right: 0;
+		margin-left: 0;
+		opacity: 1 !important;
+	}
 
-    100% {
-        padding-right: 30px;
-        margin-left: -30px;
-        opacity: 0;
-    }
+	100% {
+		padding-right: 30px;
+		margin-left: -30px;
+		opacity: 0;
+	}
 }
 
 @keyframes fadeInField {
-    0% {
-        padding-right: 30px;
-        margin-left: -30px;
-        opacity: 0;
-    }
+	0% {
+		padding-right: 30px;
+		margin-left: -30px;
+		opacity: 0;
+	}
 
-    100% {
-        padding-right: 0;
-        margin-left: 0;
-        opacity: 1;
-    }
+	100% {
+		padding-right: 0;
+		margin-left: 0;
+		opacity: 1;
+	}
 }

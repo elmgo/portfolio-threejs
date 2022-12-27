@@ -1,283 +1,283 @@
 .container {
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 40px;
-    user-select: none;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	padding: 40px;
+	user-select: none;
 
-    .menu {
-        position: fixed;
-        pointer-events: none;
-        top: 30px;
-        left: 0;
-        width: 100vw;
-        z-index: 10;
-        display: flex;
-        justify-content: center;
-        user-select: none;
+	.menu {
+		position: fixed;
+		pointer-events: none;
+		top: 30px;
+		left: 0;
+		width: 100vw;
+		z-index: 10;
+		display: flex;
+		justify-content: center;
+		user-select: none;
 
-        .inner {
-            pointer-events: all;
-            display: flex;
+		.inner {
+			pointer-events: all;
+			display: flex;
 
-            .menuItem {
-                text-align: center;
-                margin: 5px;
-                text-transform: uppercase;
-                font-size: 20px;
-                font-family: Antonio;
-                padding: 5px 0 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
-                width: 90px;
-                position: relative;
-                transition: 0.2s;
-                cursor: pointer;
+			.menuItem {
+				text-align: center;
+				margin: 5px;
+				text-transform: uppercase;
+				font-size: 20px;
+				font-family: Antonio;
+				padding: 5px 0 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				width: 90px;
+				position: relative;
+				transition: 0.2s;
+				cursor: pointer;
 
-                .underlay {
-                    width: 100%;
-                    transition: 0.2s;
-                    transition-timing-function: ease-out;
-                    position: absolute;
-                    background-color: #222;
-                    height: 2px;
-                    border-radius: 2px;
-                    bottom: 0;
-                }
+				.underlay {
+					width: 100%;
+					transition: 0.2s;
+					transition-timing-function: ease-out;
+					position: absolute;
+					background-color: #222;
+					height: 2px;
+					border-radius: 2px;
+					bottom: 0;
+				}
 
-                .label {
-                    display: inline-block;
-                    position: relative;
-                    z-index: 1;
-                }
+				.label {
+					display: inline-block;
+					position: relative;
+					z-index: 1;
+				}
 
-                &:hover {
-                    color: #fff;
+				&:hover {
+					color: #fff;
 
-                    .underlay {
-                        height: 100%;
-                    }
-                }
-            }
-        }
-    }
+					.underlay {
+						height: 100%;
+					}
+				}
+			}
+		}
+	}
 
-    .header {
-        .title {
-            margin: 0;
-            font-family: 'Antonio', sans-serif;
-            height: 30;
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 30px;
-            color: #222222;
-            letter-spacing: -2;
-            margin-bottom: 30px;
-        }
+	.header {
+		.title {
+			margin: 0;
+			font-family: 'Antonio', sans-serif;
+			height: 30;
+			font-size: 32px;
+			font-weight: 700;
+			line-height: 30px;
+			color: #222222;
+			letter-spacing: -2;
+			margin-bottom: 30px;
+		}
 
-        .subHeader {
-            font-size: 12px;
-            line-height: 18px;
-            color: #222222;
+		.subHeader {
+			font-size: 12px;
+			line-height: 18px;
+			color: #222222;
 
-            h2 {
-                font-weight: 700;
-                margin: 0;
-                font-size: 12px;
-                display: block;
-            }
+			h2 {
+				font-weight: 700;
+				margin: 0;
+				font-size: 12px;
+				display: block;
+			}
 
-            b {
-                display: block;
-            }
-        }
-    }
+			b {
+				display: block;
+			}
+		}
+	}
 
-    .dragCursor {
-        position: absolute;
-        right: -60px;
-        bottom: 300px;
-        transform: rotate3d(0, 0, 1, 90deg) translate3d(100%, 10px, 0);
-        font-size: 12;
-        font-weight: 700;
-        line-height: 100%;
-        text-align: right;
-        color: #222222;
-        white-space: nowrap;
+	.dragCursor {
+		position: absolute;
+		right: -60px;
+		bottom: 300px;
+		transform: rotate3d(0, 0, 1, 90deg) translate3d(100%, 10px, 0);
+		font-size: 12;
+		font-weight: 700;
+		line-height: 100%;
+		text-align: right;
+		color: #222222;
+		white-space: nowrap;
 
-        img {
-            transform: rotate(-90deg) translateX(-5px);
-            width: 20px;
-        }
+		img {
+			transform: rotate(-90deg) translateX(-5px);
+			width: 20px;
+		}
 
-        span {
-            margin: 0 20px;
-        }
-    }
+		span {
+			margin: 0 20px;
+		}
+	}
 
-    .handIcon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        font-weight: 700;
-        font-size: 14px;
-        transition: 0.5s;
+	.handIcon {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		font-weight: 700;
+		font-size: 14px;
+		transition: 0.5s;
 
-        img {
-            margin: 0 auto 10px;
-            width: 50px;
-            display: block;
-        }
-    }
+		img {
+			margin: 0 auto 10px;
+			width: 50px;
+			display: block;
+		}
+	}
 
-    .fadeOut {
-        opacity: 0 !important;
-    }
+	.fadeOut {
+		opacity: 0 !important;
+	}
 
-    .social {
-        position: absolute;
-        top: 40px;
-        right: 40px;
-        white-space: nowrap;
-        flex: 1 1 0%;
-        font-size: 12px;
-        text-align: right;
-        line-height: 1.5em;
-        color: #222222;
+	.social {
+		position: absolute;
+		top: 40px;
+		right: 40px;
+		white-space: nowrap;
+		flex: 1 1 0%;
+		font-size: 12px;
+		text-align: right;
+		line-height: 1.5em;
+		color: #222222;
 
-        .emailLink {
-            pointer-events: all;
-            display: block;
-        }
+		.emailLink {
+			pointer-events: all;
+			display: block;
+		}
 
-        .buttons {
-            margin-right: -15px;
+		.buttons {
+			margin-right: -15px;
 
-            .button {
-                position: relative;
-                border-radius: 50%;
-                margin: 10px 5px 0 -10px;
-                padding: 10px;
-                display: inline-block;
-                transition: 0.3s;
-                pointer-events: all;
+			.button {
+				position: relative;
+				border-radius: 50%;
+				margin: 10px 5px 0 -10px;
+				padding: 10px;
+				display: inline-block;
+				transition: 0.3s;
+				pointer-events: all;
 
-                img {
-                    height: 20px;
-                    vertical-align: middle;
-                    cursor: pointer;
-                    transition: 0.3s;
-                    z-index: 1;
-                    position: relative;
-                }
+				img {
+					height: 20px;
+					vertical-align: middle;
+					cursor: pointer;
+					transition: 0.3s;
+					z-index: 1;
+					position: relative;
+				}
 
-                .underlay {
-                    top: 5px;
-                    left: 0;
-                    position: absolute;
-                    border-radius: 50%;
-                    background-color: #ace0eb;
-                    opacity: 0;
-                    transition: 0.3s;
-                    width: 100%;
-                    height: 100%;
-                }
+				.underlay {
+					top: 5px;
+					left: 0;
+					position: absolute;
+					border-radius: 50%;
+					background-color: #ace0eb;
+					opacity: 0;
+					transition: 0.3s;
+					width: 100%;
+					height: 100%;
+				}
 
-                &:hover {
-                    .underlay {
-                        opacity: 1;
-                        top: 0;
-                    }
-                }
-            }
-        }
-    }
+				&:hover {
+					.underlay {
+						opacity: 1;
+						top: 0;
+					}
+				}
+			}
+		}
+	}
 
-    .viewCode {
-        position: absolute;
-        bottom: 20px;
-        width: 100%;
-        left: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-size: 10px;
-        pointer-events: all;
+	.viewCode {
+		position: absolute;
+		bottom: 20px;
+		width: 100%;
+		left: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		font-size: 10px;
+		pointer-events: all;
 
-        a {
-            text-transform: uppercase;
-            margin-top: 5px;
-            display: inline-flex;
-            align-items: center;
-            font-weight: 700;
-        }
+		a {
+			text-transform: uppercase;
+			margin-top: 5px;
+			display: inline-flex;
+			align-items: center;
+			font-weight: 700;
+		}
 
-        img {
-            height: 10px;
-            margin-right: 5px;
-        }
-    }
+		img {
+			height: 10px;
+			margin-right: 5px;
+		}
+	}
 
-    .showDesktop {
-        display: inline-block;
-    }
+	.showDesktop {
+		display: inline-block;
+	}
 
-    .showMobile {
-        display: none;
-    }
+	.showMobile {
+		display: none;
+	}
 
-    .handIcon {
-        display: none;
-    }
+	.handIcon {
+		display: none;
+	}
 
-    @media screen and (max-width: 900px) {
-        .handIcon {
-            display: block;
-            opacity: 0.8;
-        }
+	@media screen and (max-width: 900px) {
+		.handIcon {
+			display: block;
+			opacity: 0.8;
+		}
 
-        .showDesktop {
-            display: none;
-        }
+		.showDesktop {
+			display: none;
+		}
 
-        .dragCursor {
-            opacity: 0;
-        }
+		.dragCursor {
+			opacity: 0;
+		}
 
-        .showMobile {
-            display: inline-block;
-        }
+		.showMobile {
+			display: inline-block;
+		}
 
-        .full {
-            visibility: hidden;
-        }
+		.full {
+			visibility: hidden;
+		}
 
-        .social {
-            bottom: 30px;
-            top: unset;
-            right: unset;
-            text-align: left;
-        }
+		.social {
+			bottom: 30px;
+			top: unset;
+			right: unset;
+			text-align: left;
+		}
 
-        .viewCode {
-            display: none;
-        }
+		.viewCode {
+			display: none;
+		}
 
-        .menu {
-            left: 35px;
-            width: unset;
-        }
+		.menu {
+			left: 35px;
+			width: unset;
+		}
 
-        .header {
-            margin-top: 100px;
-        }
-    }
+		.header {
+			margin-top: 100px;
+		}
+	}
 }
