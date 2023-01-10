@@ -19,7 +19,7 @@ export interface IImage {
 const projects: IProject[] = [
 	{
 		title: 'SendOwl',
-		role: 'Frontend',
+		role: 'Frontend, design',
 		logo: logos.sendowl,
 		start_year: 2020,
 		end_year: 2022,
@@ -28,7 +28,7 @@ const projects: IProject[] = [
 		skills: ['react', 'next.js'],
 		images: [
 			{ src: 'sendowl-1.jpg', description: '' },
-			{ src: 'sendowl-2.jpg', description: '' },
+			{ src: 'sendowl-2.png', description: '' },
 			{ src: 'sendowl-3.png', description: '' },
 		],
 	},
@@ -59,7 +59,6 @@ const projects: IProject[] = [
 		images: [
 			{ src: 'parkbo-1.png', description: '' },
 			{ src: 'parkbo-2.png', description: '' },
-			{ src: 'parkbo-3.png', description: '' },
 		],
 	},
 	{
