@@ -44,7 +44,6 @@ export default () => {
 				<div className={css.subHeader}>
 					<h2>Web developer / Interactive designer</h2>
 					Freelancer / Globe trotter
-					<b>—</b>
 				</div>
 			</div>
 

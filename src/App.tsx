@@ -20,7 +20,7 @@ export default () => {
 			{!loaded ? (
 				<Preloader onLoaded={() => setLoaded(true)} assets={assets} />
 			) : (
-				<div className={css.container}>
+				<div className={css.content}>
 					<Underlay />
 					<Bubbles />
 					<Overlay />

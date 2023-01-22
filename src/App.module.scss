@@ -25,7 +25,7 @@ a:hover {
 body {
 	position: fixed;
 	overscroll-behavior-y: none;
-	font-family: 'Inter var', sans-serif;
+	font-family: 'League Spartan', sans-serif;
 	cursor: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMyMjIiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0iZmVhdGhlciBmZWF0aGVyLW1vdXNlLXBvaW50ZXIiPjxwYXRoIGQ9Ik0zIDNsNy4wNyAxNi45NyAyLjUxLTcuMzkgNy4zOS0yLjUxTDMgM3oiPjwvcGF0aD48cGF0aCBkPSJNMTMgMTNsNiA2Ij48L3BhdGg+PC9zdmc+'),
 		auto;
 }
@@ -42,10 +42,13 @@ body {
 
 .container {
 	height: 100vh;
-	opacity: 0;
-	animation: fadeIn 0.5s;
-	animation-fill-mode: forwards;
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.content {
+	opacity: 0;
+	animation: fadeIn 0.5s;
+	animation-fill-mode: forwards;
 }
