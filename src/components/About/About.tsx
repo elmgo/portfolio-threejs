@@ -59,7 +59,7 @@ export default () => {
 					<WordTransitionIn
 						delaySeconds={1}
 						text="HEY, I'M JON!"
-						fontFamily='Inter'
+						fontFamily='Antonio'
 						fontWeight={100}
 						letterSpacingPx={-2}
 						fontSize={isMobile() ? 40 : 50}

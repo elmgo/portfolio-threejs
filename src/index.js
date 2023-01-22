@@ -20,10 +20,10 @@ root.render(
 			<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
 			<link
 				rel='stylesheet'
-				href='https://fonts.googleapis.com/css2?family=Antonio:wght@600&display=swap'
+				href='https://fonts.googleapis.com/css2?family=Antonio:wght@100;600&display=swap'
 			/>
 			<link
-				href='https://fonts.googleapis.com/css2?family=Inter:wght@100;400&display=swap'
+				href='https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap'
 				rel='stylesheet'
 			/>
 			{process.env.NODE_ENV !== 'development' && (
