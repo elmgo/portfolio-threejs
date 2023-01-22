@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet';
 import WordTransitionIn from '../WordTransitionIn/WordTransitionIn';
 import css from './About.module.scss';
 import config from '../../config/config';
+import isMobile from 'is-mobile';
 
 const skills = {
 	frontend: [
@@ -46,7 +47,7 @@ export default () => {
 			</Helmet>
 			<div className={css.modal} onClick={(e) => e.stopPropagation()}>
 				<div className={css.x} onClick={onClose}>
-					<img src='/images/x.svg' />
+					<img alt='close' src={isMobile() ? '/images/x-white.svg' : '/images/x.svg'} />
 				</div>
 				<div className={css.portraitContainer}>
 					<div
@@ -58,9 +59,10 @@ export default () => {
 					<WordTransitionIn
 						delaySeconds={1}
 						text="HEY, I'M JON!"
-						fontFamily='Antonio'
+						fontFamily='Inter'
+						fontWeight={100}
 						letterSpacingPx={-2}
-						fontSize={50}
+						fontSize={isMobile() ? 40 : 50}
 					/>
 					<div className={css.about}>
 						I'm a full stack web developer and interactive designer with 15 years of

@@ -7,6 +7,7 @@
 	width: 100%;
 	height: 100%;
 	user-select: none;
+	transition: 1s;
 
 	.splatter {
 		opacity: 0.4;
@@ -20,7 +21,6 @@
 	}
 
 	.text {
-		// z-index: 1;
 		position: absolute;
 		top: 40vh;
 		font-weight: 700;
@@ -44,6 +44,14 @@
 		}
 	}
 }
+
+// .contact {
+// 	filter: hue-rotate(200deg) saturate(200%);
+// }
+
+// .about {
+// 	filter: saturate(300%);
+// }
 
 @keyframes fadeIn {
 	0% {

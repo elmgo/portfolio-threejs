@@ -117,7 +117,7 @@ export default () => {
 					<>
 						<directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
 						<EffectComposer multisampling={0}>
-							<SSAO samples={3} radius={10} luminanceInfluence={0.7} />
+							<SSAO samples={0} radius={0} luminanceInfluence={0} />
 						</EffectComposer>
 					</>
 				)}

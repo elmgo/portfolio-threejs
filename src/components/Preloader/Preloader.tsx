@@ -21,7 +21,9 @@ export default ({ onLoaded, assets }: { onLoaded: any; assets: string[] }) => {
 			const newImage: HTMLImageElement = new Image();
 			newImage.src = `/images/${src}`;
 			newImage.onload = () => {
-				resolve();
+				setTimeout(() => {
+					resolve();
+				}, 100);
 			};
 			newImage.onerror = (err) => {
 				reject(err);

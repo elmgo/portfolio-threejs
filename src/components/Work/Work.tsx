@@ -75,7 +75,7 @@ export default () => {
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/work/`} />
 			</Helmet>
-			<img alt='close' className={css.x} onClick={onClose} src='/images/x.svg' />
+			<img alt='close' className={css.x} onClick={onClose} src='/images/x-white.svg' />
 			<div
 				className={`${css.modal} ${isTransitioning ? css.infoTransitioning : ''}`}
 				onClick={(e) => e.stopPropagation()}>

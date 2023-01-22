@@ -4,11 +4,19 @@ interface Props {
 	text: string;
 	fontFamily: string;
 	fontSize: number;
+	fontWeight: number;
 	delaySeconds: number;
 	letterSpacingPx: number;
 }
 
-export default ({ text, fontFamily, fontSize, delaySeconds, letterSpacingPx }: Props) => {
+export default ({
+	text,
+	fontFamily,
+	fontSize,
+	fontWeight,
+	delaySeconds,
+	letterSpacingPx,
+}: Props) => {
 	// calculate the width of an individual letter by drawing it to a canvas
 	function getLetterWidth(letter: string) {
 		const canvas: HTMLCanvasElement = document.createElement('canvas');
@@ -31,6 +39,7 @@ export default ({ text, fontFamily, fontSize, delaySeconds, letterSpacingPx }: P
 					style={{
 						fontSize: `${fontSize}px`,
 						fontFamily,
+						fontWeight: fontWeight,
 						top: `${fontSize}px`,
 						lineHeight: `${fontSize - 10}px`,
 						left: letterPositions[index],

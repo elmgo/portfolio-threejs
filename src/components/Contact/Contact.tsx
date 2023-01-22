@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import css from './Contact.module.scss';
 import config from '../../config/config';
+import { ERoute } from '../../global';
+import isMobile from 'is-mobile';
 
 interface IContactForm {
 	name?: string;
@@ -12,7 +14,7 @@ interface IContactForm {
 }
 
 export default () => {
-	const [, setLocation] = useLocation();
+	const [location, setLocation] = useLocation();
 	const [closing, setClosing] = useState<boolean>(false);
 	const [error, setError] = useState<string>();
 	const [submitting, setSubmitting] = useState<boolean>();
@@ -36,6 +38,12 @@ export default () => {
 			setSent(true);
 		}, 500);
 	}
+
+	useEffect(() => {
+		if (location !== ERoute.Contact) {
+			setClosing(true);
+		}
+	}, [location]);
 
 	function onClose() {
 		setClosing(true);
@@ -79,7 +87,7 @@ export default () => {
 			</Helmet>
 			<div className={`${css.modal} ${submitting ? css.submitting : ''}`}>
 				<div className={css.x} onClick={onClose}>
-					<img alt='close' src='/images/x.svg' />
+					<img alt='close' src={isMobile() ? '/images/x-white.svg' : '/images/x.svg'} />
 				</div>
 				<div className={css.inner}>
 					{!submitting && (
