@@ -29,7 +29,11 @@ export default () => {
 		}
 	}, [loaded]);
 
-	useEffect(() => () => scrollbarRef.current.removeListener(onScroll), []);
+	useEffect(() => {
+		if (scrollbarRef.current) {
+			scrollbarRef.current.removeListener(onScroll);
+		}
+	}, []);
 
 	function onClose() {
 		setClosing(true);

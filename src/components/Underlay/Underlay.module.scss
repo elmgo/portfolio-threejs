@@ -9,6 +9,20 @@
 	user-select: none;
 	transition: 1s;
 
+	.mouseOverlay {
+		width: 1000px;
+		height: 1000px;
+		border-radius: 50%;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		background: radial-gradient(
+			circle at center,
+			rgba(255, 241, 200, 0.7) 0,
+			rgba(254, 241, 200, 0) 50%
+		);
+		mix-blend-mode: multiply;
+	}
+
 	.splatter {
 		opacity: 0.4;
 		width: 100vw;
@@ -44,14 +58,6 @@
 		}
 	}
 }
-
-// .contact {
-// 	filter: hue-rotate(200deg) saturate(200%);
-// }
-
-// .about {
-// 	filter: saturate(300%);
-// }
 
 @keyframes fadeIn {
 	0% {
