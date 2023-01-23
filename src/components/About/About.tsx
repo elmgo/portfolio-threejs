@@ -70,11 +70,11 @@ export default () => {
 						fontSize={isMobile() ? 40 : 50}
 					/>
 					<div className={css.about}>
-						I'm a full stack web developer and interactive designer with 15 years of
-						experience in the field. After working for various companies throughout the
-						years I decided to take my work on the road and become a freelancer in 2018.
-						Since then I've helped clients from around the globe build and expand their
-						businesses. I'm always looking for new challenges that might come my way.
+						I'm a full stack web developer and interactive designer. After working for
+						various companies throughout the years I decided to take my work on the road
+						and become a freelancer in 2018. Since then I've helped clients from around
+						the globe build and expand their businesses. I'm always looking for new
+						challenges that might come my way.
 						<br />
 						<br />I love travelling the world and experiencing different cultures. I've
 						previously lived in Israel, Denmark, Canada and Vietnam. I'm currently based

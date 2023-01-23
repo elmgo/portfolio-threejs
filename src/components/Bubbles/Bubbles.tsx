@@ -9,7 +9,8 @@ import isMobile from 'is-mobile';
 
 const bubbleMaterial: THREE.MeshLambertMaterial = new THREE.MeshLambertMaterial({
 	color: '#fff',
-	emissive: '#fff',
+	emissive: '#fff1c8',
+	transparent: true,
 });
 
 const orbitMaterial: THREE.MeshStandardMaterial = new THREE.MeshStandardMaterial({
@@ -19,7 +20,7 @@ const orbitMaterial: THREE.MeshStandardMaterial = new THREE.MeshStandardMaterial
 });
 
 const sphereGeometry: THREE.SphereGeometry = new THREE.SphereGeometry(1, 28, 28);
-const bubbles = [...Array(30)].map(() => ({
+const bubbles = [...Array(35)].map(() => ({
 	args: [0.6, 0.6, 0.8, 0.8, 1.5][Math.floor(Math.random() * 5)],
 	mass: 3,
 	angularDamping: 0.1,
@@ -107,8 +108,8 @@ export default () => {
 				<ambientLight intensity={0.5} />
 				<spotLight
 					position={[20, 20, 25]}
-					penumbra={1}
-					angle={0.2}
+					penumbra={2}
+					angle={0.4}
 					castShadow
 					shadow-mapSize={[512, 512]}
 				/>
@@ -117,7 +118,7 @@ export default () => {
 					<>
 						<directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
 						<EffectComposer multisampling={0}>
-							<SSAO samples={0} radius={0} luminanceInfluence={0} />
+							{/* <SSAO samples={0} radius={0} luminanceInfluence={0} /> */}
 						</EffectComposer>
 					</>
 				)}
