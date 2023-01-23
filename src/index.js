@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import App from './App';
 import config from './config/config';
 
-document.getElementById('one_moment').style.display = 'none';
+// document.getElementById('one_moment').style.display = 'none';
 const root = createRoot(document.getElementById('root'));
 root.render(
 	<>
