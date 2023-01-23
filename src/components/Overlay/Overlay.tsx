@@ -4,6 +4,7 @@ import { ERoute } from '../../global';
 import css from './Overlay.module.scss';
 import config from '../../config/config';
 import { callEvent } from '../../utils/events';
+import isMobile from 'is-mobile';
 
 export default () => {
 	const [location, setLocation] = useLocation();
@@ -11,8 +12,14 @@ export default () => {
 	const { personalDetails } = config;
 
 	useEffect(() => {
-		document.addEventListener('touchend', documentTouched);
-		return () => document.removeEventListener('touchend', documentTouched);
+		if (isMobile()) {
+			document.addEventListener('touchend', documentTouched);
+		}
+		return () => {
+			if (isMobile()) {
+				document.removeEventListener('touchend', documentTouched);
+			}
+		};
 	}, []);
 
 	function documentTouched() {

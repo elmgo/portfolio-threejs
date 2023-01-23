@@ -12,7 +12,12 @@ export default () => {
 		if (!isMobile()) {
 			document.addEventListener('mousemove', throttle(onMouseMove, 20));
 		}
-	});
+		return () => {
+			if (!isMobile()) {
+				document.removeEventListener('mousemove', throttle(onMouseMove, 20));
+			}
+		};
+	}, []);
 
 	function onMouseMove(e: MouseEvent) {
 		mouseOverlayRef.current.style.top = `${e.clientY}px`;
