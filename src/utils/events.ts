@@ -1,7 +1,7 @@
-export const callEvent = (type: string, detail?: any) => {
+export const callEvent = (type: string, detail: any = {}) => {
 	document.body.dispatchEvent(
 		new CustomEvent(type, {
-			detail: detail || {},
+			detail,
 		}),
 	);
 };

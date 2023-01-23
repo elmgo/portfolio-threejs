@@ -40,9 +40,6 @@ export default () => {
 	}
 
 	function menuItemClicked(newRoute: ERoute) {
-		if (newRoute === location) {
-			return;
-		}
 		if (location !== '/') {
 			callEvent('closeAllModals');
 			setTimeout(() => {
