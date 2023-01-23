@@ -3,9 +3,10 @@ import { useLocation } from 'wouter';
 import { ERoute } from '../../global';
 import css from './Overlay.module.scss';
 import config from '../../config/config';
+import { callEvent } from '../../utils/events';
 
 export default () => {
-	const [, setLocation] = useLocation();
+	const [location, setLocation] = useLocation();
 	const [touched, setTouched] = useState<boolean>(false);
 	const { personalDetails } = config;
 
@@ -21,11 +22,28 @@ export default () => {
 
 	function renderMenuItem(label: string, route: ERoute) {
 		return (
-			<div className={css.menuItem} onClick={() => setLocation(route)}>
+			<div
+				className={`${css.menuItem} ${route === location ? css.menuItemActive : ''}`}
+				onClick={() => menuItemClicked(route)}>
 				<div className={css.label}>{label}</div>
 				<div className={css.underlay} />
+				<div className={css.selectedUnderlay} />
 			</div>
 		);
+	}
+
+	function menuItemClicked(newRoute: ERoute) {
+		if (newRoute === location) {
+			return;
+		}
+		if (location !== '/') {
+			callEvent('closeAllModals');
+			setTimeout(() => {
+				setLocation(newRoute);
+			}, 500);
+		} else {
+			setLocation(newRoute);
+		}
 	}
 
 	function renderButton(link: string, icon: string, imageAlt: string) {

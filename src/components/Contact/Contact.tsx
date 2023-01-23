@@ -5,6 +5,7 @@ import css from './Contact.module.scss';
 import config from '../../config/config';
 import { ERoute } from '../../global';
 import isMobile from 'is-mobile';
+import { addEvent } from '../../utils/events';
 
 interface IContactForm {
 	name?: string;
@@ -19,6 +20,10 @@ export default () => {
 	const [error, setError] = useState<string>();
 	const [submitting, setSubmitting] = useState<boolean>();
 	const [sent, setSent] = useState<boolean>();
+
+	useEffect(() => {
+		addEvent('closeAllModals', onClose);
+	}, []);
 
 	function onSubmit(e: React.FormEvent) {
 		e.preventDefault();

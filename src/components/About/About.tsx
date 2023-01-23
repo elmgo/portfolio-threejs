@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import WordTransitionIn from '../WordTransitionIn/WordTransitionIn';
 import css from './About.module.scss';
 import config from '../../config/config';
 import isMobile from 'is-mobile';
+import { addEvent } from '../../utils/events';
 
 const skills = {
 	frontend: [
@@ -32,6 +33,10 @@ const skills = {
 export default () => {
 	const [, setLocation] = useLocation();
 	const [closing, setClosing] = useState<boolean>(false);
+
+	useEffect(() => {
+		addEvent('closeAllModals', onClose);
+	}, []);
 
 	function onClose() {
 		setClosing(true);
@@ -83,6 +88,7 @@ export default () => {
 								<div className={css.skills}>
 									{value.map((skill: string, skillIndex: number) => (
 										<div
+											key={skill}
 											className={css.skill}
 											style={{
 												animationDelay: `${1.45 + skillIndex * 0.05}s`,

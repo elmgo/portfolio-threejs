@@ -37,18 +37,28 @@
 				text-align: center;
 				width: 90px;
 				position: relative;
-				transition: 0.2s;
+				transition: 0.25s;
 				cursor: pointer;
 
 				.underlay {
 					width: 100%;
-					transition: 0.2s;
+					transition: 0.25s;
 					transition-timing-function: ease-out;
 					position: absolute;
 					background-color: #222;
 					height: 2px;
 					border-radius: 2px;
 					bottom: 0;
+				}
+
+				.selectedUnderlay {
+					top: 0px;
+					background-color: #c0dae2;
+					width: 100%;
+					transition: 0.5s;
+					position: absolute;
+					height: 0;
+					// opacity: 0;
 				}
 
 				.label {
@@ -63,6 +73,21 @@
 					.underlay {
 						height: 100%;
 					}
+				}
+			}
+
+			.menuItemActive {
+				color: #222 !important;
+				cursor: unset;
+
+				.underlay {
+					transition: 0.5s;
+					opacity: 0;
+				}
+
+				.selectedUnderlay {
+					opacity: 1;
+					height: 100%;
 				}
 			}
 		}

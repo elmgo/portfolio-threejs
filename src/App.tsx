@@ -6,10 +6,10 @@ import About from './components/About/About';
 import Contact from './components/Contact/Contact';
 import Preloader from './components/Preloader/Preloader';
 import { useState } from 'react';
-import css from './App.module.scss';
 import { ERoute } from './global';
 import { useLocation } from 'wouter';
 import assets from './resources/assets';
+import css from './App.module.scss';
 
 export default () => {
 	const [location] = useLocation();
