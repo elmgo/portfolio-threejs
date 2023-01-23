@@ -1,11 +1,7 @@
-export const callEvent = (type: string, detail: any = {}) => {
-	document.body.dispatchEvent(
-		new CustomEvent(type, {
-			detail,
-		}),
-	);
+export const callEvent = (type: string) => {
+	document.body.dispatchEvent(new CustomEvent(type, {}));
 };
 
-export const addEvent = (type: any, callback: any) => {
+export const addEvent = (type: string, callback: any) => {
 	document.body.addEventListener(type, callback);
 };

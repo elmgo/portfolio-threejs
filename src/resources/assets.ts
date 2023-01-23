@@ -12,4 +12,5 @@ export default [
 	'cv.svg',
 	'mouse-pointer.svg',
 	'x.svg',
+	'x-white.svg',
 ];

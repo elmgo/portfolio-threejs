@@ -206,11 +206,11 @@
 				}
 
 				.underlay {
-					top: 5px;
+					top: 10px;
 					left: 0;
 					position: absolute;
 					border-radius: 50%;
-					background-color: #ace0eb;
+					background-color: rgba(0, 0, 0, 0.15);
 					opacity: 0;
 					transition: 0.3s;
 					width: 100%;
@@ -218,6 +218,10 @@
 				}
 
 				&:hover {
+					img {
+						filter: brightness(0) invert(1);
+					}
+
 					.underlay {
 						opacity: 1;
 						top: 0;

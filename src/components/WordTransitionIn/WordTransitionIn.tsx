@@ -38,8 +38,8 @@ export default ({
 				<div
 					className={css.letter}
 					style={{
-						fontSize: `${fontSize}px`,
 						fontFamily,
+						fontSize: `${fontSize}px`,
 						fontWeight: fontWeight,
 						top: `${fontSize}px`,
 						lineHeight: `${fontSize - 10}px`,

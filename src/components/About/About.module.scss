@@ -88,6 +88,12 @@
 					.skills {
 						flex: 1;
 
+						@for $i from 1 through 15 {
+							.skill:nth-of-type(#{$i}) {
+								animation-delay: #{1.45 + $i * 0.05}s;
+							}
+						}
+
 						.skill {
 							opacity: 0;
 							animation-name: fadeInSkill;

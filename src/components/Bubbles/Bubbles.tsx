@@ -67,7 +67,7 @@ function Bubble({ vec = new THREE.Vector3(), ...props }) {
 			<mesh
 				castShadow
 				receiveShadow
-				position={[0, 0, 1.2 * props.args]}
+				position={[0, 0, 1.4 * props.args]}
 				scale={0.2 * props.args}
 				geometry={sphereGeometry}
 				material={orbitMaterial}

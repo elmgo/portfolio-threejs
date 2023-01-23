@@ -86,13 +86,8 @@ export default () => {
 							<div className={css.row}>
 								<div className={css.type}>{key}:</div>
 								<div className={css.skills}>
-									{value.map((skill: string, skillIndex: number) => (
-										<div
-											key={skill}
-											className={css.skill}
-											style={{
-												animationDelay: `${1.45 + skillIndex * 0.05}s`,
-											}}>
+									{value.map((skill: string) => (
+										<div key={skill} className={css.skill}>
 											{skill}
 										</div>
 									))}

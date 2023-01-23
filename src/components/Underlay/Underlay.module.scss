@@ -10,15 +10,15 @@
 	transition: 1s;
 
 	.mouseOverlay {
-		width: 1000px;
-		height: 1000px;
+		width: 1200px;
+		height: 1200px;
 		border-radius: 50%;
 		position: absolute;
 		transform: translate(-50%, -50%);
 		background: radial-gradient(
 			circle at center,
-			rgba(255, 241, 200, 0.7) 0,
-			rgba(254, 241, 200, 0) 50%
+			rgba(255, 241, 200, 1) 0,
+			rgba(255, 241, 200, 0) 50%
 		);
 		mix-blend-mode: multiply;
 	}

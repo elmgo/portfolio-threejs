@@ -16,7 +16,7 @@ export default () => {
 	const [loaded, setLoaded] = useState<boolean>(false);
 
 	return (
-		<div className={css.container}>
+		<main className={css.container}>
 			{!loaded ? (
 				<Preloader onLoaded={() => setLoaded(true)} assets={assets} />
 			) : (
@@ -29,6 +29,6 @@ export default () => {
 					{location === ERoute.Contact && <Contact />}
 				</div>
 			)}
-		</div>
+		</main>
 	);
 };

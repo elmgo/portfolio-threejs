@@ -22,18 +22,20 @@ export default () => {
 	const project: IProject = data[currentProject];
 
 	useEffect(() => {
+		return () => {
+			if (scrollbarRef.current) {
+				scrollbarRef.current.removeListener(onScroll);
+			}
+		};
+	}, []);
+
+	useEffect(() => {
 		if (loaded) {
 			// add smooth scrollbar instead of using reacts native onScroll
 			scrollbarRef.current = Scrollbar.init(projectsContainerRef.current);
 			scrollbarRef.current.addListener(onScroll);
 		}
 	}, [loaded]);
-
-	useEffect(() => {
-		if (scrollbarRef.current) {
-			scrollbarRef.current.removeListener(onScroll);
-		}
-	}, []);
 
 	function onClose() {
 		setClosing(true);
