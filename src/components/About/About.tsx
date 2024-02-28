@@ -72,13 +72,12 @@ export default () => {
 					<div className={css.about}>
 						I'm a full stack web developer and interactive designer. After working for
 						various companies throughout the years I decided to take my work on the road
-						and become a freelancer in 2018. Since then I've helped clients from around
-						the globe build and expand their businesses. I'm always looking for new
-						challenges that might come my way.
+						and become a freelancer in 2018. Throughout the years I've done work for
+						companies such as Google, Warner Brothers, American Express and Coca Cola.
 						<br />
 						<br />I love travelling the world and experiencing different cultures. I've
-						previously lived in Israel, Denmark, Canada and Vietnam. I'm currently based
-						in Budapest, Hungary.
+						previously lived in Denmark, Canada, Israel, Vietnam, Hungary and Spain. I'm
+						currently based in Buenos Aires, Argentina.
 					</div>
 
 					<div className={css.tech}>

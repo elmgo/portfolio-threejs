@@ -117,9 +117,9 @@ export default () => {
 				{!isMobile() && (
 					<>
 						<directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
-						<EffectComposer multisampling={0}>
-							{/* <SSAO samples={0} radius={0} luminanceInfluence={0} /> */}
-						</EffectComposer>
+						{/* <EffectComposer multisampling={0}> */}
+						{/* <SSAO samples={0} radius={0} luminanceInfluence={0} /> */}
+						{/* </EffectComposer> */}
 					</>
 				)}
 				<Physics gravity={[0, 0, 0]} iterations={10} broadphase='SAP'>

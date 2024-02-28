@@ -20,16 +20,26 @@ export default ({ onLoaded, assets }: { onLoaded: any; assets: string[] }) => {
 
 	function preloadImage(src: string) {
 		return new Promise<void>((resolve, reject) => {
-			const newImage: HTMLImageElement = new Image();
-			newImage.src = `/images/${src}`;
-			newImage.onload = () => {
-				setTimeout(() => {
+			let newMedia: HTMLImageElement | XMLHttpRequest;
+
+			if (src.includes('webm')) {
+				var video = document.createElement('video');
+				video.setAttribute('preload', 'auto');
+				video.setAttribute('src', `/videos/${src}`);
+
+				video.addEventListener('loadeddata', function () {
 					resolve();
-				}, 100);
-			};
-			newImage.onerror = (err) => {
-				reject(err);
-			};
+				});
+			} else {
+				newMedia = new Image();
+				newMedia.src = `/images/${src}`;
+				newMedia.onload = () => {
+					resolve();
+				};
+				newMedia.onerror = (err: any) => {
+					reject(err);
+				};
+			}
 		});
 	}
 

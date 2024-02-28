@@ -2,7 +2,7 @@ import { createRef, RefObject, useEffect, useRef, useState } from 'react';
 import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import css from './Work.module.scss';
-import data, { IImage, IProject } from '../../resources/projects';
+import data, { IMedia, IProject } from '../../resources/projects';
 import Scrollbar from 'smooth-scrollbar';
 import Preloader from '../Preloader/Preloader';
 import { projectImages } from '../../resources/projects';
@@ -91,11 +91,21 @@ export default () => {
 					<>
 						<div className={css.info}>
 							<div className={css.logo}>
-								<img alt='project-logo' src={project.logo} />
+								<img
+									alt='project-logo'
+									style={{ height: project.logo_height || 50 }}
+									src={project.logo}
+								/>
 							</div>
 							<div className={css.field}>
 								<b>Role</b> {project.role}
 							</div>
+							{project.description && (
+								<div className={css.field}>
+									<b>About</b>
+									{project.description}
+								</div>
+							)}
 							<div className={css.field}>
 								<b>Period</b>
 								{project.start_year}
@@ -106,10 +116,6 @@ export default () => {
 								{project.skills.map((skill: string) => (
 									<div className={css.skill}>{skill}</div>
 								))}
-							</div>
-							<div className={css.field}>
-								<b>About</b>
-								{project.description}
 							</div>
 
 							<div className={css.controls}>
@@ -135,13 +141,19 @@ export default () => {
 						<div ref={projectsContainerRef} className={css.panels}>
 							{data.map((project: IProject, index: number) => (
 								<div className={css.images} ref={anchorsRef.current[index]}>
-									{project.images.map((image: IImage, imageIndex: number) => (
-										<img
-											alt={`project-${index}-${imageIndex}`}
-											className={css.image}
-											src={`/images/projects/${image.src}`}
-										/>
-									))}
+									{project.media.map((media: IMedia, imageIndex: number) =>
+										media.src.includes('webm') ? (
+											<video className={css.video} autoPlay muted loop>
+												<source src={`/videos/projects/${media.src}`} />
+											</video>
+										) : (
+											<img
+												alt={`project-${index}-${imageIndex}`}
+												className={css.image}
+												src={`/images/projects/${media.src}`}
+											/>
+										),
+									)}
 									{index < data.length - 1 && (
 										<div
 											ref={projectsRef.current[index]}
