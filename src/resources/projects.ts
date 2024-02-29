@@ -27,7 +27,7 @@ const projects: IProject[] = [
 		// end_year: 2023,
 		description:
 			'For nearly two decades BrandNewSchool has been helping brands shape their visual voice through inspired design-driven solutions.',
-		skills: ['react', 'next.js', 'gsap'],
+		skills: ['react', 'nextjs', 'tailwind', 'gsap'],
 		media: [
 			{ src: 'bns-1.webm', description: '' },
 			{ src: 'bns-1.png', description: '' },
@@ -43,7 +43,7 @@ const projects: IProject[] = [
 		end_year: 2022,
 		description:
 			'SendOwl is an all-in-one solution designed to help creators successfully sell and deliver audiobooks, e-books, photography, software, memberships, event tickets, online courses, and much more.',
-		skills: ['react', 'next.js'],
+		skills: ['react', 'nextjs'],
 		media: [
 			{ src: 'sendowl-1.jpg', description: '' },
 			{ src: 'sendowl-2.png', description: '' },
@@ -58,7 +58,16 @@ const projects: IProject[] = [
 		end_year: 2022,
 		description:
 			'A collaborative environment to more easily store, manage, exhibit and showcase ALL of the content you and your stakeholders create.',
-		skills: ['react', 'next.js', 'express.js', 'dynamodb', 'aws', 'redis', 'elasticsearch'],
+		skills: [
+			'react',
+			'nextjs',
+			'express.js',
+			'dynamodb',
+			'aws',
+			'redis',
+			'elasticsearch',
+			'figma',
+		],
 		media: [
 			{ src: 'la-1.jpg', description: '' },
 			{ src: 'la-2.jpg', description: '' },
@@ -73,7 +82,7 @@ const projects: IProject[] = [
 		end_year: 2020,
 		description:
 			'Parkbo offers practical tools to understand and improve our financial choices, save and spend smarter, and ultimately live better.',
-		skills: ['react', 'next.js'],
+		skills: ['react', 'nextjs', 'figma'],
 		media: [
 			{ src: 'parkbo-1.png', description: '' },
 			{ src: 'parkbo-2.png', description: '' },
@@ -85,7 +94,7 @@ const projects: IProject[] = [
 		logo: logos.venturel,
 		start_year: 2020,
 		description: '',
-		skills: ['vue'],
+		skills: ['vue', 'figma'],
 		media: [
 			{ src: 'venturel-1.png', description: '' },
 			{ src: 'venturel-2.png', description: '' },
@@ -96,7 +105,7 @@ const projects: IProject[] = [
 
 // export an array of all images so they can be preloaded
 export const projectImages: string[] = projects
-	.map((project: IProject) => project.media.map((image: IMedia) => `projects/${image.src}`))
+	.map((project: IProject) => project.media.map((image: IMedia) => image.src))
 	.reduce((a, b) => [...a, ...b], []);
 
 export default projects;

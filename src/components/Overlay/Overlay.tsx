@@ -30,7 +30,7 @@ export default () => {
 	function renderMenuItem(label: string, route: ERoute) {
 		return (
 			<div
-				className={`${css.menuItem} ${route === location ? css.menuItemActive : ''}`}
+				className={`${css.menuItem} ${route === location && css.menuItemActive}`}
 				onClick={() => menuItemClicked(route)}>
 				<div className={css.label}>{label}</div>
 				<div className={css.underlay} />
@@ -77,7 +77,7 @@ export default () => {
 				</div>
 			</div>
 
-			<div className={`${css.dragCursor} ${touched ? css.fadeIn : ''}`}>
+			<div className={`${css.dragCursor} ${touched && css.fadeIn}`}>
 				<img alt='mouse-pointer' src='/images/mouse-pointer.svg' />
 				<span className={css.showDesktop}>MOVE MOUSE</span>
 				<span className={css.showMobile}>TAP ELEMENTS</span>●
@@ -96,7 +96,7 @@ export default () => {
 				</div>
 			</div>
 
-			<div className={`${css.handIcon} ${touched ? css.fadeOut : ''}`}>
+			<div className={`${css.handIcon} ${touched && css.fadeOut}`}>
 				<img alt='hand-icon' src='/images/click-hand.png' />
 				Tap elements
 			</div>

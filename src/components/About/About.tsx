@@ -46,7 +46,7 @@ export default () => {
 	}
 
 	return (
-		<div className={`${css.container} ${closing ? css.closingModal : ''}`} onClick={onClose}>
+		<div className={`${css.container} ${closing && css.closingModal}`} onClick={onClose}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/about/`} />
 			</Helmet>

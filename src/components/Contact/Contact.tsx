@@ -86,11 +86,11 @@ export default () => {
 	}
 
 	return (
-		<div className={`${css.container} ${closing ? css.closingModal : ''}`}>
+		<div className={`${css.container} ${closing && css.closingModal}`}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/contact/`} />
 			</Helmet>
-			<div className={`${css.modal} ${submitting ? css.submitting : ''}`}>
+			<div className={`${css.modal} ${submitting && css.submitting}`}>
 				<div className={css.x} onClick={onClose}>
 					<img alt='close' src={isMobile() ? '/images/x-white.svg' : '/images/x.svg'} />
 				</div>

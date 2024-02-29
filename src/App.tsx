@@ -18,7 +18,7 @@ export default () => {
 	return (
 		<main className={css.container}>
 			{!loaded ? (
-				<Preloader onLoaded={() => setLoaded(true)} assets={assets} />
+				<Preloader onLoaded={() => setLoaded(true)} assets={assets} isAssets />
 			) : (
 				<div className={css.content}>
 					<Underlay />

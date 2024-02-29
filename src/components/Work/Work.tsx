@@ -10,6 +10,7 @@ import config from '../../config/config';
 
 export default () => {
 	const [, setLocation] = useLocation();
+	const [showOverlay, setShowOverlay] = useState<boolean>(false);
 	const [loaded, setLoaded] = useState<boolean>(false);
 	const [closing, setClosing] = useState<boolean>(false);
 	const [currentProject, setCurrentProject] = useState<number>(0);
@@ -64,6 +65,14 @@ export default () => {
 		}
 	}, [nextProject]);
 
+	function onMediaLoaded() {
+		setLoaded(true);
+		setTimeout(() => {
+			setShowOverlay(true);
+			setTimeout(() => setShowOverlay(false), 1500);
+		}, 1000);
+	}
+
 	function gotoNextProject() {
 		scrollbarRef.current.scrollIntoView(anchorsRef.current[currentProject + 1].current, {
 			offsetTop: 0,
@@ -77,16 +86,16 @@ export default () => {
 	}
 
 	return (
-		<div className={`${css.container} ${closing ? css.closingModal : ''}`} onClick={onClose}>
+		<div className={`${css.container} ${closing && css.closingModal}`} onClick={onClose}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/work/`} />
 			</Helmet>
 			<img alt='close' className={css.x} onClick={onClose} src='/images/x-white.svg' />
 			<div
-				className={`${css.modal} ${isTransitioning ? css.infoTransitioning : ''}`}
+				className={`${css.modal} ${isTransitioning && css.infoTransitioning}`}
 				onClick={(e) => e.stopPropagation()}>
 				{!loaded ? (
-					<Preloader onLoaded={() => setLoaded(true)} assets={projectImages} />
+					<Preloader onLoaded={() => onMediaLoaded()} assets={projectImages} />
 				) : (
 					<>
 						<div className={css.info}>
@@ -138,19 +147,27 @@ export default () => {
 								</div>
 							</div>
 						</div>
+
+						<div className={`${css.overlay} ${!showOverlay && css.hideOverlay}`}>
+							<div className={css.prompt}>
+								Scroll down to see projects
+								<img alt='arrow-down' src='/images/arrow-right.svg' />
+							</div>
+						</div>
+
 						<div ref={projectsContainerRef} className={css.panels}>
 							{data.map((project: IProject, index: number) => (
 								<div className={css.images} ref={anchorsRef.current[index]}>
 									{project.media.map((media: IMedia, imageIndex: number) =>
 										media.src.includes('webm') ? (
 											<video className={css.video} autoPlay muted loop>
-												<source src={`/videos/projects/${media.src}`} />
+												<source src={`/projects/videos/${media.src}`} />
 											</video>
 										) : (
 											<img
 												alt={`project-${index}-${imageIndex}`}
 												className={css.image}
-												src={`/images/projects/${media.src}`}
+												src={`/projects/images/${media.src}`}
 											/>
 										),
 									)}

@@ -59,11 +59,12 @@
 
 .loaded {
 	.progress {
+		transform: translateY(30px);
 		opacity: 0;
 	}
 
 	.spinner {
-		transform: scale(1.5);
+		transform: scale(3.5);
 		opacity: 0;
 	}
 }

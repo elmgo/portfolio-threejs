@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import css from './Preloader.module.scss';
 
-export default ({ onLoaded, assets }: { onLoaded: any; assets: string[] }) => {
+export default ({
+	onLoaded,
+	assets,
+	isAssets,
+}: {
+	onLoaded: () => void;
+	assets: string[];
+	isAssets?: boolean;
+}) => {
 	const [imagesLoaded, setImagesLoaded] = useState<number>(0);
 	const [loaded, setLoaded] = useState<boolean>(false);
 
@@ -24,17 +32,18 @@ export default ({ onLoaded, assets }: { onLoaded: any; assets: string[] }) => {
 
 			if (src.includes('webm')) {
 				var video = document.createElement('video');
+				console.log(`/projects/videos/${src}`);
 				video.setAttribute('preload', 'auto');
-				video.setAttribute('src', `/videos/${src}`);
+				video.setAttribute('src', `/projects/videos/${src}`);
 
 				video.addEventListener('loadeddata', function () {
-					resolve();
+					setTimeout(() => resolve(), 100);
 				});
 			} else {
 				newMedia = new Image();
-				newMedia.src = `/images/${src}`;
+				newMedia.src = isAssets ? `/images/${src}` : `/projects/images/${src}`;
 				newMedia.onload = () => {
-					resolve();
+					setTimeout(() => resolve(), 100);
 				};
 				newMedia.onerror = (err: any) => {
 					reject(err);
@@ -49,7 +58,7 @@ export default ({ onLoaded, assets }: { onLoaded: any; assets: string[] }) => {
 	}
 
 	return (
-		<div className={`${css.container} ${loaded ? css.loaded : ''}`}>
+		<div className={`${css.container} ${loaded && css.loaded}`}>
 			<div className={css.spinner}>
 				<img alt='loading-spinner' className={css.spinnerBig} src='/images/spinner.svg' />
 				<img alt='loading-spinner' className={css.spinnerSmall} src='/images/spinner.svg' />
