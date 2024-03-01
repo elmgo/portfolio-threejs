@@ -31,11 +31,11 @@ function Bubble({ vec = new THREE.Vector3(), ...props }) {
 	const [ref, api] = useCompoundBody(() => ({
 		...props,
 		shapes: [
-			{
-				type: 'Sphere',
-				position: [0, Math.random() * 1 - 0.5, 1.2 * props.args],
-				args: new THREE.Vector3().setScalar(props.args * 0.1).toArray(),
-			},
+			// {
+			// 	type: 'Sphere',
+			// 	position: [0, Math.random() * 1 - 0.5, 1.2 * props.args],
+			// 	args: new THREE.Vector3().setScalar(props.args * 0.1).toArray(),
+			// },
 			{ type: 'Sphere', args: [props.args][Math.floor(Math.random() * 5)] },
 		],
 	}));
@@ -59,15 +59,15 @@ function Bubble({ vec = new THREE.Vector3(), ...props }) {
 		// @ts-ignore - group ref is not playing nice with typescript
 		<group ref={ref} dispose={null}>
 			<mesh
-				castShadow
-				receiveShadow
+				// castShadow
+				// receiveShadow
 				scale={props.args}
 				geometry={sphereGeometry}
 				material={bubbleMaterial}
 			/>
 			<mesh
-				castShadow
-				receiveShadow
+				// castShadow
+				// receiveShadow
 				position={[0, 0, 1.4 * props.args]}
 				scale={0.2 * props.args}
 				geometry={sphereGeometry}
@@ -105,7 +105,7 @@ export default () => {
 				gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
 				camera={{ position: [0, 0, 20], fov: 35, near: 10, far: 40 }}
 				onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}>
-				<ambientLight intensity={0.5} />
+				{/* <ambientLight intensity={0.5} /> */}
 				<spotLight
 					position={[20, 20, 25]}
 					penumbra={2}
@@ -114,7 +114,7 @@ export default () => {
 					shadow-mapSize={[512, 512]}
 				/>
 				<directionalLight position={[0, -5, -4]} intensity={8} color='#fff' />
-				{!isMobile() && (
+				{isMobile() && (
 					<>
 						<directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
 						{/* <EffectComposer multisampling={0}> */}

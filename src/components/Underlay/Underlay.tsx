@@ -23,14 +23,19 @@ export default () => {
 		const offsetY: number = e.clientY / window.innerHeight;
 		const offset: number = (offsetX + offsetY) / 2;
 
-		largeTextRef.current.style.transform = `translateX(${offset * 120}px)`;
-		smallTextRef.current.style.transform = `translateX(-${offset * 80}px)`;
-		smallerTextRef.current.style.transform = `translateX(${offset * 40}px)`;
+		largeTextRef.current.style.transform = `translateX(${offset * (window.innerWidth / 10)}px)`;
+		smallTextRef.current.style.transform = `translateX(-${offset * (window.innerWidth / 7)}px)`;
+		smallerTextRef.current.style.transform = `translateX(${
+			offset * (window.innerWidth / 20)
+		}px)`;
 	}
 
 	return (
 		<div className={css.container}>
-			<img alt='background-texture' className={css.texture} src='/images/bg-texture.jpg' />
+			<div
+				className={css.texture}
+				style={{ backgroundImage: 'url(/images/bg-texture.jpg)' }}
+			/>
 			<div className={css.mouseOverlay} ref={mouseOverlayRef} />
 			<div className={css.text}>
 				<div className={css.largeText} ref={largeTextRef}>
