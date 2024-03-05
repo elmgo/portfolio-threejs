@@ -1,4 +1,3 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
 import css from './WordTransitionIn.module.scss';
 
 interface Props {
@@ -21,7 +20,12 @@ export default ({
 	// calculate the width of an individual letter by drawing it to a canvas
 	function getLetterWidth(letter: string) {
 		const canvas: HTMLCanvasElement = document.createElement('canvas');
-		const context: any = canvas.getContext('2d');
+		const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
+
+		if (!context) {
+			return 0;
+		}
+
 		context.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
 		const renderedLetter: TextMetrics = context.measureText(letter);
 		return renderedLetter.width;

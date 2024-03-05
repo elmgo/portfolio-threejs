@@ -4,20 +4,34 @@ import throttle from '../../utils/throttle';
 import css from './Underlay.module.scss';
 
 export default () => {
-	const mouseOverlayRef = useRef<any>();
-	const largeTextRef = useRef<any>();
-	const smallTextRef = useRef<any>();
-	const smallerTextRef = useRef<any>();
+	const mouseOverlayRef = useRef<HTMLDivElement>(null);
+	const largeTextRef = useRef<HTMLDivElement>(null);
+	const smallTextRef = useRef<HTMLDivElement>(null);
+	const smallerTextRef = useRef<HTMLDivElement>(null);
 
 	useEffect(() => {
+		const mouseMoveFunc = throttle(onMouseMove, 15);
+
 		if (!isMobile()) {
-			document.addEventListener('mousemove', throttle(onMouseMove, 20));
+			document.addEventListener('mousemove', mouseMoveFunc);
 		}
+		return () => {
+			document.removeEventListener('mousemove', mouseMoveFunc);
+		};
 	}, []);
 
 	function onMouseMove(e: MouseEvent) {
-		mouseOverlayRef.current.style.top = `${e.clientY}px`;
-		mouseOverlayRef.current.style.left = `${e.clientX}px`;
+		if (
+			!largeTextRef.current ||
+			!smallTextRef.current ||
+			!smallerTextRef.current ||
+			!mouseOverlayRef.current
+		) {
+			return;
+		}
+
+		// I apply the positioning directly to the refs instead of using state
+		// for performance reasons
 
 		const offsetX: number = e.clientX / window.innerWidth;
 		const offsetY: number = e.clientY / window.innerHeight;
@@ -28,6 +42,10 @@ export default () => {
 		smallerTextRef.current.style.transform = `translateX(${
 			offset * (window.innerWidth / 20)
 		}px)`;
+
+		mouseOverlayRef.current.style.display = `block`;
+		mouseOverlayRef.current.style.top = `${e.clientY}px`;
+		mouseOverlayRef.current.style.left = `${e.clientX}px`;
 	}
 
 	return (

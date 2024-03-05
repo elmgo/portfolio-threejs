@@ -18,6 +18,7 @@ root.render(
 			<link rel='icon' type='image/png' href='/favicon.png' />
 			<link rel='preconnect' href='https://fonts.googleapis.com' />
 			<link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+			<link rel='icon' type='image/x-icon' href='/images/favicon.png'></link>
 			<link
 				rel='stylesheet'
 				href='https://fonts.googleapis.com/css2?family=Antonio:wght@100;600&display=swap'

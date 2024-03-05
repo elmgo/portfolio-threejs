@@ -45,7 +45,7 @@ export default ({
 				newMedia.onload = () => {
 					setTimeout(() => resolve(), 100);
 				};
-				newMedia.onerror = (err: any) => {
+				newMedia.onerror = (err: Event | string) => {
 					reject(err);
 				};
 			}

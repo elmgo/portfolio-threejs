@@ -58,7 +58,10 @@ export default () => {
 	}
 
 	function validateForm(formElement: HTMLFormElement | any) {
-		const data: any = {};
+		const data: {
+			[key: string]: string;
+		} = {};
+
 		for (const field of formElement) {
 			if (field.name === 'email' && !isValidEmail(field.value)) {
 				setError('Please enter a valid email');

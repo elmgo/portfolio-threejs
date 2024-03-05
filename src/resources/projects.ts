@@ -27,7 +27,7 @@ const projects: IProject[] = [
 		// end_year: 2023,
 		description:
 			'For nearly two decades BrandNewSchool has been helping brands shape their visual voice through inspired design-driven solutions.',
-		skills: ['react', 'nextjs', 'tailwind', 'gsap'],
+		skills: ['react', 'nextjs', 'tailwind', 'gsap', 'statamic cms'],
 		media: [
 			{ src: 'bns-1.webm', description: '' },
 			{ src: 'bns-1.png', description: '' },

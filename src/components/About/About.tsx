@@ -11,7 +11,7 @@ const skills = {
 	frontend: [
 		'JavaScript / TypeScript',
 		'HTML5',
-		'CSS / SASS',
+		'CSS / SASS / Tailwind',
 		'React',
 		'Vue',
 		'Next.js',
@@ -21,7 +21,8 @@ const skills = {
 		'Node',
 		'Express',
 		'AWS',
-		'Serverless',
+		'Wordpress',
+		'Statamic',
 		'DynamoDB',
 		'MySQL',
 		'Redis',
@@ -63,7 +64,7 @@ export default () => {
 				<div className={css.content}>
 					<WordTransitionIn
 						delaySeconds={1}
-						text="HEY, I'M JON!"
+						text='ABOUT ME'
 						fontFamily='Antonio'
 						fontWeight={100}
 						letterSpacingPx={-2}

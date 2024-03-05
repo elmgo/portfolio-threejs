@@ -13,4 +13,5 @@ export default [
 	'mouse-pointer.svg',
 	'x.svg',
 	'x-white.svg',
+	'bg-texture.jpg',
 ];

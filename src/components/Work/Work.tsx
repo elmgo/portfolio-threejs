@@ -1,5 +1,5 @@
 import { createRef, RefObject, useEffect, useRef, useState } from 'react';
-import { useLocation } from 'wouter';
+import { LocationHook, useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import css from './Work.module.scss';
 import data, { IMedia, IProject } from '../../resources/projects';
@@ -9,17 +9,17 @@ import { projectImages } from '../../resources/projects';
 import config from '../../config/config';
 
 export default () => {
-	const [, setLocation] = useLocation();
+	const [, setLocation] = useLocation<LocationHook>();
 	const [showOverlay, setShowOverlay] = useState<boolean>(false);
 	const [loaded, setLoaded] = useState<boolean>(false);
 	const [closing, setClosing] = useState<boolean>(false);
 	const [currentProject, setCurrentProject] = useState<number>(0);
 	const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 	const [nextProject, setNextProject] = useState<number>(0);
-	const projectsContainerRef: RefObject<any> = useRef();
+	const scrollbarRef = useRef<Scrollbar>();
+	const projectsContainerRef: RefObject<HTMLDivElement> = useRef(null);
 	const projectsRef: RefObject<any> = useRef(data.map(() => createRef()));
 	const anchorsRef: RefObject<any> = useRef(data.map(() => createRef()));
-	const scrollbarRef = useRef<any | null>();
 	const project: IProject = data[currentProject];
 
 	useEffect(() => {
@@ -31,7 +31,7 @@ export default () => {
 	}, []);
 
 	useEffect(() => {
-		if (loaded) {
+		if (loaded && projectsContainerRef.current) {
 			// add smooth scrollbar instead of using reacts native onScroll
 			scrollbarRef.current = Scrollbar.init(projectsContainerRef.current);
 			scrollbarRef.current.addListener(onScroll);
@@ -69,18 +69,18 @@ export default () => {
 		setLoaded(true);
 		setTimeout(() => {
 			setShowOverlay(true);
-			setTimeout(() => setShowOverlay(false), 1500);
+			setTimeout(() => setShowOverlay(false), 2000);
 		}, 1000);
 	}
 
 	function gotoNextProject() {
-		scrollbarRef.current.scrollIntoView(anchorsRef.current[currentProject + 1].current, {
+		scrollbarRef.current?.scrollIntoView(anchorsRef.current[currentProject + 1].current, {
 			offsetTop: 0,
 		});
 	}
 
 	function gotoPrevProject() {
-		scrollbarRef.current.scrollIntoView(anchorsRef.current[currentProject - 1].current, {
+		scrollbarRef.current?.scrollIntoView(anchorsRef.current[currentProject - 1].current, {
 			offsetTop: 0,
 		});
 	}
