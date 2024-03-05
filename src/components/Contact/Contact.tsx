@@ -93,9 +93,10 @@ export default () => {
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/contact/`} />
 			</Helmet>
+			<h1>Contact Me</h1>
 			<div className={`${css.modal} ${submitting && css.submitting}`}>
 				<div className={css.x} onClick={onClose}>
-					<img alt='close' src={isMobile() ? '/images/x-white.svg' : '/images/x.svg'} />
+					<img alt='close' src={isMobile() ? '/assets/x-white.svg' : '/assets/x.svg'} />
 				</div>
 				<div className={css.inner}>
 					{!submitting && (
@@ -128,7 +129,7 @@ export default () => {
 								<div className={css.error}>
 									{error && (
 										<>
-											<img alt='error' src='/images/error.svg' />
+											<img alt='error' src='/assets/error.svg' />
 											{error}
 										</>
 									)}
@@ -140,7 +141,7 @@ export default () => {
 					{submitting && (
 						<div className={css.thankYou}>
 							{!sent ? (
-								<img alt='loading' src='/images/loading.svg' />
+								<img alt='loading' src='/assets/loading.svg' />
 							) : (
 								<>
 									Thank you for reaching out!

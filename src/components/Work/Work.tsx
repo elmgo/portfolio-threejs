@@ -90,7 +90,8 @@ export default () => {
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/work/`} />
 			</Helmet>
-			<img alt='close' className={css.x} onClick={onClose} src='/images/x-white.svg' />
+			<h1>My Work</h1>
+			<img alt='close' className={css.x} onClick={onClose} src='/assets/x-white.svg' />
 			<div
 				className={`${css.modal} ${isTransitioning && css.infoTransitioning}`}
 				onClick={(e) => e.stopPropagation()}>
@@ -133,7 +134,7 @@ export default () => {
 										currentProject > 0 ? '' : css.buttonHide
 									}`}
 									onClick={gotoPrevProject}>
-									<img alt='arrow-left' src='/images/arrow-left.svg' />
+									<img alt='arrow-left' src='/assets/arrow-left.svg' />
 									Prev project
 								</div>
 
@@ -143,15 +144,15 @@ export default () => {
 									}`}
 									onClick={gotoNextProject}>
 									Next project
-									<img alt='arrow-right' src='/images/arrow-right.svg' />
+									<img alt='arrow-right' src='/assets/arrow-right.svg' />
 								</div>
 							</div>
 						</div>
 
 						<div className={`${css.overlay} ${!showOverlay && css.hideOverlay}`}>
 							<div className={css.prompt}>
-								Scroll down to see projects
-								<img alt='arrow-down' src='/images/arrow-right.svg' />
+								Scroll down to browse projects
+								<img alt='arrow-down' src='/assets/arrow-right.svg' />
 							</div>
 						</div>
 

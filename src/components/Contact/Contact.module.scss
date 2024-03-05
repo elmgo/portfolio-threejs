@@ -175,11 +175,16 @@
 		animation-fill-mode: forwards;
 		animation-duration: 0.5s;
 	}
-}
 
-.closingModal {
-	opacity: 0 !important;
-	margin-top: 20px;
+	&.closingModal {
+		opacity: 0 !important;
+		margin-top: 20px;
+	}
+
+	h1 {
+		font-size: 0;
+		opacity: 0;
+	}
 }
 
 @keyframes fadeInBGMobile {

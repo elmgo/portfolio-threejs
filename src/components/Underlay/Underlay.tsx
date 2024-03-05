@@ -52,7 +52,7 @@ export default () => {
 		<div className={css.container}>
 			<div
 				className={css.texture}
-				style={{ backgroundImage: 'url(/images/bg-texture.jpg)' }}
+				style={{ backgroundImage: 'url(/assets/bg-texture.jpg)' }}
 			/>
 			<div className={css.mouseOverlay} ref={mouseOverlayRef} />
 			<div className={css.text}>

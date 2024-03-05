@@ -28,24 +28,23 @@ export default ({
 
 	function preloadImage(src: string) {
 		return new Promise<void>((resolve, reject) => {
-			let newMedia: HTMLImageElement | XMLHttpRequest;
+			const isDev: boolean = process.env.NODE_ENV === 'development';
 
 			if (src.includes('webm')) {
-				var video = document.createElement('video');
+				const videoEl: HTMLVideoElement = document.createElement('video');
 				console.log(`/projects/videos/${src}`);
-				video.setAttribute('preload', 'auto');
-				video.setAttribute('src', `/projects/videos/${src}`);
-
-				video.addEventListener('loadeddata', function () {
-					setTimeout(() => resolve(), 100);
+				videoEl.setAttribute('preload', 'auto');
+				videoEl.setAttribute('src', `/projects/videos/${src}`);
+				videoEl.addEventListener('loadeddata', function () {
+					setTimeout(() => resolve(), isDev ? 100 : 0);
 				});
 			} else {
-				newMedia = new Image();
-				newMedia.src = isAssets ? `/images/${src}` : `/projects/images/${src}`;
-				newMedia.onload = () => {
-					setTimeout(() => resolve(), 100);
+				const imageEl: HTMLImageElement = new Image();
+				imageEl.src = isAssets ? `/assets/${src}` : `/projects/images/${src}`;
+				imageEl.onload = () => {
+					setTimeout(() => resolve(), isDev ? 100 : 0);
 				};
-				newMedia.onerror = (err: Event | string) => {
+				imageEl.onerror = (err: Event | string) => {
 					reject(err);
 				};
 			}
@@ -60,8 +59,8 @@ export default ({
 	return (
 		<div className={`${css.container} ${loaded && css.loaded}`}>
 			<div className={css.spinner}>
-				<img alt='loading-spinner' className={css.spinnerBig} src='/images/spinner.svg' />
-				<img alt='loading-spinner' className={css.spinnerSmall} src='/images/spinner.svg' />
+				<img alt='loading-spinner' className={css.spinnerBig} src='/assets/spinner.svg' />
+				<img alt='loading-spinner' className={css.spinnerSmall} src='/assets/spinner.svg' />
 			</div>
 			<div className={css.progress}>
 				<div className={css.bar}>

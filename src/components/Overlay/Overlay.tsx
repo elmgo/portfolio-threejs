@@ -78,7 +78,7 @@ export default () => {
 			</div>
 
 			<div className={`${css.dragCursor} ${touched && css.fadeIn}`}>
-				<img alt='mouse-pointer' src='/images/mouse-pointer.svg' />
+				<img alt='mouse-pointer' src='/assets/mouse-pointer.svg' />
 				<span className={css.showDesktop}>MOVE MOUSE</span>
 				<span className={css.showMobile}>TAP ELEMENTS</span>●
 			</div>
@@ -89,15 +89,15 @@ export default () => {
 					{personalDetails.email}
 				</a>
 				<div className={css.buttons}>
-					{renderButton(`mailto:${personalDetails.email}`, '/images/mail.svg', 'email')}
-					{renderButton(`tel:${personalDetails.phone}`, '/images/phone.svg', 'phone')}
-					{renderButton(personalDetails.linkedin, '/images/linkedin.svg', 'linkedin')}
-					{renderButton(personalDetails.cv, '/images/cv.svg', 'cv')}
+					{renderButton(`mailto:${personalDetails.email}`, '/assets/mail.svg', 'email')}
+					{renderButton(`tel:${personalDetails.phone}`, '/assets/phone.svg', 'phone')}
+					{renderButton(personalDetails.linkedin, '/assets/linkedin.svg', 'linkedin')}
+					{renderButton(personalDetails.cv, '/assets/cv.svg', 'cv')}
 				</div>
 			</div>
 
 			<div className={`${css.handIcon} ${touched && css.fadeOut}`}>
-				<img alt='hand-icon' src='/images/click-hand.png' />
+				<img alt='hand-icon' src='/assets/click-hand.png' />
 				Tap elements
 			</div>
 
@@ -105,7 +105,7 @@ export default () => {
 				Built using React / Three.JS / Cannon.JS
 				<br />
 				<a target='_blank' href={config.githubRepoUrl}>
-					<img alt='view-code' src='/images/github.svg' />
+					<img alt='view-code' src='/assets/github.svg' />
 					view code
 				</a>
 			</div>

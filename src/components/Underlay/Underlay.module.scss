@@ -21,7 +21,6 @@
 		mix-blend-mode: overlay;
 		background-size: cover;
 		background-position: center;
-		// background-image: url('/images/bg-texture.jpg');
 	}
 
 	.mouseOverlay {
@@ -31,13 +30,13 @@
 		border-radius: 50%;
 		position: absolute;
 		transform: translate(-50%, -50%);
+		opacity: 0.8;
+		mix-blend-mode: multiply;
 		background: radial-gradient(
 			circle at center,
 			rgb(255, 180, 196) 0 20%,
 			rgba(255, 180, 196, 0) 50%
 		);
-		opacity: 0.8;
-		mix-blend-mode: multiply;
 	}
 
 	.splatter {
@@ -60,8 +59,8 @@
 		line-height: 7vw;
 		animation: fadeIn 2s;
 		animation-fill-mode: forwards;
-		// text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
 		white-space: nowrap;
+		// text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
 
 		.largeText {
 			letter-spacing: -0.83vw;
@@ -72,7 +71,6 @@
 		.smallText {
 			margin-left: 1.2vw;
 			font-size: 5.5vw;
-			// margin-left: 40px;
 			letter-spacing: -0.29vw;
 			line-height: 7.5vw;
 		}
