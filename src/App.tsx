@@ -7,12 +7,12 @@ import Contact from './components/Contact/Contact';
 import Preloader from './components/Preloader/Preloader';
 import { useState } from 'react';
 import { ERoute } from './global';
-import { useLocation } from 'wouter';
+import { LocationHook, useLocation } from 'wouter';
 import assets from './resources/assets';
 import css from './App.module.scss';
 
 export default () => {
-	const [location] = useLocation();
+	const [location] = useLocation<LocationHook>();
 	const [loaded, setLoaded] = useState<boolean>(false);
 
 	return (

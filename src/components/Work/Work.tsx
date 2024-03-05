@@ -7,6 +7,7 @@ import Scrollbar from 'smooth-scrollbar';
 import Preloader from '../Preloader/Preloader';
 import { projectImages } from '../../resources/projects';
 import config from '../../config/config';
+import cn from 'classnames';
 
 export default () => {
 	const [, setLocation] = useLocation<LocationHook>();
@@ -86,14 +87,14 @@ export default () => {
 	}
 
 	return (
-		<div className={`${css.container} ${closing && css.closingModal}`} onClick={onClose}>
+		<div className={cn(css.container, closing && css.closingModal)} onClick={onClose}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/work/`} />
 			</Helmet>
 			<h1>My Work</h1>
 			<img alt='close' className={css.x} onClick={onClose} src='/assets/x-white.svg' />
 			<div
-				className={`${css.modal} ${isTransitioning && css.infoTransitioning}`}
+				className={cn(css.modal, isTransitioning && css.infoTransitioning)}
 				onClick={(e) => e.stopPropagation()}>
 				{!loaded ? (
 					<Preloader onLoaded={() => onMediaLoaded()} assets={projectImages} />
@@ -130,18 +131,20 @@ export default () => {
 
 							<div className={css.controls}>
 								<div
-									className={`${css.prevProject} ${
-										currentProject > 0 ? '' : css.buttonHide
-									}`}
+									className={cn(
+										css.prevProject,
+										currentProject > 0 ? '' : css.buttonHide,
+									)}
 									onClick={gotoPrevProject}>
 									<img alt='arrow-left' src='/assets/arrow-left.svg' />
 									Prev project
 								</div>
 
 								<div
-									className={`${css.nextProject} ${
-										currentProject < data.length - 1 ? '' : css.buttonHide
-									}`}
+									className={cn(
+										css.nextProject,
+										currentProject < data.length - 1 ? '' : css.buttonHide,
+									)}
 									onClick={gotoNextProject}>
 									Next project
 									<img alt='arrow-right' src='/assets/arrow-right.svg' />
@@ -149,7 +152,7 @@ export default () => {
 							</div>
 						</div>
 
-						<div className={`${css.overlay} ${!showOverlay && css.hideOverlay}`}>
+						<div className={cn(css.overlay, !showOverlay && css.hideOverlay)}>
 							<div className={css.prompt}>
 								Scroll down to browse projects
 								<img alt='arrow-down' src='/assets/arrow-right.svg' />

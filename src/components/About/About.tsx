@@ -5,6 +5,7 @@ import WordTransitionIn from '../WordTransitionIn/WordTransitionIn';
 import css from './About.module.scss';
 import config from '../../config/config';
 import isMobile from 'is-mobile';
+import cn from 'classnames';
 import { addEvent } from '../../utils/events';
 
 const skills = {
@@ -47,7 +48,7 @@ export default () => {
 	}
 
 	return (
-		<div className={`${css.container} ${closing && css.closingModal}`} onClick={onClose}>
+		<div className={cn(css.container, closing && css.closingModal)} onClick={onClose}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/about/`} />
 			</Helmet>

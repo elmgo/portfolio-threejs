@@ -5,6 +5,7 @@ import css from './Overlay.module.scss';
 import config from '../../config/config';
 import { callEvent } from '../../utils/events';
 import isMobile from 'is-mobile';
+import cn from 'classnames';
 
 export default () => {
 	const [location, setLocation] = useLocation();
@@ -30,7 +31,7 @@ export default () => {
 	function renderMenuItem(label: string, route: ERoute) {
 		return (
 			<div
-				className={`${css.menuItem} ${route === location && css.menuItemActive}`}
+				className={cn(css.menuItem, route === location && css.menuItemActive)}
 				onClick={() => menuItemClicked(route)}>
 				<div className={css.label}>{label}</div>
 				<div className={css.underlay} />
@@ -77,7 +78,7 @@ export default () => {
 				</div>
 			</div>
 
-			<div className={`${css.dragCursor} ${touched && css.fadeIn}`}>
+			<div className={cn(css.dragCursor, touched && css.fadeIn)}>
 				<img alt='mouse-pointer' src='/assets/mouse-pointer.svg' />
 				<span className={css.showDesktop}>MOVE MOUSE</span>
 				<span className={css.showMobile}>TAP ELEMENTS</span>●
@@ -96,7 +97,7 @@ export default () => {
 				</div>
 			</div>
 
-			<div className={`${css.handIcon} ${touched && css.fadeOut}`}>
+			<div className={cn(css.handIcon, touched && css.fadeOut)}>
 				<img alt='hand-icon' src='/assets/click-hand.png' />
 				Tap elements
 			</div>

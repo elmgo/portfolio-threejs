@@ -5,6 +5,7 @@ import css from './Contact.module.scss';
 import config from '../../config/config';
 import { ERoute } from '../../global';
 import isMobile from 'is-mobile';
+import cn from 'classnames';
 import { addEvent } from '../../utils/events';
 
 interface IContactForm {
@@ -89,12 +90,12 @@ export default () => {
 	}
 
 	return (
-		<div className={`${css.container} ${closing && css.closingModal}`}>
+		<div className={cn(css.container, closing && css.closingModal)}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/contact/`} />
 			</Helmet>
 			<h1>Contact Me</h1>
-			<div className={`${css.modal} ${submitting && css.submitting}`}>
+			<div className={cn(css.modal, submitting && css.submitting)}>
 				<div className={css.x} onClick={onClose}>
 					<img alt='close' src={isMobile() ? '/assets/x-white.svg' : '/assets/x.svg'} />
 				</div>

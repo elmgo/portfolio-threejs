@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import css from './Preloader.module.scss';
+import cn from 'classnames';
 
 export default ({
 	onLoaded,
@@ -57,7 +58,7 @@ export default ({
 	}
 
 	return (
-		<div className={`${css.container} ${loaded && css.loaded}`}>
+		<div className={cn(css.container, loaded && css.loaded)}>
 			<div className={css.spinner}>
 				<img alt='loading-spinner' className={css.spinnerBig} src='/assets/spinner.svg' />
 				<img alt='loading-spinner' className={css.spinnerSmall} src='/assets/spinner.svg' />
