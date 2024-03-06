@@ -55,16 +55,23 @@ export default () => {
 				style={{ backgroundImage: 'url(/assets/bg-texture.jpg)' }}
 			/>
 			<div className={css.mouseOverlay} ref={mouseOverlayRef} />
-			<div className={css.text}>
+
+			<div className={css.textMobile}>
+				<div className={css.largeText}>WEB</div>
+				<div className={css.largeText2}>DEV</div>
+				<div className={css.smallText}>DESIGN ● UI/UX ● INTERACTIVITY ● ANIMATION</div>
+			</div>
+
+			<div className={css.textDesktop}>
 				<div className={css.largeText} ref={largeTextRef}>
 					WEB DEVELOPMENT
 				</div>
 				<div className={css.smallText} ref={smallTextRef}>
-					DESIGN - UI/UX - INTERACTIVITY - ANIMATION
+					DESIGN ● UI/UX ● INTERACTIVITY ● ANIMATION
 				</div>
 				<div className={css.smallestText} ref={smallerTextRef}>
-					NEXTJS - REACT - VUE - SCSS - TAILWIND - NODE - EXPRESS - WORDPRESS - AWS -
-					MYSQL - DYNAMODB
+					NEXTJS ● REACT ● VUE ● SCSS ● TAILWIND ● NODE ● EXPRESS ● WORDPRESS ● AWS ●
+					MYSQL ● DYNAMODB
 				</div>
 			</div>
 		</div>

@@ -6,6 +6,7 @@ import config from '../../config/config';
 import { callEvent } from '../../utils/events';
 import isMobile from 'is-mobile';
 import cn from 'classnames';
+import WordTransitionIn from '../WordTransitionIn/WordTransitionIn';
 
 export default () => {
 	const [location, setLocation] = useLocation();
@@ -63,7 +64,16 @@ export default () => {
 	return (
 		<div className={css.container}>
 			<div className={css.header}>
-				<h1 className={css.title}>JONATHAN CULINER</h1>
+				<h1 className={css.title}>
+					<WordTransitionIn
+						delaySeconds={0}
+						text='JONATHAN CULINER'
+						fontFamily='Antonio'
+						fontWeight={700}
+						letterSpacingPx={-2}
+						fontSize={isMobile() ? 40 : 50}
+					/>
+				</h1>
 				<div className={css.subHeader}>
 					<h2>Web developer / Interactive designer</h2>
 					Freelancer / Globe trotter
@@ -86,6 +96,7 @@ export default () => {
 
 			<div className={css.social}>
 				<b>Get in touch, let's work together!</b>
+				<br />
 				<a className={css.emailLink} href={`mailto:${personalDetails.email}`}>
 					{personalDetails.email}
 				</a>

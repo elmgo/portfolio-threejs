@@ -37,6 +37,11 @@
 			rgb(255, 180, 196) 0 20%,
 			rgba(255, 180, 196, 0) 50%
 		);
+
+		@media (max-width: 767px) {
+			opacity: 1;
+			display: block;
+		}
 	}
 
 	.splatter {
@@ -50,17 +55,53 @@
 		mix-blend-mode: overlay;
 	}
 
-	.text {
+	@mixin text {
 		position: absolute;
-		top: 35vh;
 		font-weight: 700;
-		color: #000;
+		color: #000000;
 		mix-blend-mode: overlay;
-		line-height: 7vw;
 		animation: fadeIn 2s;
 		animation-fill-mode: forwards;
+	}
+
+	.textMobile {
+		@include text;
+		display: none;
+		top: 39vh;
+
+		@media (max-width: 767px) {
+			display: block;
+		}
+
+		.largeText {
+			line-height: 6vh;
+			letter-spacing: -0.83vw;
+			font-size: 44.5vw;
+		}
+
+		.largeText2 {
+			letter-spacing: -0.83vw;
+			font-size: 48.5vw;
+		}
+
+		.smallText {
+			text-align: center;
+			margin-top: -10vw;
+			font-size: 10.5vw;
+			letter-spacing: -0.29vw;
+			line-height: 4.5vh;
+		}
+	}
+
+	.textDesktop {
+		@include text;
+		top: 35vh;
 		white-space: nowrap;
-		// text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+		line-height: 7vw;
+
+		@media (max-width: 767px) {
+			display: none;
+		}
 
 		.largeText {
 			letter-spacing: -0.83vw;

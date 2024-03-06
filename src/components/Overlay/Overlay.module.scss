@@ -181,7 +181,7 @@
 
 		.emailLink {
 			pointer-events: all;
-			display: block;
+			display: inline-block;
 		}
 
 		.buttons {
@@ -210,7 +210,7 @@
 					left: 0;
 					position: absolute;
 					border-radius: 50%;
-					background-color: rgba(0, 0, 0, 0.15);
+					background-color: #b66089;
 					opacity: 0;
 					transition: 0.3s;
 					width: 100%;
