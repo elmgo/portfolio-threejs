@@ -1,19 +1,30 @@
 import * as THREE from 'three';
 import { useEffect } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { Physics, usePlane, useCompoundBody, useSphere } from '@react-three/cannon';
+import {
+	Physics,
+	usePlane,
+	useCompoundBody,
+	useSphere,
+} from '@react-three/cannon';
 import css from './Bubbles.module.scss';
 import { useLocation } from 'wouter';
 import isMobile from 'is-mobile';
 // import { EffectComposer, SSAO } from '@react-three/postprocessing';
 
-const bubbleMaterial: THREE.MeshLambertMaterial = new THREE.MeshLambertMaterial({
-	color: '#fff',
-	emissive: '#fff1c8',
-	// transparent: true,
-});
+const bubbleMaterial: THREE.MeshLambertMaterial = new THREE.MeshLambertMaterial(
+	{
+		color: '#fff',
+		emissive: '#fff1c8',
+		// transparent: true,
+	},
+);
 
-const sphereGeometry: THREE.SphereGeometry = new THREE.SphereGeometry(1, 28, 28);
+const sphereGeometry: THREE.SphereGeometry = new THREE.SphereGeometry(
+	1,
+	28,
+	28,
+);
 const bubbles = [...Array(35)].map(() => ({
 	args: [0.6, 0.6, 0.8, 0.8, 1.5][Math.floor(Math.random() * 5)],
 	mass: 3,
@@ -35,7 +46,12 @@ function Bubble({ vec = new THREE.Vector3(), ...props }) {
 			gaussRandom(centerBias, spread), // Random position along y-axis
 			gaussRandom(centerBias, spread), // Random position along z-axis
 		],
-		shapes: [{ type: 'Sphere', args: [props.args][Math.floor(Math.random() * 5)] }],
+		shapes: [
+			{
+				type: 'Sphere',
+				args: [props.args][Math.floor(Math.random() * 5)],
+			},
+		],
 	}));
 
 	useEffect(
@@ -56,7 +72,11 @@ function Bubble({ vec = new THREE.Vector3(), ...props }) {
 	return (
 		// @ts-ignore - group ref is not playing nice with typescript
 		<group ref={ref} dispose={null}>
-			<mesh scale={props.args} geometry={sphereGeometry} material={bubbleMaterial} />
+			<mesh
+				scale={props.args}
+				geometry={sphereGeometry}
+				material={bubbleMaterial}
+			/>
 		</group>
 	);
 }
@@ -86,7 +106,12 @@ export default () => {
 			<Canvas
 				shadows
 				dpr={1.5}
-				gl={{ alpha: true, stencil: false, depth: false, antialias: false }}
+				gl={{
+					alpha: true,
+					stencil: false,
+					depth: false,
+					antialias: false,
+				}}
 				camera={{ position: [0, 0, 20], fov: 35, near: 10, far: 40 }}
 				onCreated={(state) => (state.gl.toneMappingExposure = 1.5)}>
 				{/* <ambientLight intensity={0.5} /> */}
@@ -97,10 +122,18 @@ export default () => {
 					castShadow
 					shadow-mapSize={[512, 512]}
 				/>
-				<directionalLight position={[0, -5, -4]} intensity={8} color='#fff' />
+				<directionalLight
+					position={[0, -5, -4]}
+					intensity={8}
+					color='#fff'
+				/>
 				{!isMobile() && (
 					<>
-						<directionalLight position={[0, 5, -0]} intensity={34} color='blue' />
+						<directionalLight
+							position={[0, 5, -0]}
+							intensity={34}
+							color='blue'
+						/>
 						{/* <EffectComposer multisampling={0}> */}
 						{/* <SSAO samples={0} radius={0} luminanceInfluence={0} /> */}
 						{/* </EffectComposer> */}

@@ -1,6 +1,6 @@
-import Overlay from './components/Overlay/Overlay';
 import Underlay from './components/Underlay/Underlay';
 import Bubbles from './components/Bubbles/Bubbles';
+import Home from './components/Home/Home';
 import Work from './components/Work/Work';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
@@ -18,12 +18,16 @@ export default () => {
 	return (
 		<main className={css.container}>
 			{!loaded ? (
-				<Preloader onLoaded={() => setLoaded(true)} assets={assets} isAssets />
+				<Preloader
+					onLoaded={() => setLoaded(true)}
+					assets={assets}
+					isAssets
+				/>
 			) : (
 				<div className={css.content}>
 					<Underlay />
 					<Bubbles />
-					<Overlay />
+					<Home />
 					{location === ERoute.Work && <Work />}
 					{location === ERoute.About && <About />}
 					{location === ERoute.Contact && <Contact />}

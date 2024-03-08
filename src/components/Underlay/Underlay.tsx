@@ -37,8 +37,12 @@ export default () => {
 		const offsetY: number = e.clientY / window.innerHeight;
 		const offset: number = (offsetX + offsetY) / 2;
 
-		largeTextRef.current.style.transform = `translateX(${offset * (window.innerWidth / 10)}px)`;
-		smallTextRef.current.style.transform = `translateX(-${offset * (window.innerWidth / 7)}px)`;
+		largeTextRef.current.style.transform = `translateX(${
+			offset * (window.innerWidth / 10)
+		}px)`;
+		smallTextRef.current.style.transform = `translateX(-${
+			offset * (window.innerWidth / 7)
+		}px)`;
 		smallerTextRef.current.style.transform = `translateX(${
 			offset * (window.innerWidth / 20)
 		}px)`;
@@ -59,7 +63,9 @@ export default () => {
 			<div className={css.textMobile}>
 				<div className={css.largeText}>WEB</div>
 				<div className={css.largeText2}>DEV</div>
-				<div className={css.smallText}>DESIGN ● UI/UX ● INTERACTIVITY ● ANIMATION</div>
+				<div className={css.smallText}>
+					DESIGN ● UI/UX ● INTERACTIVITY ● ANIMATION
+				</div>
 			</div>
 
 			<div className={css.textDesktop}>
@@ -70,8 +76,8 @@ export default () => {
 					DESIGN ● UI/UX ● INTERACTIVITY ● ANIMATION
 				</div>
 				<div className={css.smallestText} ref={smallerTextRef}>
-					NEXTJS ● REACT ● VUE ● SCSS ● TAILWIND ● NODE ● EXPRESS ● WORDPRESS ● AWS ●
-					MYSQL ● DYNAMODB
+					NEXTJS ● REACT ● VUE ● SCSS ● TAILWIND ● NODE ● EXPRESS ●
+					WORDPRESS ● AWS ● MYSQL ● DYNAMODB
 				</div>
 			</div>
 		</div>

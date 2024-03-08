@@ -32,7 +32,8 @@ export default ({
 			const isDev: boolean = process.env.NODE_ENV === 'development';
 
 			if (src.includes('webm')) {
-				const videoEl: HTMLVideoElement = document.createElement('video');
+				const videoEl: HTMLVideoElement =
+					document.createElement('video');
 				console.log(`/projects/videos/${src}`);
 				videoEl.setAttribute('preload', 'auto');
 				videoEl.setAttribute('src', `/projects/videos/${src}`);
@@ -41,7 +42,9 @@ export default ({
 				});
 			} else {
 				const imageEl: HTMLImageElement = new Image();
-				imageEl.src = isAssets ? `/assets/${src}` : `/projects/images/${src}`;
+				imageEl.src = isAssets
+					? `/assets/${src}`
+					: `/projects/images/${src}`;
 				imageEl.onload = () => {
 					setTimeout(() => resolve(), isDev ? 100 : 0);
 				};
@@ -60,12 +63,22 @@ export default ({
 	return (
 		<div className={cn(css.container, loaded && css.loaded)}>
 			<div className={css.spinner}>
-				<img alt='loading-spinner' className={css.spinnerBig} src='/assets/spinner.svg' />
-				<img alt='loading-spinner' className={css.spinnerSmall} src='/assets/spinner.svg' />
+				<img
+					alt='loading-spinner'
+					className={css.spinnerBig}
+					src='/assets/spinner.svg'
+				/>
+				<img
+					alt='loading-spinner'
+					className={css.spinnerSmall}
+					src='/assets/spinner.svg'
+				/>
 			</div>
 			<div className={css.progress}>
 				<div className={css.bar}>
-					<div className={css.barInner} style={{ width: `${getBarWidth()}%` }}></div>
+					<div
+						className={css.barInner}
+						style={{ width: `${getBarWidth()}%` }}></div>
 				</div>
 				loading assets
 				<div className={css.assetsLoaded}>

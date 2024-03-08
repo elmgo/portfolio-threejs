@@ -118,7 +118,7 @@ export default () => {
 								</div>
 							)}
 							<div className={css.field}>
-								<b>Period</b>
+								<b>YEAR(S)</b>
 								{project.start_year}
 								{project.end_year ? ` - ${project.end_year}` : ''}
 							</div>

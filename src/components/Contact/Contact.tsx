@@ -67,7 +67,10 @@ export default () => {
 			if (field.name === 'email' && !isValidEmail(field.value)) {
 				setError('Please enter a valid email');
 				return null;
-			} else if (field.getAttribute('data-required') && field.value.trim() === '') {
+			} else if (
+				field.getAttribute('data-required') &&
+				field.value.trim() === ''
+			) {
 				setError(`Please fill the ${field.name} field`);
 				return null;
 			} else if (field.name) {
@@ -97,14 +100,23 @@ export default () => {
 			<h1>Contact Me</h1>
 			<div className={cn(css.modal, submitting && css.submitting)}>
 				<div className={css.x} onClick={onClose}>
-					<img alt='close' src={isMobile() ? '/assets/x-white.svg' : '/assets/x.svg'} />
+					<img
+						alt='close'
+						src={
+							isMobile() ? '/assets/x-white.svg' : '/assets/x.svg'
+						}
+					/>
 				</div>
 				<div className={css.inner}>
 					{!submitting && (
 						<form onSubmit={onSubmit}>
 							<div className={css.field}>
 								<div className={css.label}>Name *</div>
-								<input data-required name='name' placeholder='Your Name' />
+								<input
+									data-required
+									name='name'
+									placeholder='Your Name'
+								/>
 							</div>
 							<div className={css.field}>
 								<div className={css.label}>Email *</div>
@@ -116,7 +128,10 @@ export default () => {
 							</div>
 							<div className={css.field}>
 								<div className={css.label}>Company</div>
-								<input name='company' placeholder='Company Name' />
+								<input
+									name='company'
+									placeholder='Company Name'
+								/>
 							</div>
 							<div className={css.field}>
 								<div className={css.label}>Message *</div>
@@ -130,7 +145,10 @@ export default () => {
 								<div className={css.error}>
 									{error && (
 										<>
-											<img alt='error' src='/assets/error.svg' />
+											<img
+												alt='error'
+												src='/assets/error.svg'
+											/>
 											{error}
 										</>
 									)}
@@ -148,7 +166,9 @@ export default () => {
 									Thank you for reaching out!
 									<br />
 									I'll get back to you as soon as I can :)
-									<button onClick={() => setLocation('/')}>Close</button>
+									<button onClick={() => setLocation('/')}>
+										Close
+									</button>
 								</>
 							)}
 						</div>

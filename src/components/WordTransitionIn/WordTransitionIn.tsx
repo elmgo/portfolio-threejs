@@ -20,7 +20,8 @@ export default ({
 	// calculate the width of an individual letter by drawing it to a canvas
 	function getLetterWidth(letter: string) {
 		const canvas: HTMLCanvasElement = document.createElement('canvas');
-		const context: CanvasRenderingContext2D | null = canvas.getContext('2d');
+		const context: CanvasRenderingContext2D | null =
+			canvas.getContext('2d');
 
 		if (!context) {
 			return 0;
@@ -32,7 +33,10 @@ export default ({
 	}
 
 	const letterPositions: number[] = Array.from(text).reduce(
-		(a: number[], b: string) => [...a, a[a.length - 1] + getLetterWidth(b) + letterSpacingPx],
+		(a: number[], b: string) => [
+			...a,
+			a[a.length - 1] + getLetterWidth(b) + letterSpacingPx,
+		],
 		[0],
 	);
 

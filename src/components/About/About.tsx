@@ -48,14 +48,21 @@ export default () => {
 	}
 
 	return (
-		<div className={cn(css.container, closing && css.closingModal)} onClick={onClose}>
+		<div
+			className={cn(css.container, closing && css.closingModal)}
+			onClick={onClose}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/about/`} />
 			</Helmet>
 			<h1>About Me</h1>
 			<div className={css.modal} onClick={(e) => e.stopPropagation()}>
 				<div className={css.x} onClick={onClose}>
-					<img alt='close' src={isMobile() ? '/assets/x-white.svg' : '/assets/x.svg'} />
+					<img
+						alt='close'
+						src={
+							isMobile() ? '/assets/x-white.svg' : '/assets/x.svg'
+						}
+					/>
 				</div>
 				<div className={css.portraitContainer}>
 					<div
@@ -73,29 +80,36 @@ export default () => {
 						fontSize={isMobile() ? 40 : 50}
 					/>
 					<div className={css.about}>
-						I'm a full stack web developer and interactive designer. After working for
-						various companies throughout the years I decided to take my work on the road
-						and become a freelancer in 2018. Throughout the years I've done work for
-						companies such as Google, Warner Brothers, American Express and Coca Cola.
+						I'm a full stack web developer and interactive designer.
+						After working for various companies throughout the years
+						I decided to take my work on the road and become a
+						freelancer in 2018. Throughout the years I've done work
+						for companies such as Google, Warner Brothers, American
+						Express and Coca Cola.
 						<br />
-						<br />I love travelling the world and experiencing different cultures. I've
-						previously lived in Denmark, Canada, Israel, Vietnam, Hungary and Spain. I'm
+						<br />I love travelling the world and experiencing
+						different cultures. I've previously lived in Denmark,
+						Canada, Israel, Vietnam, Hungary and Spain. I'm
 						currently based in Buenos Aires, Argentina.
 					</div>
 
 					<div className={css.tech}>
-						{Object.entries(skills).map(([key, value]: [string, string[]]) => (
-							<div className={css.row}>
-								<div className={css.type}>{key}:</div>
-								<div className={css.skills}>
-									{value.map((skill: string) => (
-										<div key={skill} className={css.skill}>
-											{skill}
-										</div>
-									))}
+						{Object.entries(skills).map(
+							([key, value]: [string, string[]]) => (
+								<div className={css.row}>
+									<div className={css.type}>{key}:</div>
+									<div className={css.skills}>
+										{value.map((skill: string) => (
+											<div
+												key={skill}
+												className={css.skill}>
+												{skill}
+											</div>
+										))}
+									</div>
 								</div>
-							</div>
-						))}
+							),
+						)}
 					</div>
 				</div>
 			</div>

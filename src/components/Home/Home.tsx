@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { ERoute } from '../../global';
-import css from './Overlay.module.scss';
+import css from './Home.module.scss';
 import config from '../../config/config';
 import { callEvent } from '../../utils/events';
 import isMobile from 'is-mobile';
@@ -62,7 +62,7 @@ export default () => {
 	}
 
 	return (
-		<div className={css.container}>
+		<div className={cn(css.container, location !== ERoute.Home && css.hide)}>
 			<div className={css.header}>
 				<h1 className={css.title}>
 					<WordTransitionIn
