@@ -1,13 +1,9 @@
 import { useLocation } from 'wouter';
-import { Helmet } from 'react-helmet';
-import WordTransitionIn from '../WordTransitionIn/WordTransitionIn';
 import css from './About.module.scss';
 import config from '../../config/config';
-import isMobile from 'is-mobile';
-import cn from 'classnames';
 import Mask from '../Mask/Mask';
 import { ERoute } from '../../global';
-import usePageLoader from '../../utils/usePageLocation';
+import TransitionContent from '../TransitionContent/TransitionContent';
 
 const skills = {
 	frontend: [
@@ -35,7 +31,6 @@ const skills = {
 
 export default () => {
 	const [location] = useLocation();
-	const pageLoaded = usePageLoader(ERoute.About);
 	const showPage: boolean = location === ERoute.About;
 	const { personalDetails } = config;
 
@@ -48,40 +43,25 @@ export default () => {
 		);
 	}
 
-	if (!pageLoaded) {
-		return null;
-	}
-
 	return (
-		<div className={cn(css.container)}>
-			<Helmet>
-				<link rel='canonical' href={`${config.homeUrl}/about/`} />
-			</Helmet>
-			<h1>About Me</h1>
-			<div className={css.title}>
-				<div className={css.text}>
-					<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
-						<div>ABOUT</div>
-					</Mask>
-					<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
-						<div>ME</div>
-					</Mask>
+		<TransitionContent
+			show={showPage}
+			route={ERoute.About}
+			h1='About Me'
+			titleLine1='ABOUT'
+			titleLine2='ME'
+			infoContent={
+				<div className={css.info}>
+					{renderButton('Email', '/assets/mail.svg', 'email')}
+					{renderButton('Resume', '/assets/cv.svg', 'email')}
+					{renderButton(
+						'LinkedIn',
+						'/assets/linkedin.svg',
+						'linkedin',
+					)}
 				</div>
-				<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
-					<div className={css.info}>
-						{renderButton('Email', '/assets/mail.svg', 'email')}
-						{renderButton('Resume', '/assets/cv.svg', 'email')}
-						{renderButton(
-							'LinkedIn',
-							'/assets/linkedin.svg',
-							'linkedin',
-						)}
-					</div>
-				</Mask>
-			</div>
-
-			{/* <Mask show={showPage} delayIn={0.6} delayOut={0}> */}
-			<div className={css.body}>
+			}
+			content={
 				<div className={css.content}>
 					<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
 						<div className={css.aboutContainer}>
@@ -131,8 +111,7 @@ export default () => {
 						</div>
 					</Mask>
 				</div>
-			</div>
-			{/* </Mask> */}
-		</div>
+			}
+		/>
 	);
 };

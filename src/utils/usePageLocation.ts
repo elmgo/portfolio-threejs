@@ -1,16 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import { ERoute } from '../global';
-import { useLocation } from 'wouter';
 
-const usePageLoader = (page: ERoute) => {
-	const [location] = useLocation();
+const usePageLoader = (show: boolean) => {
 	const timeout = useRef<any>();
 	const [loadPage, setLoadPage] = useState<boolean>();
 
 	useEffect(() => {
-		if (location === page) {
+		if (show) {
 			setLoadPage(true);
-		} else {
+		} else if (show === false) {
 			clearTimeout(timeout.current);
 			timeout.current = setTimeout(() => {
 				setLoadPage(false);
@@ -18,7 +15,7 @@ const usePageLoader = (page: ERoute) => {
 		}
 
 		return () => clearTimeout(timeout.current);
-	}, [location]);
+	}, [show]);
 
 	return loadPage;
 };

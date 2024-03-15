@@ -47,14 +47,7 @@ export default () => {
 	}
 
 	function menuItemClicked(newRoute: ERoute) {
-		if (location !== '/') {
-			callEvent('closeAllModals');
-			setTimeout(() => {
-				setLocation(newRoute);
-			}, 500);
-		} else {
-			setLocation(newRoute);
-		}
+		setLocation(newRoute);
 	}
 
 	function renderButton(link: string, icon: string, imageAlt: string) {

@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useLocation } from 'wouter';
-import { Helmet } from 'react-helmet';
 import css from './Contact.module.scss';
 import config from '../../config/config';
 import { ERoute } from '../../global';
-import isMobile from 'is-mobile';
-import cn from 'classnames';
-import { addEvent } from '../../utils/events';
+import TransitionContent from '../TransitionContent/TransitionContent';
+import { createFormData, validateForm } from '../../utils/formHelpers';
 
-interface IContactForm {
+export interface IContactForm {
 	name?: string;
 	email?: string;
 	company?: string;
@@ -16,19 +14,15 @@ interface IContactForm {
 }
 
 export default () => {
-	const [location, setLocation] = useLocation();
-	const [closing, setClosing] = useState<boolean>(false);
+	const [location] = useLocation();
 	const [error, setError] = useState<string>();
 	const [submitting, setSubmitting] = useState<boolean>();
 	const [sent, setSent] = useState<boolean>();
-
-	useEffect(() => {
-		addEvent('closeAllModals', onClose);
-	}, []);
+	const showPage: boolean = location === ERoute.Contact;
 
 	function onSubmit(e: React.FormEvent) {
 		e.preventDefault();
-		const form: IContactForm | null = validateForm(e.target);
+		const form: IContactForm | null = validateForm(e.target, setError);
 
 		if (!form) {
 			return;
@@ -45,68 +39,18 @@ export default () => {
 		}, 500);
 	}
 
-	useEffect(() => {
-		if (location !== ERoute.Contact) {
-			setClosing(true);
-		}
-	}, [location]);
-
-	function onClose() {
-		setClosing(true);
-		setTimeout(() => {
-			setLocation('/');
-		}, 500);
-	}
-
-	function validateForm(formElement: HTMLFormElement | any) {
-		const data: {
-			[key: string]: string;
-		} = {};
-
-		for (const field of formElement) {
-			if (field.name === 'email' && !isValidEmail(field.value)) {
-				setError('Please enter a valid email');
-				return null;
-			} else if (
-				field.getAttribute('data-required') &&
-				field.value.trim() === ''
-			) {
-				setError(`Please fill the ${field.name} field`);
-				return null;
-			} else if (field.name) {
-				data[field.name] = field.value;
-			}
-		}
-		return data;
-	}
-
-	function isValidEmail(email: string) {
-		const pattern =
-			/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return pattern.test(email);
-	}
-
-	function createFormData(data: IContactForm) {
-		const formData = new FormData();
-		Object.entries(data).map(([key, value]) => formData.append(key, value));
-		return formData;
-	}
+	console.log('showPage');
+	console.log(showPage);
 
 	return (
-		<div className={cn(css.container, closing && css.closingModal)}>
-			<Helmet>
-				<link rel='canonical' href={`${config.homeUrl}/contact/`} />
-			</Helmet>
-			<h1>Contact Me</h1>
-			<div className={cn(css.modal, submitting && css.submitting)}>
-				<div className={css.x} onClick={onClose}>
-					<img
-						alt='close'
-						src={
-							isMobile() ? '/assets/x-white.svg' : '/assets/x.svg'
-						}
-					/>
-				</div>
+		<TransitionContent
+			show={showPage}
+			route={ERoute.Contact}
+			titleLine1='CONTACT'
+			titleLine2='ME'
+			h1='Contact Me'
+			infoContent={<></>}
+			content={
 				<div className={css.inner}>
 					{!submitting && (
 						<form onSubmit={onSubmit}>
@@ -166,15 +110,12 @@ export default () => {
 									Thank you for reaching out!
 									<br />
 									I'll get back to you as soon as I can :)
-									<button onClick={() => setLocation('/')}>
-										Close
-									</button>
 								</>
 							)}
 						</div>
 					)}
 				</div>
-			</div>
-		</div>
+			}
+		/>
 	);
 };

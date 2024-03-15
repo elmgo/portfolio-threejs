@@ -1,0 +1,44 @@
+.container {
+	pointer-events: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100.2vw;
+	height: 100vh;
+	z-index: 10;
+
+	h1 {
+		font-size: 0;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	.title {
+		pointer-events: all;
+		mix-blend-mode: overlay;
+		position: absolute;
+		z-index: 10;
+		top: 30vh;
+		left: 30px;
+
+		@media (max-width: 900px) {
+			top: 45vh;
+		}
+
+		.text {
+			opacity: 0.55;
+			letter-spacing: -1vw;
+			font-size: 10vw;
+			font-weight: 800;
+			color: #fff;
+			line-height: 8vw;
+		}
+	}
+
+	.body {
+		left: 45vw;
+		top: 30vh;
+		width: 42%;
+		position: absolute;
+	}
+}
