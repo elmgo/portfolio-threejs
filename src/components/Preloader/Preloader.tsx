@@ -6,10 +6,12 @@ export default ({
 	onLoaded,
 	assets,
 	isAssets,
+	numbers,
 }: {
 	onLoaded: () => void;
 	assets: string[];
 	isAssets?: boolean;
+	numbers?: boolean;
 }) => {
 	const [imagesLoaded, setImagesLoaded] = useState<number>(0);
 	const [loaded, setLoaded] = useState<boolean>(false);
@@ -62,29 +64,35 @@ export default ({
 
 	return (
 		<div className={cn(css.container, loaded && css.loaded)}>
-			<div className={css.spinner}>
-				<img
-					alt='loading-spinner'
-					className={css.spinnerBig}
-					src='/assets/spinner.svg'
-				/>
-				<img
-					alt='loading-spinner'
-					className={css.spinnerSmall}
-					src='/assets/spinner.svg'
-				/>
-			</div>
-			<div className={css.progress}>
-				<div className={css.bar}>
-					<div
-						className={css.barInner}
-						style={{ width: `${getBarWidth()}%` }}></div>
-				</div>
-				loading assets
-				<div className={css.assetsLoaded}>
-					{imagesLoaded} / {assets.length}
-				</div>
-			</div>
+			{numbers ? (
+				<>NUM</>
+			) : (
+				<>
+					<div className={css.spinner}>
+						<img
+							alt='loading-spinner'
+							className={css.spinnerBig}
+							src='/assets/spinner.svg'
+						/>
+						<img
+							alt='loading-spinner'
+							className={css.spinnerSmall}
+							src='/assets/spinner.svg'
+						/>
+					</div>
+					<div className={css.progress}>
+						<div className={css.bar}>
+							<div
+								className={css.barInner}
+								style={{ width: `${getBarWidth()}%` }}></div>
+						</div>
+						loading assets
+						<div className={css.assetsLoaded}>
+							{imagesLoaded} / {assets.length}
+						</div>
+					</div>
+				</>
+			)}
 		</div>
 	);
 };

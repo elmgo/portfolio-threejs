@@ -10,6 +10,9 @@
 	transition: 1s;
 	overflow: hidden;
 
+	.overlay {
+	}
+
 	.texture {
 		position: absolute;
 		top: 0;
@@ -30,13 +33,14 @@
 		border-radius: 50%;
 		position: absolute;
 		transform: translate(-50%, -50%);
-		opacity: 0.8;
+		opacity: 1;
 		mix-blend-mode: multiply;
 		background: radial-gradient(
 			circle at center,
-			rgb(255, 180, 196) 0 20%,
+			#fca4b8 0 20%,
 			rgba(255, 180, 196, 0) 50%
 		);
+		color: #373737;
 
 		@media (max-width: 767px) {
 			opacity: 1;
@@ -57,70 +61,140 @@
 
 	@mixin text {
 		position: absolute;
-		font-weight: 700;
+		font-weight: 800;
 		color: #000000;
+		// animation: fadeIn 2s;
+		// animation-fill-mode: forwards;
+	}
+
+	.text {
 		mix-blend-mode: overlay;
-		animation: fadeIn 2s;
-		animation-fill-mode: forwards;
-	}
+		transition: 1s;
 
-	.textMobile {
-		@include text;
-		display: none;
-		top: 39vh;
-
-		@media (max-width: 767px) {
-			display: block;
-		}
-
-		.largeText {
-			line-height: 6vh;
-			letter-spacing: -0.83vw;
-			font-size: 44.5vw;
-		}
-
-		.largeText2 {
-			letter-spacing: -0.83vw;
-			font-size: 48.5vw;
-		}
-
-		.smallText {
-			text-align: center;
-			margin-top: -10vw;
-			font-size: 10.5vw;
-			letter-spacing: -0.29vw;
-			line-height: 4.5vh;
-		}
-	}
-
-	.textDesktop {
-		@include text;
-		top: 35vh;
-		white-space: nowrap;
-		line-height: 7vw;
-
-		@media (max-width: 767px) {
+		.textMobile {
+			@include text;
 			display: none;
+			top: 39vh;
+
+			@media (max-width: 767px) {
+				display: block;
+			}
+
+			.largeText {
+				line-height: 6vh;
+				letter-spacing: -0.83vw;
+				font-size: 44.5vw;
+			}
+
+			.largeText2 {
+				letter-spacing: -0.83vw;
+				font-size: 48.5vw;
+			}
+
+			.smallText {
+				text-align: center;
+				margin-top: -10vw;
+				font-size: 10.5vw;
+				letter-spacing: -0.29vw;
+				line-height: 4.5vh;
+			}
 		}
 
-		.largeText {
-			letter-spacing: -0.83vw;
-			font-size: 11.5vw;
-			margin-left: -8vw;
+		.textDesktop {
+			@include text;
+			top: 35vh;
+			white-space: nowrap;
+			line-height: 7vw;
+
+			@media (max-width: 767px) {
+				display: none;
+			}
+
+			.largeText {
+				letter-spacing: -0.83vw;
+				font-size: 11.5vw;
+				line-height: 9vw;
+				margin-left: -8vw;
+			}
+
+			.smallText {
+				margin-left: 1.2vw;
+				font-size: 5.5vw;
+				letter-spacing: -0.29vw;
+				line-height: 4.5vw;
+			}
+
+			.smallestText {
+				font-size: 3.05vw;
+				margin-left: -4vw;
+				line-height: 2.5vw;
+				letter-spacing: -0.19vw;
+			}
+		}
+	}
+}
+
+$slantHeight: 250px;
+
+.overlay {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	opacity: 0.5;
+	mix-blend-mode: multiply;
+
+	.overlayInner {
+		position: absolute;
+		width: 100%;
+		animation-duration: 2s;
+		animation-fill-mode: forwards;
+		animation-delay: 0;
+		animation-timing-function: cubic-bezier(0.9, 0, 0.05, 1);
+
+		.top,
+		.bottom {
+			position: absolute;
+			width: 100%;
+			height: $slantHeight;
 		}
 
-		.smallText {
-			margin-left: 1.2vw;
-			font-size: 5.5vw;
-			letter-spacing: -0.29vw;
-			line-height: 7.5vw;
+		.top {
+			top: -$slantHeight + 1;
 		}
 
-		.smallestText {
-			font-size: 3.05vw;
-			margin-left: -4vw;
-			line-height: 1vw;
-			letter-spacing: -0.19vw;
+		.bottom {
+			bottom: -$slantHeight;
+		}
+
+		&.animationIn {
+			bottom: -$slantHeight;
+			animation-name: transitionIn;
+			animation-duration: 0.7;
+			z-index: 1;
+		}
+
+		&.animationOut {
+			top: 0;
+			animation-duration: 0.7;
+			animation-name: transitionOut;
+		}
+
+		@keyframes transitionIn {
+			0% {
+				height: 0;
+			}
+			100% {
+				height: calc(100% + #{$slantHeight});
+			}
+		}
+
+		@keyframes transitionOut {
+			0% {
+				height: calc(100% + #{$slantHeight});
+			}
+			100% {
+				height: 0;
+			}
 		}
 	}
 }

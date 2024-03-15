@@ -75,38 +75,57 @@ export default () => {
 	}
 
 	function gotoNextProject() {
-		scrollbarRef.current?.scrollIntoView(anchorsRef.current[currentProject + 1].current, {
-			offsetTop: 0,
-		});
+		scrollbarRef.current?.scrollIntoView(
+			anchorsRef.current[currentProject + 1].current,
+			{
+				offsetTop: 0,
+			},
+		);
 	}
 
 	function gotoPrevProject() {
-		scrollbarRef.current?.scrollIntoView(anchorsRef.current[currentProject - 1].current, {
-			offsetTop: 0,
-		});
+		scrollbarRef.current?.scrollIntoView(
+			anchorsRef.current[currentProject - 1].current,
+			{
+				offsetTop: 0,
+			},
+		);
 	}
 
 	return (
-		<div className={cn(css.container, closing && css.closingModal)} onClick={onClose}>
+		<div
+			className={cn(css.container, closing && css.closingModal)}
+			onClick={onClose}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/work/`} />
 			</Helmet>
-			<h1>My Work</h1>
-			<img alt='close' className={css.x} onClick={onClose} src='/assets/x-white.svg' />
-			<div
-				className={cn(css.modal, isTransitioning && css.infoTransitioning)}
-				onClick={(e) => e.stopPropagation()}>
+			{/* <h1>My Work</h1> */}
+			{/* <img
+				alt='close'
+				className={css.x}
+				onClick={onClose}
+				src='/assets/x-white.svg'
+			/> */}
+			<div className={cn(css.modal)} onClick={(e) => e.stopPropagation()}>
 				{!loaded ? (
-					<Preloader onLoaded={() => onMediaLoaded()} assets={projectImages} />
+					<Preloader
+						onLoaded={() => onMediaLoaded()}
+						assets={projectImages}
+					/>
 				) : (
 					<>
 						<div className={css.info}>
-							<div className={css.logo}>
+							{/* <div className={css.logo}>
 								<img
 									alt='project-logo'
-									style={{ height: project.logo_height || 50 }}
+									style={{
+										height: project.logo_height || 50,
+									}}
 									src={project.logo}
 								/>
+							</div> */}
+							<div className={css.title}>
+								<b>{project.title}</b>
 							</div>
 							<div className={css.field}>
 								<b>Role</b> {project.role}
@@ -120,7 +139,9 @@ export default () => {
 							<div className={css.field}>
 								<b>YEAR(S)</b>
 								{project.start_year}
-								{project.end_year ? ` - ${project.end_year}` : ''}
+								{project.end_year
+									? ` - ${project.end_year}`
+									: ''}
 							</div>
 							<div className={css.field}>
 								<b>Tech</b>
@@ -133,47 +154,73 @@ export default () => {
 								<div
 									className={cn(
 										css.prevProject,
-										currentProject > 0 ? '' : css.buttonHide,
+										currentProject > 0
+											? ''
+											: css.buttonHide,
 									)}
 									onClick={gotoPrevProject}>
-									<img alt='arrow-left' src='/assets/arrow-left.svg' />
+									<img
+										alt='arrow-left'
+										src='/assets/arrow-left.svg'
+									/>
 									Prev project
 								</div>
 
 								<div
 									className={cn(
 										css.nextProject,
-										currentProject < data.length - 1 ? '' : css.buttonHide,
+										currentProject < data.length - 1
+											? ''
+											: css.buttonHide,
 									)}
 									onClick={gotoNextProject}>
 									Next project
-									<img alt='arrow-right' src='/assets/arrow-right.svg' />
+									<img
+										alt='arrow-right'
+										src='/assets/arrow-right.svg'
+									/>
 								</div>
 							</div>
 						</div>
 
-						<div className={cn(css.overlay, !showOverlay && css.hideOverlay)}>
+						<div
+							className={cn(
+								css.overlay,
+								!showOverlay && css.hideOverlay,
+							)}>
 							<div className={css.prompt}>
 								Scroll down to browse projects
-								<img alt='arrow-down' src='/assets/arrow-right.svg' />
+								<img
+									alt='arrow-down'
+									src='/assets/arrow-right.svg'
+								/>
 							</div>
 						</div>
 
 						<div ref={projectsContainerRef} className={css.panels}>
 							{data.map((project: IProject, index: number) => (
-								<div className={css.images} ref={anchorsRef.current[index]}>
-									{project.media.map((media: IMedia, imageIndex: number) =>
-										media.src.includes('webm') ? (
-											<video className={css.video} autoPlay muted loop>
-												<source src={`/projects/videos/${media.src}`} />
-											</video>
-										) : (
-											<img
-												alt={`project-${index}-${imageIndex}`}
-												className={css.image}
-												src={`/projects/images/${media.src}`}
-											/>
-										),
+								<div
+									className={css.images}
+									ref={anchorsRef.current[index]}>
+									{project.media.map(
+										(media: IMedia, imageIndex: number) =>
+											media.src.includes('webm') ? (
+												<video
+													className={css.video}
+													autoPlay
+													muted
+													loop>
+													<source
+														src={`/projects/videos/${media.src}`}
+													/>
+												</video>
+											) : (
+												<img
+													alt={`project-${index}-${imageIndex}`}
+													className={css.image}
+													src={`/projects/images/${media.src}`}
+												/>
+											),
 									)}
 									{index < data.length - 1 && (
 										<div

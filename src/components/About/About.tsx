@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { Helmet } from 'react-helmet';
 import WordTransitionIn from '../WordTransitionIn/WordTransitionIn';
@@ -6,7 +5,9 @@ import css from './About.module.scss';
 import config from '../../config/config';
 import isMobile from 'is-mobile';
 import cn from 'classnames';
-import { addEvent } from '../../utils/events';
+import Mask from '../Mask/Mask';
+import { ERoute } from '../../global';
+import usePageLoader from '../../utils/usePageLocation';
 
 const skills = {
 	frontend: [
@@ -33,86 +34,105 @@ const skills = {
 };
 
 export default () => {
-	const [, setLocation] = useLocation();
-	const [closing, setClosing] = useState<boolean>(false);
+	const [location] = useLocation();
+	const pageLoaded = usePageLoader(ERoute.About);
+	const showPage: boolean = location === ERoute.About;
+	const { personalDetails } = config;
 
-	useEffect(() => {
-		addEvent('closeAllModals', onClose);
-	}, []);
+	function renderButton(label: string, icon: string, imageAlt: string) {
+		return (
+			<a className={css.button}>
+				<img alt={imageAlt} src={icon} />
+				<span>{label}</span>
+			</a>
+		);
+	}
 
-	function onClose() {
-		setClosing(true);
-		setTimeout(() => {
-			setLocation('/');
-		}, 500);
+	if (!pageLoaded) {
+		return null;
 	}
 
 	return (
-		<div
-			className={cn(css.container, closing && css.closingModal)}
-			onClick={onClose}>
+		<div className={cn(css.container)}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}/about/`} />
 			</Helmet>
 			<h1>About Me</h1>
-			<div className={css.modal} onClick={(e) => e.stopPropagation()}>
-				<div className={css.x} onClick={onClose}>
-					<img
-						alt='close'
-						src={
-							isMobile() ? '/assets/x-white.svg' : '/assets/x.svg'
-						}
-					/>
+			<div className={css.title}>
+				<div className={css.text}>
+					<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
+						<div>ABOUT</div>
+					</Mask>
+					<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
+						<div>ME</div>
+					</Mask>
 				</div>
-				<div className={css.portraitContainer}>
-					<div
-						style={{ backgroundImage: `url(/assets/portrait.jpg)` }}
-						className={css.portrait}
-					/>
-				</div>
-				<div className={css.content}>
-					<WordTransitionIn
-						delaySeconds={1}
-						text='ABOUT ME'
-						fontFamily='Antonio'
-						fontWeight={100}
-						letterSpacingPx={-2}
-						fontSize={isMobile() ? 40 : 50}
-					/>
-					<div className={css.about}>
-						I'm a full stack web developer and interactive designer.
-						After working for various companies throughout the years
-						I decided to take my work on the road and become a
-						freelancer in 2018. Throughout the years I've done work
-						for companies such as Google, Warner Brothers, American
-						Express and Coca Cola.
-						<br />
-						<br />I love travelling the world and experiencing
-						different cultures. I've previously lived in Denmark,
-						Canada, Israel, Vietnam, Hungary and Spain. I'm
-						currently based in Buenos Aires, Argentina.
-					</div>
-
-					<div className={css.tech}>
-						{Object.entries(skills).map(
-							([key, value]: [string, string[]]) => (
-								<div className={css.row}>
-									<div className={css.type}>{key}:</div>
-									<div className={css.skills}>
-										{value.map((skill: string) => (
-											<div
-												key={skill}
-												className={css.skill}>
-												{skill}
-											</div>
-										))}
-									</div>
-								</div>
-							),
+				<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
+					<div className={css.info}>
+						{renderButton('Email', '/assets/mail.svg', 'email')}
+						{renderButton('Resume', '/assets/cv.svg', 'email')}
+						{renderButton(
+							'LinkedIn',
+							'/assets/linkedin.svg',
+							'linkedin',
 						)}
 					</div>
+				</Mask>
+			</div>
+
+			{/* <Mask show={showPage} delayIn={0.6} delayOut={0}> */}
+			<div className={css.body}>
+				<div className={css.content}>
+					<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
+						<div className={css.aboutContainer}>
+							<div className={css.portraitContainer}>
+								<div
+									style={{
+										backgroundImage: `url(/assets/portrait.jpg)`,
+									}}
+									className={css.portrait}
+								/>
+							</div>
+							<div className={css.about}>
+								Hi, I'm Jon. I'm a full stack web developer and
+								interactive designer. After working for various
+								companies throughout the years I decided to take
+								my work on the road and become a freelancer in
+								2018. Throughout the years I've done work for
+								companies such as Google, Warner Brothers,
+								American Express and Coca Cola.
+								<br />
+								<br />I love travelling the world and
+								experiencing different cultures. I've previously
+								lived in Denmark, Canada, Israel, Vietnam,
+								Hungary and Spain. I'm currently based in Buenos
+								Aires, Argentina.
+							</div>
+						</div>
+					</Mask>
+					<Mask show={showPage} delayIn={0.2} delayOut={0.2}>
+						<div className={css.tech}>
+							{Object.entries(skills).map(
+								([key, value]: [string, string[]]) => (
+									<div className={css.row}>
+										<div className={css.type}>{key}:</div>
+										<div className={css.skills}>
+											{value.map((skill: string) => (
+												<div
+													key={skill}
+													className={css.skill}>
+													{skill}
+												</div>
+											))}
+										</div>
+									</div>
+								),
+							)}
+						</div>
+					</Mask>
 				</div>
 			</div>
+			{/* </Mask> */}
 		</div>
 	);
 };

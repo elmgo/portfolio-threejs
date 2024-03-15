@@ -10,7 +10,10 @@ import {
 import css from './Bubbles.module.scss';
 import { useLocation } from 'wouter';
 import isMobile from 'is-mobile';
+import throttle from '../../utils/throttle';
 // import { EffectComposer, SSAO } from '@react-three/postprocessing';
+
+let mousePos = { x: 0, y: 0 };
 
 const bubbleMaterial: THREE.MeshLambertMaterial = new THREE.MeshLambertMaterial(
 	{
@@ -89,17 +92,33 @@ function Collisions() {
 	usePlane(() => ({ position: [0, 4, 0], rotation: [Math.PI / 2, 0, 0] }));
 	const [, api] = useSphere(() => ({ type: 'Dynamic', args: [2] }));
 
-	return useFrame((state) =>
-		api.position.set(
-			(state.mouse.x * viewport.width) / 2,
-			(state.mouse.y * viewport.height) / 2,
+	return useFrame((state) => {
+		return api.position.set(
+			(((mousePos.x / window.innerWidth) * 2 - 1) * viewport.width) / 2,
+			((-(mousePos.y / window.innerHeight) * 2 + 1) * viewport.height) /
+				2,
 			2.5,
-		),
-	);
+		);
+	});
 }
 
 export default () => {
 	const [location] = useLocation();
+
+	useEffect(() => {
+		const mouseMoveFunc = throttle(onMouseMove, 15);
+
+		if (!isMobile()) {
+			document.addEventListener('mousemove', mouseMoveFunc);
+		}
+		return () => {
+			document.removeEventListener('mousemove', mouseMoveFunc);
+		};
+	}, []);
+
+	function onMouseMove(e: MouseEvent) {
+		mousePos = { x: e.clientX, y: e.clientY };
+	}
 
 	return (
 		<div className={css.container}>

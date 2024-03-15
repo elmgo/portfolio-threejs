@@ -1,6 +1,6 @@
+import Overlay from './components/Overlay/Overlay';
 import Underlay from './components/Underlay/Underlay';
 import Bubbles from './components/Bubbles/Bubbles';
-import Home from './components/Home/Home';
 import Work from './components/Work/Work';
 import About from './components/About/About';
 import Contact from './components/Contact/Contact';
@@ -26,11 +26,17 @@ export default () => {
 			) : (
 				<div className={css.content}>
 					<Underlay />
-					<Bubbles />
-					<Home />
-					{location === ERoute.Work && <Work />}
-					{location === ERoute.About && <About />}
+					<span
+						style={{
+							transition: '1.5s',
+							opacity: location === '/' ? 1 : 0.3,
+						}}>
+						<Bubbles />
+					</span>
+					<Overlay />
+					<About />
 					{location === ERoute.Contact && <Contact />}
+					{/* {location === ERoute.Work && <Work />} */}
 				</div>
 			)}
 		</main>

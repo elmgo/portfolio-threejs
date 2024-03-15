@@ -1,12 +1,14 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { ERoute } from '../../global';
-import css from './Home.module.scss';
+import css from './Overlay.module.scss';
 import config from '../../config/config';
 import { callEvent } from '../../utils/events';
 import isMobile from 'is-mobile';
 import cn from 'classnames';
-import WordTransitionIn from '../WordTransitionIn/WordTransitionIn';
+import Mask from '../Mask/Mask';
+
+const lightPages: string[] = ['/about'];
 
 export default () => {
 	const [location, setLocation] = useLocation();
@@ -32,7 +34,10 @@ export default () => {
 	function renderMenuItem(label: string, route: ERoute) {
 		return (
 			<div
-				className={cn(css.menuItem, route === location && css.menuItemActive)}
+				className={cn(
+					css.menuItem,
+					route === location && css.menuItemActive,
+				)}
 				onClick={() => menuItemClicked(route)}>
 				<div className={css.label}>{label}</div>
 				<div className={css.underlay} />
@@ -62,26 +67,27 @@ export default () => {
 	}
 
 	return (
-		<div className={cn(css.container, location !== ERoute.Home && css.hide)}>
+		<div
+			className={cn(
+				css.container,
+				location !== ERoute.Home && css.hide,
+				lightPages.includes(location) && css.light,
+			)}>
 			<div className={css.header}>
-				<h1 className={css.title}>
-					<WordTransitionIn
-						delaySeconds={0}
-						text='JONATHAN CULINER'
-						fontFamily='Antonio'
-						fontWeight={700}
-						letterSpacingPx={-2}
-						fontSize={isMobile() ? 40 : 50}
-					/>
-				</h1>
+				<Mask delay={0.2} height={37} show>
+					<h1 className={css.title}>JONATHAN CULINER</h1>
+				</Mask>
 				<div className={css.subHeader}>
-					<h2>Web developer / Interactive designer</h2>
-					Freelancer / Globe trotter
+					<Mask delay={0.2} show>
+						<h2>Web developer / Interactive designer</h2>
+						<>Freelancer / Globe trotter</>
+					</Mask>
 				</div>
 			</div>
 
 			<div className={css.menu}>
 				<div className={css.inner}>
+					{renderMenuItem('home', ERoute.Home)}
 					{renderMenuItem('about', ERoute.About)}
 					{renderMenuItem('work', ERoute.Work)}
 					{renderMenuItem('contact', ERoute.Contact)}
@@ -95,16 +101,34 @@ export default () => {
 			</div>
 
 			<div className={css.social}>
-				<b>Get in touch, let's work together!</b>
-				<br />
-				<a className={css.emailLink} href={`mailto:${personalDetails.email}`}>
-					{personalDetails.email}
-				</a>
+				<Mask delay={0.2} show hasPlaceholder>
+					<b>Get in touch, let's work together!</b>
+					<br />
+					<a
+						className={css.emailLink}
+						href={`mailto:${personalDetails.email}`}>
+						{personalDetails.email}
+					</a>
+				</Mask>
 				<div className={css.buttons}>
-					{renderButton(`mailto:${personalDetails.email}`, '/assets/mail.svg', 'email')}
-					{renderButton(`tel:${personalDetails.phone}`, '/assets/phone.svg', 'phone')}
-					{renderButton(personalDetails.linkedin, '/assets/linkedin.svg', 'linkedin')}
+					{/* <Mask delay={0.2} height={50} show={showContent}> */}
+					{renderButton(
+						`mailto:${personalDetails.email}`,
+						'/assets/mail.svg',
+						'email',
+					)}
+					{renderButton(
+						`tel:${personalDetails.phone}`,
+						'/assets/phone.svg',
+						'phone',
+					)}
+					{renderButton(
+						personalDetails.linkedin,
+						'/assets/linkedin.svg',
+						'linkedin',
+					)}
 					{renderButton(personalDetails.cv, '/assets/cv.svg', 'cv')}
+					{/* </Mask> */}
 				</div>
 			</div>
 
