@@ -5,7 +5,7 @@ import config from '../../config/config';
 import { ERoute } from '../../global';
 import TransitionContent from '../TransitionContent/TransitionContent';
 import { createFormData, validateForm } from '../../utils/formHelpers';
-
+import cn from 'classnames';
 export interface IContactForm {
 	name?: string;
 	email?: string;
@@ -39,19 +39,22 @@ export default () => {
 		}, 500);
 	}
 
-	console.log('showPage');
-	console.log(showPage);
-
 	return (
 		<TransitionContent
 			show={showPage}
 			route={ERoute.Contact}
-			titleLine1='CONTACT'
-			titleLine2='ME'
+			noWrap
+			titleLine1='GET IN'
+			titleLine2='TOUCH'
 			h1='Contact Me'
-			infoContent={<></>}
+			infoContent={
+				<div className={css.text}>
+					I'm always open to hearing about new projects. Please don't
+					hesitate to get in touch if you have something in mind :)
+				</div>
+			}
 			content={
-				<div className={css.inner}>
+				<div className={cn(css.content, !showPage && css.fieldsOut)}>
 					{!submitting && (
 						<form onSubmit={onSubmit}>
 							<div className={css.field}>

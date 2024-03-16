@@ -25,6 +25,7 @@ export default ({
 }: Props) => {
 	const [contentHeight, setContentHeight] = useState<number | string>();
 	const [showText, setShowText] = useState<boolean>();
+	const hasContentHeight = contentHeight !== undefined;
 	const textRef = useRef<HTMLDivElement>(null);
 
 	useLayoutEffect(() => {
@@ -38,7 +39,7 @@ export default ({
 	}, []);
 
 	useEffect(() => {
-		if (contentHeight !== undefined) {
+		if (hasContentHeight) {
 			let newDelay = 0;
 			if (show) {
 				newDelay = delayIn || delay;
@@ -52,7 +53,7 @@ export default ({
 	}, [show]);
 
 	function getHeight() {
-		if (contentHeight !== undefined) {
+		if (hasContentHeight) {
 			return showText ? contentHeight : 0;
 		}
 		return 'auto';
@@ -62,7 +63,7 @@ export default ({
 		<div
 			style={{
 				height: contentHeight,
-				opacity: contentHeight === undefined ? 0 : 1,
+				opacity: !hasContentHeight ? 0 : 1,
 			}}
 			onClick={onClick}
 			className={css.container}>
@@ -71,7 +72,7 @@ export default ({
 				style={{
 					height: getHeight(),
 				}}
-				className={cn(css.text, showText ? css.open : css.close)}>
+				className={cn(css.text, showText && css.open)}>
 				{children}
 			</div>
 			{hasPlaceholder && (

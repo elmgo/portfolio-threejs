@@ -4,9 +4,10 @@ import { Helmet } from 'react-helmet';
 import config from '../../config/config';
 import usePageLoader from '../../utils/usePageLocation';
 import { ERoute } from '../../global';
-
+import cn from 'classnames';
 interface Props {
 	show: boolean;
+	noWrap?: boolean;
 	h1: string;
 	route: ERoute;
 	titleLine1: string;
@@ -19,6 +20,7 @@ export default ({
 	show,
 	h1,
 	route,
+	noWrap,
 	titleLine1,
 	titleLine2,
 	content,
@@ -39,10 +41,14 @@ export default ({
 			<div className={css.title}>
 				<div className={css.text}>
 					<Mask show={show} delayIn={0.2} delayOut={0.2}>
-						<div>{titleLine1}</div>
+						<div className={cn(noWrap && css.noWrap)}>
+							{titleLine1}
+						</div>
 					</Mask>
 					<Mask show={show} delayIn={0.2} delayOut={0.2}>
-						<div>{titleLine2}</div>
+						<div className={cn(noWrap && css.noWrap)}>
+							{titleLine2}
+						</div>
 					</Mask>
 				</div>
 				<Mask show={show} delayIn={0.2} delayOut={0.2}>

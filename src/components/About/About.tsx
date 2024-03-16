@@ -49,7 +49,7 @@ export default () => {
 			route={ERoute.About}
 			h1='About Me'
 			titleLine1='ABOUT'
-			titleLine2='ME'
+			titleLine2='JON'
 			infoContent={
 				<div className={css.info}>
 					{renderButton('Email', '/assets/mail.svg', 'email')}
