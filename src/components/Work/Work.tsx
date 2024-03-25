@@ -4,7 +4,6 @@ import { projectImages } from '../../resources/projects';
 import Preloader from '../Preloader/Preloader';
 import { useLocation } from 'wouter';
 import { useState } from 'react';
-import WorkSlides from '../WorkSlides/WorkSlides';
 import WorkModal from '../WorkModal/WorkModal';
 import Mask from '../Mask/Mask';
 
