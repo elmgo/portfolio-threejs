@@ -65,7 +65,10 @@ export default ({
 	return (
 		<div className={cn(css.container, loaded && css.loaded)}>
 			{numbers ? (
-				<>NUM</>
+				<div className={css.numbers}>
+					{getBarWidth()}
+					<span>%</span>
+				</div>
 			) : (
 				<>
 					<div className={css.spinner}>

@@ -8,6 +8,7 @@ import { useState } from 'react';
 import { LocationHook, useLocation } from 'wouter';
 import assets from './resources/assets';
 import css from './App.module.scss';
+import Work from './components/Work/Work';
 
 export default () => {
 	const [location] = useLocation<LocationHook>();
@@ -34,7 +35,7 @@ export default () => {
 					<Overlay />
 					<About />
 					<Contact />
-					{/* {location === ERoute.Work && <Work />} */}
+					<Work />
 				</div>
 			)}
 		</main>

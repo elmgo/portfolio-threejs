@@ -9,6 +9,19 @@
 	color: #fff;
 	// background-color: #fff;
 
+	.numbers {
+		color: #fff;
+		font-size: 260px;
+		letter-spacing: -20px;
+		font-weight: 100;
+		// opacity: 0.3;
+		line-height: 260px;
+
+		span {
+			font-size: 60px;
+		}
+	}
+
 	.spinner {
 		display: block;
 		margin-bottom: 10px;

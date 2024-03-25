@@ -1,14 +1,13 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLocation } from 'wouter';
 import { ERoute } from '../../global';
 import css from './Overlay.module.scss';
 import config from '../../config/config';
-import { callEvent } from '../../utils/events';
 import isMobile from 'is-mobile';
 import cn from 'classnames';
 import Mask from '../Mask/Mask';
 
-const lightPages: string[] = ['/about'];
+const lightPages: string[] = ['/about', '/work'];
 
 export default () => {
 	const [location, setLocation] = useLocation();
