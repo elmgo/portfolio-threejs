@@ -21,7 +21,6 @@ export default () => {
 	const projectsContainerRef: RefObject<HTMLDivElement> = useRef(null);
 	const projectsRef: RefObject<any> = useRef(data.map(() => createRef()));
 	const anchorsRef: RefObject<any> = useRef(data.map(() => createRef()));
-	const project: IProject = data[currentProject];
 
 	useEffect(() => {
 		return () => {

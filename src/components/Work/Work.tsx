@@ -15,11 +15,15 @@ export default () => {
 	function renderContent() {
 		return (
 			<Mask show={showPage}>
-				<Preloader
-					numbers
-					onLoaded={() => setAssetsLoaded(true)}
-					assets={projectImages}
-				/>
+				<>
+					{!!!assetsLoaded && (
+						<Preloader
+							numbers
+							onLoaded={() => setAssetsLoaded(true)}
+							assets={projectImages}
+						/>
+					)}
+				</>
 			</Mask>
 		);
 	}
@@ -35,7 +39,7 @@ export default () => {
 				infoContent={<></>}
 				content={renderContent()}
 			/>
-			{assetsLoaded && <WorkModal />}
+			{assetsLoaded && showPage && <WorkModal />}
 		</>
 	);
 };

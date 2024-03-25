@@ -1,5 +1,5 @@
 import isMobile from 'is-mobile';
-import { RefObject, createRef, useEffect, useRef } from 'react';
+import { RefObject, createRef, useEffect, useRef, useState } from 'react';
 import throttle from '../../utils/throttle';
 import css from './Underlay.module.scss';
 import { useLocation } from 'wouter';
@@ -32,6 +32,7 @@ export default () => {
 	const largeTextRef = useRef<HTMLDivElement>(null);
 	const smallTextRef = useRef<HTMLDivElement>(null);
 	const smallerTextRef = useRef<HTMLDivElement>(null);
+	const [gradientVisible, setGradientVisible] = useState<boolean>(false);
 	const isHome: boolean = location === ERoute.Home;
 
 	useEffect(() => {
@@ -53,6 +54,10 @@ export default () => {
 			!mouseOverlayRef.current
 		) {
 			return;
+		}
+
+		if (!gradientVisible) {
+			setGradientVisible(true);
 		}
 
 		// I apply the positioning directly to the refs instead of using state
@@ -84,7 +89,11 @@ export default () => {
 				style={{ backgroundImage: 'url(/assets/bg-texture.jpg)' }}
 			/>
 			<Overlay location={location} />
-			<div className={css.mouseOverlay} ref={mouseOverlayRef} />
+			<div
+				className={css.mouseOverlay}
+				ref={mouseOverlayRef}
+				style={{ opacity: gradientVisible ? 1 : 0 }}
+			/>
 
 			<div
 				className={css.text}
