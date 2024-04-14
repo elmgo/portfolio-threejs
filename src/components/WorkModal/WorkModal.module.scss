@@ -37,12 +37,13 @@
 		box-shadow: 0 20px 50px 50px rgba(0, 0, 0, 0.1);
 		display: flex;
 		position: relative;
+		overflow: hidden;
 
 		.projects {
 			animation: fadeInProjects 1s;
 			animation-fill-mode: forwards;
 			scroll-behavior: smooth;
-			padding: 10px 30px 30px;
+			// padding: 10px 30px 30px;
 			width: 100%;
 			flex: 1;
 			position: relative;
@@ -52,15 +53,25 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				height: 200px;
+				// height: 200px;
 				max-width: 50%;
 			}
 
 			.project {
+				padding: 100px 0;
 				position: relative;
+				border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+				&:first-of-type {
+					padding-top: 0;
+				}
+
+				&.alt {
+					background-color: #f1f1f1;
+				}
 
 				.info {
-					padding: 20px 50px 0 0;
+					padding: 20px 50px 0 20px;
 					font-size: 12px;
 					display: inline-block;
 					width: 300px;
@@ -106,6 +117,7 @@
 				}
 
 				.media {
+					padding: 0 20px;
 					display: inline-block;
 					width: calc(100% - 300px);
 					vertical-align: top;

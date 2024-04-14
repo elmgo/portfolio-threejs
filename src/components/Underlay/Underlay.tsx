@@ -14,11 +14,11 @@ const pages = [
 	},
 	{
 		location: ERoute.About,
-		color: '#373737',
+		color: '#472D30',
 	},
 	{
 		location: ERoute.Work,
-		color: '#472D30',
+		color: '#3379d5',
 	},
 	{
 		location: ERoute.Contact,

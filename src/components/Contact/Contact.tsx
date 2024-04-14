@@ -30,13 +30,20 @@ export default () => {
 
 		setError('');
 		setSubmitting(true);
-		setTimeout(async () => {
-			await fetch(config.contactFormUrl, {
-				method: 'POST',
-				body: createFormData(form),
-			});
-			setSent(true);
-		}, 500);
+
+		if (process.env.NODE_ENV === 'development') {
+			setTimeout(() => {
+				setSent(true);
+			}, 1000);
+		} else {
+			setTimeout(async () => {
+				await fetch(config.contactFormUrl, {
+					method: 'POST',
+					body: createFormData(form),
+				});
+				setSent(true);
+			}, 500);
+		}
 	}
 
 	return (

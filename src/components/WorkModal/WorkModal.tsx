@@ -204,7 +204,10 @@ export default () => {
 							{data.map((project: IProject, index: number) => (
 								<>
 									<div
-										className={css.project}
+										className={cn(
+											css.project,
+											index % 2 === 1 && css.alt,
+										)}
 										ref={anchorsRef.current[index]}>
 										<div className={css.info}>
 											<div className={css.logo}>

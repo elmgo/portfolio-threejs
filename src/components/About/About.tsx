@@ -1,5 +1,6 @@
 import { useLocation } from 'wouter';
 import css from './About.module.scss';
+import config from '../../config/config';
 import Mask from '../Mask/Mask';
 import { ERoute } from '../../global';
 import TransitionContent from '../TransitionContent/TransitionContent';
@@ -32,9 +33,18 @@ export default () => {
 	const [location] = useLocation();
 	const showPage: boolean = location === ERoute.About;
 
-	function renderButton(label: string, icon: string, imageAlt: string) {
+	function renderButton(
+		label: string,
+		icon: string,
+		imageAlt: string,
+		targetUrl: string,
+	) {
+		const prefix = targetUrl.includes('@') ? 'mailto:' : '';
 		return (
-			<a className={css.button}>
+			<a
+				className={css.button}
+				href={`${prefix}${targetUrl}`}
+				target='_blank'>
 				<img alt={imageAlt} src={icon} />
 				<span>{label}</span>
 			</a>
@@ -103,12 +113,23 @@ export default () => {
 			titleLine2='JON'
 			infoContent={
 				<div className={css.info}>
-					{renderButton('Email', '/assets/mail.svg', 'email')}
-					{renderButton('Resume', '/assets/cv.svg', 'email')}
+					{renderButton(
+						'Email',
+						'/assets/mail.svg',
+						'email',
+						config.personalDetails.email,
+					)}
+					{renderButton(
+						'Resume',
+						'/assets/cv.svg',
+						'email',
+						config.personalDetails.cv,
+					)}
 					{renderButton(
 						'LinkedIn',
 						'/assets/linkedin.svg',
 						'linkedin',
+						config.personalDetails.linkedin,
 					)}
 				</div>
 			}
