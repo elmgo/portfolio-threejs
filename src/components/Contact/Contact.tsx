@@ -6,6 +6,7 @@ import { ERoute } from '../../global';
 import TransitionContent from '../TransitionContent/TransitionContent';
 import { createFormData, validateForm } from '../../utils/formHelpers';
 import cn from 'classnames';
+
 export interface IContactForm {
 	name?: string;
 	email?: string;
@@ -107,7 +108,11 @@ export default () => {
 										</>
 									)}
 								</div>
-								<button type='submit'>Send</button>
+								<button
+									className={css.submitButton}
+									type='submit'>
+									Send
+								</button>
 							</div>
 						</form>
 					)}

@@ -92,7 +92,7 @@ function Collisions() {
 	usePlane(() => ({ position: [0, 4, 0], rotation: [Math.PI / 2, 0, 0] }));
 	const [, api] = useSphere(() => ({ type: 'Dynamic', args: [2] }));
 
-	return useFrame((state) => {
+	return useFrame((_state) => {
 		return api.position.set(
 			(((mousePos.x / window.innerWidth) * 2 - 1) * viewport.width) / 2,
 			((-(mousePos.y / window.innerHeight) * 2 + 1) * viewport.height) /
@@ -110,13 +110,17 @@ export default () => {
 
 		if (!isMobile()) {
 			document.addEventListener('mousemove', mouseMoveFunc);
+		} else {
+			document.addEventListener('click', onMouseMove);
 		}
 		return () => {
 			document.removeEventListener('mousemove', mouseMoveFunc);
+			// document.removeEventListener('click', onMouseMove);
 		};
 	}, []);
 
 	function onMouseMove(e: MouseEvent) {
+		console.log('click');
 		mousePos = { x: e.clientX, y: e.clientY };
 	}
 
@@ -159,7 +163,7 @@ export default () => {
 					</>
 				)}
 				<Physics gravity={[0, 0, 0]} iterations={20} broadphase='SAP'>
-					{(location === '/' || !isMobile()) && <Collisions />}
+					<Collisions />
 					{bubbles.map((props, i) => (
 						<Bubble key={i} {...props} />
 					))}

@@ -51,9 +51,11 @@ export default ({
 						</div>
 					</Mask>
 				</div>
-				<Mask show={show} delayIn={0.2} delayOut={0.2}>
-					{infoContent}
-				</Mask>
+				<div className={css.info}>
+					<Mask show={show} delayIn={0.2} delayOut={0.2}>
+						{infoContent}
+					</Mask>
+				</div>
 			</div>
 
 			<div className={css.body}>{content}</div>

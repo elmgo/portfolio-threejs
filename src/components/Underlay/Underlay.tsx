@@ -99,11 +99,26 @@ export default () => {
 				className={css.text}
 				style={{ opacity: location === '/' ? 1 : 1 }}>
 				<div className={css.textMobile}>
-					<div className={css.largeText}>WEB</div>
-					<div className={css.largeText2}>DEV</div>
-					<div className={css.smallText}>
+					<Mask
+						show={isHome}
+						height={'29vw'}
+						delayIn={0.2}
+						delayOut={0.2}>
+						<div className={css.largeText}>WEB</div>
+					</Mask>
+					<Mask
+						show={isHome}
+						height={'52vw'}
+						delayIn={0.2}
+						delayOut={0.2}>
+						<div className={css.smallText} ref={smallTextRef}>
+							<div className={css.largeText2}>DEV</div>
+						</div>
+					</Mask>
+
+					{/* <div className={css.smallText}>
 						DESIGN ● UI/UX ● INTERACTIVITY ● ANIMATION
-					</div>
+					</div> */}
 				</div>
 
 				<div className={css.textDesktop}>

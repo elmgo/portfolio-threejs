@@ -1,8 +1,11 @@
 .text {
 	width: 100vw;
-	// font-weight: 600;
 	max-width: 470px;
 	font-size: 16px;
+
+	@media (max-width: 767px) {
+		width: 85vw;
+	}
 }
 
 .content {
@@ -11,6 +14,11 @@
 	height: 100%;
 	overflow: hidden;
 	transition: 0.5s;
+
+	@media (max-width: 767px) {
+		padding: 30px;
+		transform: translateY(60px);
+	}
 
 	@for $i from 1 through 4 {
 		.field:nth-of-type(#{$i}) {
@@ -21,10 +29,16 @@
 	.field {
 		font-family: Antonio, sans-serif;
 		opacity: 0;
+		display: flex;
 		animation: fadeInField 1.5s;
 		animation-fill-mode: forwards;
 		animation-timing-function: cubic-bezier(0.9, 0, 0.05, 1);
-		display: flex;
+
+		@media (max-width: 767px) {
+			animation: fadeInFieldMobile 1.5s;
+			animation-fill-mode: forwards;
+			animation-timing-function: cubic-bezier(0.9, 0, 0.05, 1);
+		}
 
 		.label {
 			padding-top: 10px;
@@ -61,6 +75,10 @@
 
 		textarea {
 			height: 140px;
+
+			@media (max-width: 767px) {
+				height: 80px;
+			}
 		}
 	}
 
@@ -71,6 +89,19 @@
 		}
 		100% {
 			opacity: 1;
+			margin-top: 0;
+		}
+	}
+
+	@keyframes fadeInFieldMobile {
+		0% {
+			opacity: 0;
+			transform: translateY(50px);
+			margin-top: 0;
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0);
 			margin-top: 0;
 		}
 	}
@@ -95,6 +126,12 @@
 				margin-right: 8px;
 			}
 		}
+
+		@media (max-width: 767px) {
+			animation: fadeInFieldMobile 1.5s;
+			animation-fill-mode: forwards;
+			animation-timing-function: cubic-bezier(0.9, 0, 0.05, 1);
+		}
 	}
 
 	&.fieldsOut {
@@ -110,7 +147,6 @@
 
 .thankYou {
 	letter-spacing: -0.2px;
-	// color: #fff;
 	margin-top: 100px;
 	height: 100%;
 	display: flex;
@@ -125,7 +161,7 @@
 	}
 }
 
-button {
+.submitButton {
 	pointer-events: all;
 	cursor: pointer;
 	border-radius: 3px;

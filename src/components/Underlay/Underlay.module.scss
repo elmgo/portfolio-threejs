@@ -40,9 +40,10 @@
 		color: #373737;
 		transition: 0.5s opacity;
 
-		@media (max-width: 767px) {
+		@media (max-width: 920px) {
 			opacity: 1;
 			display: block;
+			transition: 0.5s;
 		}
 	}
 
@@ -66,27 +67,30 @@
 	}
 
 	.text {
-		mix-blend-mode: overlay;
+		// mix-blend-mode: overlay;
 		transition: 1s;
 
 		.textMobile {
 			@include text;
 			display: none;
 			top: 39vh;
+			color: #146b83;
+			opacity: 0.2;
 
 			@media (max-width: 767px) {
 				display: block;
 			}
 
 			.largeText {
-				line-height: 6vh;
+				line-height: 26vw;
 				letter-spacing: -0.83vw;
-				font-size: 44.5vw;
+				font-size: 41.5vw;
 			}
 
 			.largeText2 {
+				line-height: 50vw;
 				letter-spacing: -0.83vw;
-				font-size: 48.5vw;
+				font-size: 44.5vw;
 			}
 
 			.smallText {
@@ -100,6 +104,7 @@
 
 		.textDesktop {
 			@include text;
+			mix-blend-mode: overlay;
 			top: 35vh;
 			white-space: nowrap;
 			line-height: 7vw;
@@ -150,8 +155,10 @@ $slantHeight: 250px;
 	height: 100vh;
 	opacity: 0.5;
 	mix-blend-mode: multiply;
+	pointer-events: none;
 
 	.overlayInner {
+		pointer-events: none;
 		position: absolute;
 		width: 100%;
 		animation-duration: 2s;

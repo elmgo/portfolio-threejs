@@ -25,10 +25,6 @@
 			white-space: nowrap;
 		}
 
-		@media (max-width: 900px) {
-			top: 45vh;
-		}
-
 		.text {
 			opacity: 0.75;
 			letter-spacing: -1vw;
@@ -38,6 +34,28 @@
 			line-height: 8vw;
 			margin-bottom: 40px;
 		}
+
+		@media (max-width: 920px) {
+			top: 280px;
+
+			.text {
+				font-size: 10vw;
+				line-height: 9vw;
+			}
+		}
+
+		@media (max-width: 767px) {
+			top: 250px;
+
+			.text {
+				font-size: 18vw;
+				line-height: 16vw;
+			}
+			.info {
+				transform: translateY(-20px);
+				width: calc(100% - 30px);
+			}
+		}
 	}
 
 	.body {
@@ -45,5 +63,18 @@
 		top: 30vh;
 		width: 42%;
 		position: absolute;
+
+		@media (max-width: 920px) {
+			top: 600px;
+			left: 0px;
+			width: 90%;
+		}
+
+		@media (max-width: 767px) {
+			top: unset;
+			bottom: 170px;
+			left: 0px;
+			width: 100%;
+		}
 	}
 }

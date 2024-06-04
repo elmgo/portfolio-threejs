@@ -75,8 +75,8 @@ export default () => {
 							<br />
 							<br />I love travelling the world and experiencing
 							different cultures. I've previously lived in
-							Denmark, Canada, Israel, Vietnam, Hungary and Spain.
-							I'm currently based in Buenos Aires, Argentina.
+							Denmark, Canada, Israel, Argentina, Hungary and
+							Spain. I'm currently based in Ho Chi Minh, Vietnam.
 						</div>
 					</div>
 				</Mask>
