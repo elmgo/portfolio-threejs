@@ -13,6 +13,7 @@ export default () => {
 	const [location, setLocation] = useLocation();
 	const [touched, setTouched] = useState<boolean>(false);
 	const { personalDetails } = config;
+	const isHome: boolean = location === ERoute.Home;
 
 	useEffect(() => {
 		if (isMobile()) {
@@ -124,10 +125,12 @@ export default () => {
 				</div>
 			</div>
 
-			<div className={cn(css.handIcon, touched && css.fadeOut)}>
-				<img alt='hand-icon' src='/assets/click-hand.png' />
-				Tap elements
-			</div>
+			{isHome && (
+				<div className={cn(css.handIcon, touched && css.fadeOut)}>
+					<img alt='hand-icon' src='/assets/click-hand.png' />
+					Tap elements
+				</div>
+			)}
 
 			<div className={css.viewCode}>
 				Built using React / Three.JS / Cannon.JS

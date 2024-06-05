@@ -51,7 +51,8 @@ export default () => {
 			!largeTextRef.current ||
 			!smallTextRef.current ||
 			!smallerTextRef.current ||
-			!mouseOverlayRef.current
+			!mouseOverlayRef.current ||
+			isMobile()
 		) {
 			return;
 		}
@@ -108,12 +109,17 @@ export default () => {
 					</Mask>
 					<Mask
 						show={isHome}
-						height={'52vw'}
+						height={'36vw'}
 						delayIn={0.2}
 						delayOut={0.2}>
-						<div className={css.smallText} ref={smallTextRef}>
-							<div className={css.largeText2}>DEV</div>
-						</div>
+						<div className={css.largeText2}>DEV</div>
+					</Mask>
+					<Mask
+						show={isHome}
+						height={'20vw'}
+						delayIn={0.2}
+						delayOut={0.2}>
+						<div className={css.smallText1}>DESIGN ● UI/UX</div>
 					</Mask>
 
 					{/* <div className={css.smallText}>

@@ -3,7 +3,7 @@
 	display: flex;
 	gap: 10px;
 
-	@media (max-width: 400px) {
+	@media (max-width: 767px) {
 		display: none;
 	}
 
@@ -72,10 +72,6 @@
 			width: 200px;
 			overflow: hidden;
 
-			@media (max-width: 767px) {
-				display: none;
-			}
-
 			.portrait {
 				border-radius: 5px;
 				width: 100%;
@@ -93,6 +89,20 @@
 
 			@media (max-width: 767px) {
 				width: 90%;
+			}
+		}
+
+		@media (max-width: 1024px) {
+			display: block;
+
+			.portraitContainer {
+				margin-bottom: 20px;
+			}
+		}
+
+		@media (max-width: 767px) {
+			.portraitContainer {
+				display: none;
 			}
 		}
 	}

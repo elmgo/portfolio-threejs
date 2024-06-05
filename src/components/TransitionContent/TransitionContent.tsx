@@ -5,6 +5,7 @@ import config from '../../config/config';
 import usePageLoader from '../../utils/usePageLocation';
 import { ERoute } from '../../global';
 import cn from 'classnames';
+import { useEffect, useState } from 'react';
 interface Props {
 	show: boolean;
 	noWrap?: boolean;
@@ -27,13 +28,22 @@ export default ({
 	infoContent,
 }: Props) => {
 	const pageLoaded = usePageLoader(show);
+	const [documentSize, setDocumentSize] = useState<number>();
+
+	useEffect(() => {
+		window.addEventListener('resize', onResize);
+	}, []);
+
+	function onResize() {
+		setDocumentSize(document.body.clientWidth + document.body.clientHeight);
+	}
 
 	if (!pageLoaded) {
 		return null;
 	}
 
 	return (
-		<div className={css.container}>
+		<div className={css.container} key={documentSize}>
 			<Helmet>
 				<link rel='canonical' href={`${config.homeUrl}${route}/`} />
 			</Helmet>

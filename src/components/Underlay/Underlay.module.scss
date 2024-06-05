@@ -39,6 +39,7 @@
 		);
 		color: #373737;
 		transition: 0.5s opacity;
+		pointer-events: none;
 
 		@media (max-width: 920px) {
 			opacity: 1;
@@ -88,12 +89,12 @@
 			}
 
 			.largeText2 {
-				line-height: 50vw;
+				line-height: 34vw;
 				letter-spacing: -0.83vw;
 				font-size: 44.5vw;
 			}
 
-			.smallText {
+			.smallText1 {
 				text-align: center;
 				margin-top: -10vw;
 				font-size: 10.5vw;
