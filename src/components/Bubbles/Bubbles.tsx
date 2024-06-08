@@ -8,7 +8,7 @@ import {
 	useSphere,
 } from '@react-three/cannon';
 import css from './Bubbles.module.scss';
-import { useLocation } from 'wouter';
+import { LocationHook, useLocation } from 'wouter';
 import isMobile from 'is-mobile';
 import throttle from '../../utils/throttle';
 // import { EffectComposer, SSAO } from '@react-three/postprocessing';
@@ -103,7 +103,7 @@ function Collisions() {
 }
 
 export default () => {
-	const [location] = useLocation();
+	const [location] = useLocation<LocationHook>();
 
 	useEffect(() => {
 		const mouseMoveFunc = throttle(onMouseMove, 15);

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useLocation } from 'wouter';
+import { LocationHook, useLocation } from 'wouter';
 import css from './Contact.module.scss';
 import config from '../../config/config';
 import { ERoute } from '../../global';
@@ -15,7 +15,7 @@ export interface IContactForm {
 }
 
 export default () => {
-	const [location] = useLocation();
+	const [location] = useLocation<LocationHook>();
 	const [error, setError] = useState<string>();
 	const [submitting, setSubmitting] = useState<boolean>();
 	const [sent, setSent] = useState<boolean>();

@@ -1,4 +1,5 @@
 .container {
+	position: fixed;
 	cursor: default;
 	animation: fadeInBG 2s cubic-bezier(0.9, 0, 0.05, 1);
 	animation-fill-mode: forwards;
@@ -9,16 +10,15 @@
 	align-items: center;
 	top: 0;
 	left: 0;
-	position: fixed;
 	z-index: 10;
 	transition: 0.5s;
 
 	.x {
-		user-select: none;
 		position: fixed;
+		cursor: pointer;
+		user-select: none;
 		top: 20px;
 		right: 20px;
-		cursor: pointer;
 		transition: 0.3s;
 
 		&:hover {
@@ -39,11 +39,43 @@
 		position: relative;
 		overflow: hidden;
 
+		.overlay {
+			z-index: 10;
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0, 0, 0, 0.8);
+			opacity: 1;
+			transition: 0.5s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.prompt {
+				text-align: center;
+				color: #fff;
+
+				img {
+					display: block;
+					width: 50px;
+					margin: 10px auto 0;
+					transform: rotate(90deg);
+					filter: invert(100%);
+				}
+			}
+
+			&.hideOverlay {
+				opacity: 0;
+				pointer-events: none;
+			}
+		}
+
 		.projects {
 			animation: fadeInProjects 1s;
 			animation-fill-mode: forwards;
 			scroll-behavior: smooth;
-			// padding: 10px 30px 30px;
 			width: 100%;
 			flex: 1;
 			position: relative;
@@ -53,7 +85,6 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				// height: 200px;
 				max-width: 50%;
 			}
 
@@ -71,7 +102,7 @@
 				}
 
 				.info {
-					padding: 20px 50px 0 20px;
+					padding: 20px 40px 0 20px;
 					font-size: 12px;
 					display: inline-block;
 					width: 300px;
@@ -80,9 +111,13 @@
 					top: 0;
 
 					.logo {
-						width: 150px;
+						font-family: Antonio;
+						width: 100%;
 						text-align: left !important;
 						margin-bottom: 30px;
+						font-size: 30px;
+						font-weight: 800;
+						letter-spacing: -1px;
 
 						img {
 							width: 100%;
@@ -96,7 +131,7 @@
 
 						b {
 							color: rgba(0, 0, 0, 0.8);
-							margin-bottom: 15px;
+							margin-bottom: 5px;
 							letter-spacing: 1px;
 							text-transform: uppercase;
 							font-size: 16px;
@@ -113,6 +148,7 @@
 						background-color: #eee;
 						margin-right: 3px;
 						margin-bottom: 3px;
+						border: 1px solid rgba(0, 0, 0, 0.05);
 					}
 				}
 
@@ -145,45 +181,60 @@
 
 		@media (max-width: 1023px) {
 			.projects {
-				padding: 0;
+				// padding: 0;
+
+				.project {
+					.logo {
+						font-size: 3vw;
+					}
+				}
 			}
 		}
 
 		@media (max-width: 767px) {
 			flex-direction: column;
 
-			.info {
-				height: 120px;
-				width: 100%;
-				padding: 15px 20px 10px !important;
-				box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+			.projects {
+				.project {
+					background-color: #fff !important;
+					padding-top: 0;
 
-				.logo {
-					margin-bottom: 0;
-				}
+					.info {
+						height: auto;
+						width: 100%;
+						padding: 15px 20px 10px !important;
+						background-color: #fff;
+						box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+						// position: relative;
 
-				.controls {
-					left: 20px;
+						.logo {
+							margin-bottom: 0;
+							font-size: 30px;
+						}
 
-					.nextProject {
-						right: 40px;
+						.field {
+							b {
+								margin-bottom: 3px;
+							}
+						}
+
+						.controls {
+							left: 20px;
+
+							.nextProject {
+								right: 40px;
+							}
+						}
+
+						.field:nth-last-of-type(-n + 2) {
+							display: none;
+						}
+					}
+
+					.media {
+						width: 100%;
 					}
 				}
-
-				.field {
-					display: none;
-				}
-			}
-		}
-	}
-
-	.infoTransitioning {
-		.info {
-			.logo,
-			.field {
-				animation: fadeOutField 0.3s;
-				animation-fill-mode: forwards;
-				opacity: 1;
 			}
 		}
 	}
@@ -216,7 +267,7 @@
 
 	100% {
 		opacity: 1;
-		width: 90vw;
+		width: 95vw;
 	}
 }
 

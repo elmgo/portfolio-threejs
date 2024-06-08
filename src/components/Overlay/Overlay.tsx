@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'wouter';
+import { LocationHook, useLocation } from 'wouter';
 import { ERoute } from '../../global';
 import css from './Overlay.module.scss';
 import config from '../../config/config';
@@ -10,7 +10,7 @@ import Mask from '../Mask/Mask';
 const lightPages: string[] = ['/about', '/work'];
 
 export default () => {
-	const [location, setLocation] = useLocation();
+	const [location, setLocation] = useLocation<LocationHook>();
 	const [touched, setTouched] = useState<boolean>(false);
 	const { personalDetails } = config;
 	const isHome: boolean = location === ERoute.Home;

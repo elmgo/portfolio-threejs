@@ -92,7 +92,7 @@
 			}
 		}
 
-		@media (max-width: 1024px) {
+		@media (max-width: 900px) {
 			display: block;
 
 			.portraitContainer {
@@ -100,7 +100,7 @@
 			}
 		}
 
-		@media (max-width: 767px) {
+		@media (max-width: 1200px) {
 			.portraitContainer {
 				display: none;
 			}
@@ -111,7 +111,7 @@
 		color: #fff;
 		margin-top: 40px;
 
-		@media (max-width: 767px) {
+		@media (max-width: 1400px) {
 			display: none;
 		}
 

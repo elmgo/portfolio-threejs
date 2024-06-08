@@ -37,7 +37,7 @@ const projects: IProject[] = [
 	},
 	{
 		title: 'SendOwl',
-		role: 'Development & design of new website',
+		role: 'Development & design',
 		logo: logos.sendowl,
 		start_year: 2020,
 		end_year: 2022,
@@ -51,7 +51,7 @@ const projects: IProject[] = [
 		],
 	},
 	{
-		title: 'LivingArchive',
+		title: 'Living Archive',
 		role: 'Development and design of client CMS',
 		logo: logos.livingarchive,
 		start_year: 2020,
@@ -93,7 +93,8 @@ const projects: IProject[] = [
 		role: 'Development, design',
 		logo: logos.venturel,
 		start_year: 2020,
-		description: '',
+		description:
+			'Freelancing platform for managing collaborations between multiple freelancers across projects',
 		skills: ['vue', 'figma'],
 		media: [
 			{ src: 'venturel-1.png', description: '' },

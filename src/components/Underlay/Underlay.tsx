@@ -2,7 +2,7 @@ import isMobile from 'is-mobile';
 import { RefObject, createRef, useEffect, useRef, useState } from 'react';
 import throttle from '../../utils/throttle';
 import css from './Underlay.module.scss';
-import { useLocation } from 'wouter';
+import { LocationHook, useLocation } from 'wouter';
 import { ERoute } from '../../global';
 import cn from 'classnames';
 import Mask from '../Mask/Mask';
@@ -27,7 +27,7 @@ const pages = [
 ];
 
 export default () => {
-	const [location] = useLocation();
+	const [location] = useLocation<LocationHook>();
 	const mouseOverlayRef = useRef<HTMLDivElement>(null);
 	const largeTextRef = useRef<HTMLDivElement>(null);
 	const smallTextRef = useRef<HTMLDivElement>(null);

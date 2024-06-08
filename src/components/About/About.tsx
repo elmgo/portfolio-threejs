@@ -1,4 +1,4 @@
-import { useLocation } from 'wouter';
+import { LocationHook, useLocation } from 'wouter';
 import css from './About.module.scss';
 import config from '../../config/config';
 import Mask from '../Mask/Mask';
@@ -30,7 +30,7 @@ const skills = {
 };
 
 export default () => {
-	const [location] = useLocation();
+	const [location] = useLocation<LocationHook>();
 	const showPage: boolean = location === ERoute.About;
 
 	function renderButton(

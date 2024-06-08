@@ -11,9 +11,9 @@ import cn from 'classnames';
 
 export default () => {
 	const [, setLocation] = useLocation<LocationHook>();
-	const [showOverlay, setShowOverlay] = useState<boolean>(false);
 	const [loaded, setLoaded] = useState<boolean>(false);
 	const [closing, setClosing] = useState<boolean>(false);
+	const [showOverlay, setShowOverlay] = useState<boolean>(false);
 	const [currentProject, setCurrentProject] = useState<number>(0);
 	const [isTransitioning, setIsTransitioning] = useState<boolean>(false);
 	const [nextProject, setNextProject] = useState<number>(0);
@@ -118,72 +118,6 @@ export default () => {
 					/>
 				) : (
 					<>
-						{/* <div className={css.info}>
-							<div className={css.logo}>
-								<img
-									alt='project-logo'
-									style={{
-										height: project.logo_height || 50,
-									}}
-									src={project.logo}
-								/>
-							</div>
-							<div className={css.field}>
-								<b>Role</b> {project.role}
-							</div>
-							{project.description && (
-								<div className={css.field}>
-									<b>About</b>
-									{project.description}
-								</div>
-							)}
-							<div className={css.field}>
-								<b>YEAR(S)</b>
-								{project.start_year}
-								{project.end_year
-									? ` - ${project.end_year}`
-									: ''}
-							</div>
-							<div className={css.field}>
-								<b>Tech</b>
-								{project.skills.map((skill: string) => (
-									<div className={css.skill}>{skill}</div>
-								))}
-							</div>
-
-							<div className={css.controls}>
-								<div
-									className={cn(
-										css.prevProject,
-										currentProject > 0
-											? ''
-											: css.buttonHide,
-									)}
-									onClick={gotoPrevProject}>
-									<img
-										alt='arrow-left'
-										src='/assets/arrow-left.svg'
-									/>
-									Prev project
-								</div>
-
-								<div
-									className={cn(
-										css.nextProject,
-										currentProject < data.length - 1
-											? ''
-											: css.buttonHide,
-									)}
-									onClick={gotoNextProject}>
-									Next project
-									<img
-										alt='arrow-right'
-										src='/assets/arrow-right.svg'
-									/>
-								</div>
-							</div>
-						</div>
-
 						<div
 							className={cn(
 								css.overlay,
@@ -196,7 +130,7 @@ export default () => {
 									src='/assets/arrow-right.svg'
 								/>
 							</div>
-						</div> */}
+						</div>
 
 						<div
 							ref={projectsContainerRef}
@@ -211,7 +145,8 @@ export default () => {
 										ref={anchorsRef.current[index]}>
 										<div className={css.info}>
 											<div className={css.logo}>
-												<img
+												{project.title}
+												{/* <img
 													alt='project-logo'
 													style={{
 														height:
@@ -219,23 +154,10 @@ export default () => {
 															50,
 													}}
 													src={project.logo}
-												/>
+												/> */}
 											</div>
 											<div className={css.field}>
 												<b>Role</b> {project.role}
-											</div>
-											{project.description && (
-												<div className={css.field}>
-													<b>About</b>
-													{project.description}
-												</div>
-											)}
-											<div className={css.field}>
-												<b>YEAR(S)</b>
-												{project.start_year}
-												{project.end_year
-													? ` - ${project.end_year}`
-													: ''}
 											</div>
 											<div className={css.field}>
 												<b>Tech</b>
@@ -249,6 +171,19 @@ export default () => {
 														</div>
 													),
 												)}
+											</div>
+											{project.description && (
+												<div className={css.field}>
+													<b>About</b>
+													{project.description}
+												</div>
+											)}
+											<div className={css.field}>
+												<b>YEAR(S)</b>
+												{project.start_year}
+												{project.end_year
+													? ` - ${project.end_year}`
+													: ''}
 											</div>
 										</div>
 										<div className={css.media}>
