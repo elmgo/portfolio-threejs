@@ -13,5 +13,15 @@
 			opacity: 1;
 			bottom: 0;
 		}
+
+		&.hide {
+			// @media (max-width: 500px) {
+			// 	display: none;
+			// }
+
+			@media (max-width: 376px) {
+				display: none;
+			}
+		}
 	}
 }

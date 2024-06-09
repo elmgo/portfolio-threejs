@@ -109,6 +109,8 @@ export default () => {
 			show={showPage}
 			route={ERoute.About}
 			h1='About Me'
+			// hideTitleOnMobile
+			hideSubTitleOnMobile
 			titleLine1='ABOUT'
 			titleLine2='JON'
 			infoContent={

@@ -56,6 +56,19 @@
 				width: calc(100% - 30px);
 			}
 		}
+
+		@media (max-width: 500px) {
+			top: 190px;
+
+			.text {
+				font-size: 13vw;
+				line-height: 13vw;
+			}
+			.info {
+				transform: translateY(-20px);
+				width: calc(100% - 30px);
+			}
+		}
 	}
 
 	.body {
@@ -68,6 +81,7 @@
 			top: 600px;
 			left: 0px;
 			width: 90%;
+			padding: 0 30px;
 		}
 
 		@media (max-width: 767px) {
@@ -75,6 +89,12 @@
 			bottom: 170px;
 			left: 0px;
 			width: 100%;
+		}
+
+		@media (max-width: 500px) {
+			// position: relative;
+			bottom: 200px;
+			width: calc(100vw);
 		}
 	}
 }

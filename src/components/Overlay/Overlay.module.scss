@@ -18,6 +18,10 @@
 		filter: invert(100%);
 	}
 
+	@media (max-width: 500px) {
+		padding: 30px;
+	}
+
 	.menu {
 		transition: 0.5;
 		position: fixed;
@@ -297,7 +301,7 @@
 		}
 	}
 
-	@media screen and (max-width: 900px) {
+	@media screen and (max-width: 912px) {
 		.handIcon {
 			display: block;
 			opacity: 0.8;
@@ -349,6 +353,37 @@
 
 		.header {
 			margin-top: 70px;
+		}
+	}
+
+	@media (max-width: 500px) {
+		.menu {
+			left: 20px;
+			width: calc(100vw - 40px);
+
+			.inner {
+				width: 100%;
+				display: flex;
+
+				.menuItem {
+					font-size: 16px;
+					// width: 72px
+					width: unset;
+					flex: 1;
+				}
+			}
+		}
+
+		.header {
+			margin-top: 60px;
+
+			.title {
+				font-size: 36px;
+			}
+
+			.subHeader {
+				margin-top: 10px;
+			}
 		}
 	}
 }

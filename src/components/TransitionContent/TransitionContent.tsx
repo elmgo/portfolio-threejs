@@ -6,8 +6,12 @@ import usePageLoader from '../../utils/usePageLocation';
 import { ERoute } from '../../global';
 import cn from 'classnames';
 import { useEffect, useState } from 'react';
+import isMobile from 'is-mobile';
+
 interface Props {
 	show: boolean;
+	hideTitleOnMobile?: boolean;
+	hideSubTitleOnMobile?: boolean;
 	noWrap?: boolean;
 	h1: string;
 	route: ERoute;
@@ -19,6 +23,8 @@ interface Props {
 
 export default ({
 	show,
+	hideTitleOnMobile,
+	hideSubTitleOnMobile,
 	h1,
 	route,
 	noWrap,
@@ -50,19 +56,35 @@ export default ({
 			<h1>{h1}</h1>
 			<div className={css.title}>
 				<div className={css.text}>
-					<Mask show={show} delayIn={0.2} delayOut={0.2}>
+					<Mask
+						hideOnMobile={hideTitleOnMobile}
+						show={show}
+						delayIn={0.2}
+						delayOut={0.2}>
 						<div className={cn(noWrap && css.noWrap)}>
-							{titleLine1}
+							{`${titleLine1}${
+								isMobile() ? ` ${titleLine2}` : ''
+							}`}
 						</div>
 					</Mask>
-					<Mask show={show} delayIn={0.2} delayOut={0.2}>
-						<div className={cn(noWrap && css.noWrap)}>
-							{titleLine2}
-						</div>
-					</Mask>
+					{!isMobile() && (
+						<Mask
+							hideOnMobile={hideTitleOnMobile}
+							show={show}
+							delayIn={0.2}
+							delayOut={0.2}>
+							<div className={cn(noWrap && css.noWrap)}>
+								{titleLine2}
+							</div>
+						</Mask>
+					)}
 				</div>
 				<div className={css.info}>
-					<Mask show={show} delayIn={0.2} delayOut={0.2}>
+					<Mask
+						hideOnMobile={hideSubTitleOnMobile}
+						show={show}
+						delayIn={0.2}
+						delayOut={0.2}>
 						{infoContent}
 					</Mask>
 				</div>

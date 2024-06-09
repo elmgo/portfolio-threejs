@@ -4,6 +4,7 @@ import cn from 'classnames';
 
 interface Props {
 	show?: boolean;
+	hideOnMobile?: boolean;
 	hasPlaceholder?: boolean;
 	delay?: number;
 	delayIn?: number;
@@ -15,6 +16,7 @@ interface Props {
 
 export default ({
 	show = false,
+	hideOnMobile = false,
 	hasPlaceholder = false,
 	onClick = () => {},
 	delay = 0,
@@ -72,7 +74,11 @@ export default ({
 				style={{
 					height: getHeight(),
 				}}
-				className={cn(css.text, showText && css.open)}>
+				className={cn(
+					css.text,
+					showText && css.open,
+					hideOnMobile && css.hide,
+				)}>
 				{children}
 			</div>
 			{hasPlaceholder && (

@@ -1,3 +1,5 @@
+$slantHeight: 250px;
+
 .container {
 	background: linear-gradient(180deg, #a3dfed 0%, #f6f6f6 60%);
 	pointer-events: none;
@@ -147,8 +149,6 @@
 		}
 	}
 }
-
-$slantHeight: 250px;
 
 .overlay {
 	position: fixed;

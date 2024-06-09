@@ -51,10 +51,12 @@ export default () => {
 		<TransitionContent
 			show={showPage}
 			route={ERoute.Contact}
+			h1='Contact Me'
 			noWrap
+			hideTitleOnMobile
+			hideSubTitleOnMobile
 			titleLine1='GET IN'
 			titleLine2='TOUCH'
-			h1='Contact Me'
 			infoContent={
 				<div className={css.text}>
 					I'm always open to hearing about new projects. Please don't

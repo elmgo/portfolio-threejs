@@ -99,7 +99,7 @@ export default () => {
 			<div
 				className={css.text}
 				style={{ opacity: location === '/' ? 1 : 1 }}>
-				<div className={css.textMobile}>
+				{/* <div className={css.textMobile}>
 					<Mask
 						show={isHome}
 						height={'29vw'}
@@ -121,11 +121,7 @@ export default () => {
 						delayOut={0.2}>
 						<div className={css.smallText1}>DESIGN ● UI/UX</div>
 					</Mask>
-
-					{/* <div className={css.smallText}>
-						DESIGN ● UI/UX ● INTERACTIVITY ● ANIMATION
-					</div> */}
-				</div>
+				</div> */}
 
 				<div className={css.textDesktop}>
 					<Mask

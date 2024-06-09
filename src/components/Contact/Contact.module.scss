@@ -20,6 +20,11 @@
 		transform: translateY(90px);
 	}
 
+	@media (max-width: 500px) {
+		padding: 0;
+		transform: translateY(30px);
+	}
+
 	@for $i from 1 through 4 {
 		.field:nth-of-type(#{$i}) {
 			animation-delay: #{$i * 0.1}s;
@@ -76,8 +81,8 @@
 		textarea {
 			height: 140px;
 
-			@media (max-width: 767px) {
-				height: 80px;
+			@media (max-width: 900px) {
+				height: 60px;
 			}
 		}
 	}
@@ -101,7 +106,7 @@
 		}
 		100% {
 			opacity: 1;
-			transform: translateY(0);
+			// transform: translateY(-30px);
 			margin-top: 0;
 		}
 	}

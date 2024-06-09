@@ -59,8 +59,6 @@
 }
 
 .content {
-	padding-left: 40px;
-	padding-right: 20px;
 	flex: 1;
 
 	.aboutContainer {
@@ -88,7 +86,13 @@
 			line-height: 22px;
 
 			@media (max-width: 767px) {
-				width: 90%;
+				width: 100%;
+			}
+		}
+
+		@media (max-width: 1200px) {
+			.portraitContainer {
+				display: none;
 			}
 		}
 
@@ -97,12 +101,6 @@
 
 			.portraitContainer {
 				margin-bottom: 20px;
-			}
-		}
-
-		@media (max-width: 1200px) {
-			.portraitContainer {
-				display: none;
 			}
 		}
 	}

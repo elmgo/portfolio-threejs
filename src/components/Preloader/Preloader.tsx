@@ -94,6 +94,10 @@ export default ({
 							{imagesLoaded} / {assets.length}
 						</div>
 					</div>
+
+					{/* I just add this invisible placeholder 
+					to ensure the default font is loaded in the process */}
+					<span className={css.placeholder}>hi</span>
 				</>
 			)}
 		</div>
