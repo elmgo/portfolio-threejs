@@ -63,14 +63,15 @@ export default ({
 	}
 
 	return (
-		<div className={cn(css.container, loaded && css.loaded)}>
+		<div className={cn(css.container)}>
 			{numbers ? (
 				<div className={css.numbers}>
 					{getBarWidth()}
 					<span>%</span>
 				</div>
 			) : (
-				<>
+				<span
+					className={cn(css.spinnerContainer, loaded && css.loaded)}>
 					<div className={css.spinner}>
 						<img
 							alt='loading-spinner'
@@ -98,7 +99,7 @@ export default ({
 					{/* I just add this invisible placeholder 
 					to ensure the default font is loaded in the process */}
 					<span className={css.placeholder}>hi</span>
-				</>
+				</span>
 			)}
 		</div>
 	);

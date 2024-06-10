@@ -96,5 +96,11 @@
 			bottom: 200px;
 			width: calc(100vw);
 		}
+
+		@media (max-width: 376px) {
+			// position: relative;
+			bottom: 150px;
+			width: calc(100vw);
+		}
 	}
 }

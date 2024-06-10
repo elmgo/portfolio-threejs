@@ -67,9 +67,9 @@ export default () => {
 				lightPages.includes(location) && css.light,
 			)}>
 			<div className={css.header}>
-				<Mask delay={0.2} height={37} show>
-					<h1 className={css.title}>JONATHAN CULINER</h1>
-				</Mask>
+				{/* <Mask delay={0.2} show> */}
+				<h1 className={css.title}>JONATHAN CULINER</h1>
+				{/* </Mask> */}
 				<div className={css.subHeader}>
 					<Mask delay={0.2} show>
 						<h2>Web developer / Interactive designer</h2>
@@ -133,7 +133,7 @@ export default () => {
 			)}
 
 			<div className={css.viewCode}>
-				Built using React / Three.JS / Cannon.JS
+				Built using React
 				<br />
 				<a target='_blank' href={config.githubRepoUrl}>
 					<img alt='view-code' src='/assets/github.svg' />

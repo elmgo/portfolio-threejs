@@ -76,7 +76,8 @@ export default () => {
 							<br />I love travelling the world and experiencing
 							different cultures. I've previously lived in
 							Denmark, Canada, Israel, Argentina, Hungary and
-							Spain. I'm currently based in Ho Chi Minh, Vietnam.
+							Spain. I'm currently based in Ho Chi Minh City,
+							Vietnam.
 						</div>
 					</div>
 				</Mask>
@@ -109,7 +110,7 @@ export default () => {
 			show={showPage}
 			route={ERoute.About}
 			h1='About Me'
-			// hideTitleOnMobile
+			hideTitleOnMobile
 			hideSubTitleOnMobile
 			titleLine1='ABOUT'
 			titleLine2='JON'

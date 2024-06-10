@@ -124,11 +124,7 @@ export default () => {
 				</div> */}
 
 				<div className={css.textDesktop}>
-					<Mask
-						show={isHome}
-						height={'9vw'}
-						delayIn={0.2}
-						delayOut={0.2}>
+					<Mask show={isHome} delayIn={0.2} delayOut={0.2}>
 						<div className={css.largeText} ref={largeTextRef}>
 							WEB DEVELOPMENT
 						</div>
@@ -148,8 +144,8 @@ export default () => {
 						delayIn={0.2}
 						delayOut={0.2}>
 						<div className={css.smallestText} ref={smallerTextRef}>
-							NEXTJS ● REACT ● VUE ● SCSS ● TAILWIND ● NODE ●
-							EXPRESS ● WORDPRESS ● AWS ● MYSQL ● DYNAMODB
+							NEXTJS ● REACT ● VUE ● TAILWIND ● NODE ● EXPRESS ●
+							WORDPRESS ● AWS ● MYSQL ● DYNAMODB
 						</div>
 					</Mask>
 				</div>

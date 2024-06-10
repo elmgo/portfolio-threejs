@@ -19,7 +19,7 @@ $slantHeight: 250px;
 		width: 100%;
 		height: 100%;
 		z-index: 10;
-		opacity: 0.4;
+		opacity: 0.25;
 		mix-blend-mode: overlay;
 		background-size: cover;
 		background-position: center;
@@ -73,37 +73,37 @@ $slantHeight: 250px;
 		// mix-blend-mode: overlay;
 		transition: 1s;
 
-		.textMobile {
-			@include text;
-			display: none;
-			top: 39vh;
-			color: #146b83;
-			opacity: 0.2;
+		// .textMobile {
+		// 	@include text;
+		// 	display: none;
+		// 	top: 39vh;
+		// 	color: #146b83;
+		// 	opacity: 0.2;
 
-			@media (max-width: 767px) {
-				display: block;
-			}
+		// 	@media (max-width: 767px) {
+		// 		display: block;
+		// 	}
 
-			.largeText {
-				line-height: 26vw;
-				letter-spacing: -0.83vw;
-				font-size: 41.5vw;
-			}
+		// 	.largeText {
+		// 		line-height: 26vw;
+		// 		letter-spacing: -0.83vw;
+		// 		font-size: 41.5vw;
+		// 	}
 
-			.largeText2 {
-				line-height: 34vw;
-				letter-spacing: -0.83vw;
-				font-size: 44.5vw;
-			}
+		// 	.largeText2 {
+		// 		line-height: 34vw;
+		// 		letter-spacing: -0.83vw;
+		// 		font-size: 44.5vw;
+		// 	}
 
-			.smallText1 {
-				text-align: center;
-				margin-top: -10vw;
-				font-size: 10.5vw;
-				letter-spacing: -0.29vw;
-				line-height: 4.5vh;
-			}
-		}
+		// 	.smallText1 {
+		// 		text-align: center;
+		// 		margin-top: -10vw;
+		// 		font-size: 10.5vw;
+		// 		letter-spacing: -0.29vw;
+		// 		line-height: 4.5vh;
+		// 	}
+		// }
 
 		.textDesktop {
 			@include text;
@@ -128,9 +128,9 @@ $slantHeight: 250px;
 
 			.largeText {
 				letter-spacing: -0.83vw;
-				font-size: 11.5vw;
+				font-size: 10.5vw;
 				line-height: 9vw;
-				margin-left: -8vw;
+				margin-left: -7vw;
 			}
 
 			.smallText {
